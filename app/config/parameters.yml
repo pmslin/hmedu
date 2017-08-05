@@ -1,0 +1,15 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: edusohoty
+    database_user: root
+    database_password: ''
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: zh_CN
+    secret: lllfurb9r5cok04wwgkgo40soocc0k8
+    webpack_base_url: http://edusohoty.com
+    user_partner: none
