@@ -1,11 +1,11 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% set menu = 'admin_course_manage' %}
+{% set menu = 'admin_test_manage' %}
 
 {% set script_controller = 'course/manage' %}
 
 {% block main %}
-  {% include 'admin/course-set/tab.html.twig' %}
+  {# {% include 'admin/course-set/tab.html.twig' %} #}
   <br>
   <div class="well well-sm mtl">
     <form id="message-search-form" class="form-inline" action="" method="get" novalidate>
@@ -13,7 +13,7 @@
 
       <div class="form-group">
         <select style="max-width:150px;" class="form-control" name="categoryId">
-          {{ select_options(category_choices('course'), app.request.query.get('categoryId'), '课程分类'|trans) }}
+          {{ select_options(category_choices('test'), app.request.query.get('categoryId'), '课程分类'|trans) }}
         </select>
       </div>
       <div class="form-group">
@@ -74,14 +74,13 @@
     </tr>
     </thead>
     <tbody>
-    {% for courseSet in courseSets %}
-      {% set user = users[courseSet.creator]|default(null) %}
-      {% set category = categories[courseSet.categoryId]|default(null) %}
-      {% include 'admin/course-set/tr.html.twig' %}
+    {% for courseSet in testPapers %}
+      {% set user = users[courseSet.createdUserId]|default(null) %}
+      {% include 'admin/test-set/tr.html.twig' %}
     {% else %}
       <tr>
         <td colspan="20">
-          <div class="empty">{{'暂无课程记录'|trans}}  </div>
+          <div class="empty">{{'暂无试卷'|trans}}</div>
         </td>
       </tr>
     {% endfor %}

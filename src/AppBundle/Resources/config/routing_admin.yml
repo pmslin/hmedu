@@ -498,6 +498,13 @@ admin_course_set_recommend_list:
     path: /course_set/recommend/list
     defaults: { _controller: AppBundle:Admin/CourseSet:recommendList }
 
+#题库分类
+admin_test_category:
+    path: /Test/testcategory
+    defaults: { _controller: AppBundle:Admin/Test:testcategory }
+    #permissions: [admin_test_category_manage]
+
+#课程分类
 admin_course_category:
     path: /course/category
     defaults: { _controller: AppBundle:Admin/Course:category }
@@ -1373,6 +1380,12 @@ admin_login_record_details:
     defaults: { _controller: AppBundle:Admin/LoginRecord:showUserLoginRecord }
     permissions: [admin_login_record]
 
+#考试管理页面
+admin_test:
+    path:  /Test
+    defaults: { _controller: AppBundle:Admin/Test:index }
+    permissions: [admin_course_thread]
+
 admin_thread:
     path:  /thread
     defaults: { _controller: AppBundle:Admin/CourseThread:index }
@@ -2102,9 +2115,15 @@ admin_classroom_delete:
     defaults: { _controller: AppBundle:Admin/ClassroomAdmin:deleteClassroom }
     methods: [POST]
 
+#班级分类
 admin_classroom_category:
     path: /classroom/category
     defaults: { _controller: AppBundle:Admin/ClassroomCategory:index }
+
+#题库分类
+admin_test_category:
+    path: /test/category
+    defaults: { _controller: AppBundle:Admin/testCategory:index }
 
 admin_classroom_order:
     path:     /classroom/order

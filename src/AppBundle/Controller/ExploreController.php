@@ -55,7 +55,7 @@ class ExploreController extends BaseController
         if ($filter['type'] === 'live') {
             $conditions['type'] = 'live';
         }
-
+//        $conditions['type'] = 'normal';//..定义默认显示的课程类型
         unset($conditions['filter']);
 
         $courseSetting = $this->getSettingService()->get('course', array());

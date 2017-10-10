@@ -14,6 +14,14 @@ class TestpaperDaoImpl extends GeneralDaoImpl implements TestpaperDao
         return $this->getByFields(array('id' => $id, 'type' => $type));
     }
 
+    //获取题库试卷
+    public function getByIsTest()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE  isTest=1";
+
+        return $this->db()->fetchAll($sql);
+    }
+
     public function findTestpapersByIds(array $ids)
     {
         return $this->findInField('id', $ids);

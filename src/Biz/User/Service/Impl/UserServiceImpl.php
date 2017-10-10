@@ -47,6 +47,7 @@ class UserServiceImpl extends BaseService implements UserService
 
     public function countUsers(array $conditions)
     {
+
         if (isset($conditions['nickname'])) {
             $conditions['nickname'] = strtoupper($conditions['nickname']);
         }

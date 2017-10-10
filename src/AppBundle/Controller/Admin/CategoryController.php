@@ -15,6 +15,8 @@ class CategoryController extends BaseController
 
         $categories = $this->getCategoryService()->getCategoryStructureTree($group['id']);
 
+//        $this->show_print($categories);
+
         return $this->render('admin/category/embed.html.twig', array(
             'group' => $group,
             'menu' => $menu,

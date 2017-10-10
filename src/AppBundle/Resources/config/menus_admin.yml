@@ -364,6 +364,22 @@ admin:
                             parent: admin_course_thread
                             router_name: admin_classroom_thread
                             disable: true
+                #后台考试管理
+                admin_test_show:
+                    name: 考试管理
+                    children:
+                        admin_test_manage:
+                            name: 考试管理
+                            router_name: admin_test
+                            children:
+                                admin_course_content_manage:
+                                    name: 管理考试-----------
+                                admin_course_add:
+                                    name: 创建试题
+                                    router_name: manage_test_create
+                                    group: topBtn
+                                    blank: 1
+                    
                 admin_course_question:
                     name: 问答管理
                     children:
@@ -417,6 +433,21 @@ admin:
                                 admin_classroom_category_create:
                                     name: 添加分类
                                     parent: admin_classroom_category_manage
+                                    router_name: admin_category_create
+                                    router_params:
+                                        groupId: (group.id)
+                                    router_params_context: 1
+                                    group: topBtn
+                                    mode: modal
+                        admin_test_category_manage:
+                            name: 题库分类
+                            parent: admin_course_category
+                            router_name: admin_test_category
+                            disable: true
+                            children:
+                                admin_classroom_category_create:
+                                    name: 添加分类
+                                    parent: admin_test_category_manage
                                     router_name: admin_category_create
                                     router_params:
                                         groupId: (group.id)

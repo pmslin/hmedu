@@ -30,6 +30,12 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         return $this->getTestpaperDao()->getByIdAndType($id, $type);
     }
 
+    //获取题库试卷
+    public function getTestpaperByIsTest()
+    {
+        return $this->getTestpaperDao()->getByIsTest();
+    }
+
     public function findTestpapersByIdsAndType($ids, $type)
     {
         return $this->getTestpaperDao()->findTestpapersByIdsAndType($ids, $type);
@@ -358,6 +364,7 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         return $testpaperBuilder->build($fields);
     }
 
+
     public function finishTest($resultId, $formData)
     {
         $user = $this->getCurrentUser();
@@ -375,8 +382,8 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         $answers = empty($formData['data']) ? array() : $formData['data'];
         $attachments = empty($formData['attachments']) ? array() : $formData['attachments'];
 
-        $this->submitAnswers($result['id'], $answers, $attachments);
-
+        $this->submitAnswers($result['id'], $answers, $attachments); //系统评卷
+//        exit();
         $paperResult = $this->getTestpaperBuilder($result['type'])->updateSubmitedResult(
             $result['id'],
             $formData['usedTime']
@@ -546,8 +553,8 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         }
         $fields['checkTeacherId'] = $user['id'];
         $fields['checkedTime'] = time();
-        $fields['subjectiveScore'] = array_sum(ArrayToolkit::column($checkData, 'score'));
-        $fields['score'] = $paperResult['objectiveScore'] + $fields['subjectiveScore'];
+        $fields['subjectiveScore'] = array_sum(ArrayToolkit::column($checkData, 'score')); //主观题得分
+        $fields['score'] = $paperResult['objectiveScore'] + $fields['subjectiveScore']; //总得分
         $fields['status'] = 'finished';
 
         $paperResult = $this->updateTestpaperResult($paperResult['id'], $fields);
@@ -557,6 +564,7 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         return $paperResult;
     }
 
+    //阅卷给功能 系统评卷
     public function submitAnswers($id, $answers, $attachments)
     {
         $answers = is_array($answers) ? $answers : json_decode($answers, true);
@@ -564,7 +572,7 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
             return array();
         }
 
-        $user = $this->getCurrentUser();
+        $user = $this->getCurrentUser(); //考试人信息
         $testpaperResult = $this->getTestpaperResult($id);
         $questionIds = array_keys($answers);
 
@@ -573,10 +581,11 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         $itemResults = $this->findItemResultsByResultId($testpaperResult['id']);
         $itemResults = ArrayToolkit::index($itemResults, 'questionId');
 
-        $questions = $this->getQuestionService()->findQuestionsByIds($questionIds);
+        $questions = $this->getQuestionService()->findQuestionsByIds($questionIds); //根据问题id数组读取每个问题的信息
 
-        $this->getItemResultDao()->db()->beginTransaction();
+        $this->getItemResultDao()->db()->beginTransaction(); //开始事务
 
+        //核对答案评分
         try {
             foreach ($answers as $questionId => $answer) {
                 $fields = array('answer' => $answer);
@@ -612,12 +621,12 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
 
             $this->submitAttachment($testpaperResult['id'], $attachments);
 
-            $this->getItemResultDao()->db()->commit();
+            $this->getItemResultDao()->db()->commit();//提交事务
         } catch (\Exception $e) {
-            $this->getItemResultDao()->db()->rollback();
+            $this->getItemResultDao()->db()->rollback();//回滚事务
             throw $e;
         }
-
+//        exit();
         return $this->findItemResultsByResultId($testpaperResult['id']);
     }
 

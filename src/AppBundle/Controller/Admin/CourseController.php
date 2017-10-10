@@ -305,10 +305,20 @@ class CourseController extends BaseController
         ));
     }
 
+    //课程分类
     public function categoryAction(Request $request)
     {
         return $this->forward('AppBundle:Admin/Category:embed', array(
             'group' => 'course',
+            'layout' => 'admin/layout.html.twig',
+        ));
+    }
+
+    //题库分类
+    public function testcategoryAction(Request $request)
+    {
+        return $this->forward('AppBundle:Admin/Category:embed', array(
+            'group' => 'test',
             'layout' => 'admin/layout.html.twig',
         ));
     }

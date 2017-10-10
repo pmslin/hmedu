@@ -19,8 +19,10 @@ use Codeages\Biz\Framework\Service\Exception\NotFoundException;
 
 class ManageController extends BaseController
 {
+    //课程内的试卷管理页面
     public function indexAction(Request $request, $id)
     {
+//        exit();
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
         if ($courseSet['locked']) {
@@ -66,6 +68,7 @@ class ManageController extends BaseController
         ));
     }
 
+    //创建课程试卷
     public function createAction(Request $request, $id)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
@@ -73,11 +76,15 @@ class ManageController extends BaseController
         if ($request->getMethod() === 'POST') {
             $fields = $request->request->all();
 
+//            $this->show_print($fields);exit();
+
             $fields['courseSetId'] = $courseSet['id'];
             $fields['courseId'] = 0;
             $fields['pattern'] = 'questionType';
 
+            //创建试卷，并返回创建试卷数据
             $testpaper = $this->getTestpaperService()->buildTestpaper($fields, 'testpaper');
+//            $this->show_print($testpaper);exit();
 
             return $this->redirect(
                 $this->generateUrl(
@@ -155,6 +162,7 @@ class ManageController extends BaseController
         ));
     }
 
+    //老师阅卷
     public function checkAction(Request $request, $resultId, $targetId, $source = 'course')
     {
         $result = $this->getTestpaperService()->getTestpaperResult($resultId);
@@ -179,7 +187,7 @@ class ManageController extends BaseController
         if ($request->getMethod() === 'POST') {
             $formData = $request->request->all();
             $this->getTestpaperService()->checkFinish($result['id'], $formData);
-
+//            print_r($formData);exit();
             return $this->createJsonResponse(true);
         }
 
@@ -271,6 +279,7 @@ class ManageController extends BaseController
         ));
     }
 
+    //创建课程试卷，检测字段
     public function buildCheckAction(Request $request, $courseSetId, $type)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);

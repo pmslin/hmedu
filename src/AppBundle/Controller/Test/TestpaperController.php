@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Testpaper;
+namespace AppBundle\Controller\Test;
 
 use Biz\Task\Service\TaskService;
 use Biz\User\Service\UserService;

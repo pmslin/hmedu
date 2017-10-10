@@ -141,11 +141,14 @@ class TestpaperBuilder implements TestpaperBuilderInterface
             'copyId',
             'pattern',
             'metas',
+            'isTest',
+            'testCategoryId'
         ));
 
         return $fields;
     }
 
+    //评卷 更新testpaper_result_v8表数据
     public function updateSubmitedResult($resultId, $usedTime)
     {
         $testpaperResult = $this->getTestpaperService()->getTestpaperResult($resultId);
@@ -155,10 +158,12 @@ class TestpaperBuilder implements TestpaperBuilderInterface
 
         $questionIds = ArrayToolkit::column($items, 'questionId');
 
-        $hasEssay = $this->getQuestionService()->hasEssay($questionIds);
+        $hasEssay = $this->getQuestionService()->hasEssay($questionIds); //本套试卷题目是否有问答题（主观题），有的话返回true
 
         $fields = array(
-            'status' => $hasEssay ? 'reviewing' : 'finished',
+            //如果有客观题，做题记录标记为reviewing，待老师评卷。如果没有则直接显示分数
+//            'status' => $hasEssay ? 'reviewing' : 'finished',
+            'status' => 'finished',
         );
 
         $accuracy = $this->getTestpaperService()->sumScore($itemResults);
@@ -166,10 +171,10 @@ class TestpaperBuilder implements TestpaperBuilderInterface
 
         $fields['score'] = 0;
 
-        if (!$hasEssay) {
+//        if (!$hasEssay) { //如果没有主观题，直接记录显示客观题分数和评卷时间
             $fields['score'] = $fields['objectiveScore'];
             $fields['checkedTime'] = time();
-        }
+//        }
 
         $fields['passedStatus'] = $fields['score'] >= $testpaper['passedCondition'][0] ? 'passed' : 'unpassed';
 

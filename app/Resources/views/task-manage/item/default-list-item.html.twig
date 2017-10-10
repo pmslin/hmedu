@@ -179,7 +179,7 @@
         {% else %}
           data-content="<i class='mr10 es-icon 
           {% if activity_metas(tasks.extraClass.type) %}
-            {{ activity_metas(tasks.extraClass.type).icon }} 
+            {{ activity_metas(tasks.extraClass.type).icon }}
           {% endif %}
           '></i>{{tasks.extraClass.title|trans}}"
           data-url="{{ path('course_manage_task_update', {id:tasks.extraClass.id,courseId:tasks.extraClass.courseId, type:'extraClass', categoryId: chapter.id}) }}">

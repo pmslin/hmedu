@@ -16,6 +16,13 @@
       <div class="controls col-md-8 radios">
         {{ radios('testpaper_answers_show_mode', {'hide':'不显示'|trans, 'reviewed':'全部批阅完成后一起显示'|trans , 'submitted':'交卷后显示答案和解析'|trans}, setting('questions.testpaper_answers_show_mode','submitted')) }}
       </div>
+	  
+	  <div class="col-md-3 control-label">
+        <label>{{'交卷后分数的显示'|trans}}</label>
+      </div>
+      <div class="controls col-md-8 radios">
+        {{ radios('testpaper_score_show_mode', {'noshow':'有主观题需老师评卷后显示'|trans , 'show':'直接显示分数'|trans}, setting('questions.testpaper_score_show_mode','show')) }}
+      </div>
     </div>
 </fieldset>
 

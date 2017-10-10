@@ -28,6 +28,14 @@ class BaseController extends Controller
         return $this->get('biz');
     }
 
+    //制作一个输出调试函数
+    function show_print($msg) {
+        echo "<pre>";
+        print_r($msg);
+        echo "</pre>";
+    }
+
+
     /**
      * @return CurrentUser
      */

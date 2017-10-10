@@ -143,7 +143,7 @@ class CourseSettingController extends BaseController
 
     public function questionsSettingAction(Request $request)
     {
-        $questionsSetting = $this->getSettingService()->get('questions', array());
+        $questionsSetting = $this->getSettingService()->get('questions', array());  //获取questions配置项的数据  setting表
 
         if (empty($questionsSetting)) {
             $default = array(

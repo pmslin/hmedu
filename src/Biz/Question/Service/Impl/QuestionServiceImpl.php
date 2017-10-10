@@ -202,11 +202,12 @@ class QuestionServiceImpl extends BaseService implements QuestionService
         return $questionConfig->judge($question, $answer);
     }
 
+    //根据题目id，判断是否有问答题（主观题）
     public function hasEssay($questionIds)
     {
-        $count = $this->searchCount(array('ids' => $questionIds, 'type' => 'essay'));
+        $count = $this->searchCount(array('ids' => $questionIds, 'type' => 'essay')); //获取问答题（主观题）数量
 
-        if ($count) {
+        if ($count) { //数量大于0说明有，返回true
             return true;
         }
 

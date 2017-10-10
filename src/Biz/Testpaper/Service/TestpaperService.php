@@ -8,6 +8,8 @@ interface TestpaperService
 {
     public function getTestpaper($id);
 
+    public function getTestpaperByIsTest();
+
     public function getTestpaperByIdAndType($id, $type);
 
     public function findTestpapersByIdsAndType($ids, $type);
