@@ -5,20 +5,20 @@
 {% set script_controller = 'course/manage' %}
 
 {% block main %}
-  {# {% include 'admin/course-set/tab.html.twig' %} #}
+    {# {% include 'admin/course-set/tab.html.twig' %} #}
   <br>
   <div class="well well-sm mtl">
     <form id="message-search-form" class="form-inline" action="" method="get" novalidate>
-      {% include 'org/org-tree-select.html.twig' with {orgCode: app.request.get('orgCode'), modal: 'list'} %}
+        {% include 'org/org-tree-select.html.twig' with {orgCode: app.request.get('orgCode'), modal: 'list'} %}
 
       <div class="form-group">
         <select style="max-width:150px;" class="form-control" name="categoryId">
-          {{ select_options(category_choices('test'), app.request.query.get('categoryId'), '课程分类'|trans) }}
+            {{ select_options(category_choices('test'), app.request.query.get('categoryId'), '课程分类'|trans) }}
         </select>
       </div>
       <div class="form-group">
         <select class="form-control" name="status">
-          {{ select_options(dict('courseStatus'), app.request.query.get('status'), '课程状态'|trans) }}
+            {{ select_options(dict('courseStatus'), app.request.query.get('status'), '课程状态'|trans) }}
         </select>
       </div>
 
@@ -30,10 +30,10 @@
       </div>
       <button class="btn btn-primary">{{'搜索'|trans}}</button>
 
-      {% include 'admin/widget/tooltip-widget.html.twig' with { icon: 'glyphicon-question-sign', content: '课程说明Tooltip'|trans|raw, placement: 'left'} %}
+        {% include 'admin/widget/tooltip-widget.html.twig' with { icon: 'glyphicon-question-sign', content: '课程说明Tooltip'|trans|raw, placement: 'left'} %}
     </form>
   </div>
-  
+
   <p class="text-muted">
     <span class="mrl">{{'课程：'|trans}}<strong class="inflow-num">{{ searchCourseSetsNum }}</strong> {{ '个'|trans }}</span>
     <span class="mrl">{{'已发布：'|trans}}<strong class="inflow-num">{{ publishedCourseSetsNum }}</strong> {{ '个'|trans }}</span>
@@ -44,29 +44,29 @@
   <table class="table table-striped table-hover" id="course-table" style="word-break:break-all;">
     <thead>
     <tr>
-      {% if setting('magic.enable_org','0') %}
-        <th><input type="checkbox"  data-role="batch-select"></th>
-      {% endif %}
+        {% if setting('magic.enable_org','0') %}
+          <th><input type="checkbox"  data-role="batch-select"></th>
+        {% endif %}
       <th width="5%">{{'编号'|trans}}</th>
       <th width="20%">{{'名称'|trans}}</th>
       <th width="10%">{{'价格'|trans}}</th>
-      {% include 'org/parts/table-thead-tr.html.twig' %}
+        {% include 'org/parts/table-thead-tr.html.twig' %}
       <th width="">{{'连载状态'|trans}}</th>
-      {% if filter == 'classroom' %}
-        <th width="15%">{{'所在'|trans}}{{ setting("classroom.name")|default('班级'|trans) }}</th>
-      {% else %}
-        <th>{% if setting('default.user_name') %}{{ setting('default.user_name')|default('学员'|trans) }}{% else %}{{ '学员'|trans }}{% endif %}数
-        </th>
+        {% if filter == 'classroom' %}
+          <th width="15%">{{'所在'|trans}}{{ setting("classroom.name")|default('班级'|trans) }}</th>
+        {% else %}
+          <th>{% if setting('default.user_name') %}{{ setting('default.user_name')|default('学员'|trans) }}{% else %}{{ '学员'|trans }}{% endif %}数
+          </th>
 
-      {% endif %}
+        {% endif %}
 
-      {% if filter == 'course' %}
-        <th>{{'收入(元)'|trans}}</th>
-      {% endif %}
+        {% if filter == 'course' %}
+          <th>{{'收入(元)'|trans}}</th>
+        {% endif %}
 
-      {% if filter == 'vip' %}
-        <th>{{ '会员等级'|trans }}</th>
-      {% endif %}
+        {% if filter == 'vip' %}
+          <th>{{ '会员等级'|trans }}</th>
+        {% endif %}
 
       <th>{{'状态'|trans}}</th>
       <th>{{'创建者'|trans}}</th>
@@ -75,8 +75,8 @@
     </thead>
     <tbody>
     {% for courseSet in testPapers %}
-      {% set user = users[courseSet.createdUserId]|default(null) %}
-      {% include 'admin/test-set/tr.html.twig' %}
+        {% set user = users[courseSet.createdUserId]|default(null) %}
+        {% include 'admin/test-set/tr.html.twig' %}
     {% else %}
       <tr>
         <td colspan="20">
@@ -86,7 +86,7 @@
     {% endfor %}
     </tbody>
   </table>
-  {% include 'org/batch-update-org-btn.html.twig' with {module:'courseSet', formId:'course-table'} %}
-  {{ admin_macro.paginator(paginator) }}
+    {% include 'org/batch-update-org-btn.html.twig' with {module:'courseSet', formId:'course-table'} %}
+    {{ admin_macro.paginator(paginator) }}
 
 {% endblock %}

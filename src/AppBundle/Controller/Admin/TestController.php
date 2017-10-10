@@ -23,7 +23,7 @@ class TestController extends BaseController
         return $this->render(
             'admin/test-set/index.html.twig',
             array(
-                'testPapers'=>$testPaper,
+                'testpaper'=>$testPaper,
                 'conditions' => '',
                 'courseSets' => '',
                 'users' => '',
