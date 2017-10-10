@@ -25,7 +25,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for testpaper in testpapers %}
+            {% for testpaper in testPaper %}
                 {% set user = users[testpaper.updatedUserId] %}
                 {% include 'testpaper/manage/testpaper-list-tr.html.twig' %}
             {% else %}
