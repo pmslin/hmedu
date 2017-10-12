@@ -2178,7 +2178,7 @@ course_set_manage_question_check_num:
   defaults: { _controller: AppBundle:Question/Manage:showQuestionTypesNum }
   methods: [POST]
 
-#创建题库试卷
+#创建独立题库试卷
 manage_test_create:
   path: /manage/test/create
   defaults: { _controller: AppBundle:Test/Manage:create }
@@ -2193,6 +2193,7 @@ course_set_manage_testpaper_create:
   path: /course_set/{id}/manage/testpaper/create
   defaults: { _controller: AppBundle:Testpaper/Manage:create }
 
+#编辑课程试卷信息
 course_set_manage_testpaper_update:
     path: /course_set/{courseSetId}/manage/testpaper/{testpaperId}/update
     defaults: { _controller: AppBundle:Testpaper/Manage:update }
@@ -2202,6 +2203,7 @@ course_set_manage_testpaper_info:
   defaults: { _controller: AppBundle:Testpaper/Manage:info }
   methods: [POST]
 
+#发布课程试卷
 course_set_manage_testpaper_publish:
   path: /course_set/{courseSetId}/manage/testpaper/{testpaperId}/publish
   defaults: { _controller: AppBundle:Testpaper/Manage:publish }
