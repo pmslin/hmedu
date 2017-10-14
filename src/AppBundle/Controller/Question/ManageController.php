@@ -298,6 +298,12 @@ class ManageController extends BaseController
         ));
     }
 
+    /**
+     * 课程试卷新增题目时，选中题目（只是选中并未保存）
+     * @param Request $request
+     * @param $courseSetId
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function pickedQuestionAction(Request $request, $courseSetId)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
