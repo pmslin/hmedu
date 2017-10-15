@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Question;
+namespace AppBundle\Controller\TestQuestion;
 
 use AppBundle\Common\Paginator;
 use Biz\Task\Service\TaskService;
@@ -16,8 +16,14 @@ use AppBundle\Common\Exception\ResourceNotFoundException;
 
 class ManageController extends BaseController
 {
+    //....在用
+    /*
+     * $id 独立题库试卷id
+     */
     public function indexAction(Request $request, $id)
     {
+        var_dump($id);exit();
+        $id=39;
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
         if ($courseSet['locked']) {
@@ -39,7 +45,7 @@ class ManageController extends BaseController
             $orderBy = array('createdTime' => 'ASC');
         }
 
-        //穿couserID和父级id获取统计数据
+        //传couserID和父级id获取统计数据
         $paginator = new Paginator(
             $this->get('request'),
             $this->getQuestionService()->searchCount($conditions),
@@ -70,7 +76,7 @@ class ManageController extends BaseController
         $showTasks = $this->getTaskService()->findTasksByCourseId($request->query->get('courseId', 0));
         $showTasks = ArrayToolkit::index($showTasks, 'id');
 
-        return $this->render('question-manage/index.html.twig', array(
+        return $this->render('test-question-manage/index.html.twig', array(
             'courseSet' => $courseSet,
             'questions' => $questions,
             'users' => $users,
