@@ -65,6 +65,8 @@ class QuestionDaoImpl extends GeneralDaoImpl implements QuestionDao
             'lessonId IN ( :lessonIds)',
             'copyId = :copyId',
             'copyId IN (:copyIds)',
+            'isTest = :isTest',
+            'testCategoryId = :testCategoryId',
         );
 
         $declares['serializes'] = array(

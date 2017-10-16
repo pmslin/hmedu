@@ -13,6 +13,7 @@ class ArrayToolkit
         }
     }
 
+    //即是array_column函数，取数组中某一字段，再以数组形式输出
     public static function column(array $array, $columnName)
     {
         if (function_exists('array_column')) {

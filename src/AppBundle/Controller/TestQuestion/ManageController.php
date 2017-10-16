@@ -22,20 +22,22 @@ class ManageController extends BaseController
      */
     public function indexAction(Request $request, $id)
     {
-        var_dump($id);exit();
-        $id=39;
+//        var_dump($id);exit();
+
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
-        if ($courseSet['locked']) {
-            return $this->redirectToRoute('course_set_manage_sync', array(
-                'id' => $id,
-                'sideNav' => 'question',
-            ));
-        }
+        //课程是否上锁
+//        if ($courseSet['locked']) {
+//            return $this->redirectToRoute('course_set_manage_sync', array(
+//                'id' => $id,
+//                'sideNav' => 'question',
+//            ));
+//        }
 
         $conditions = $request->query->all();
 
-        $conditions['courseSetId'] = $courseSet['id'];
+//        $conditions['courseSetId'] = $courseSet['id'];
+        $conditions['testCategoryId'] = $id;  //试卷所属分类id
         $conditions['parentId'] = empty($conditions['parentId']) ? 0 : $conditions['parentId'];  //有传材料题父级id的，是用于材料题的题目管理
 
         $parentQuestion = array();
@@ -52,6 +54,7 @@ class ManageController extends BaseController
             10
         );
 
+
         //试卷数据
         $questions = $this->getQuestionService()->search(
             $conditions,
@@ -60,32 +63,44 @@ class ManageController extends BaseController
             $paginator->getPerPageCount()
         );
 
+
+
+        //题目更新人信息？
         $users = $this->getUserService()->findUsersByIds(ArrayToolkit::column($questions, 'updatedUserId'));
 
-        $taskIds = ArrayToolkit::column($questions, 'lessonId');
-        $courseTasks = $this->getTaskService()->findTasksByIds($taskIds);
-        $courseTasks = ArrayToolkit::index($courseTasks, 'id');
 
-        $courseIds = ArrayToolkit::column($questions, 'courseId');
-        $courses = $this->getCourseService()->findCoursesByIds($courseIds);
+        //课程任务？
+//        $taskIds = ArrayToolkit::column($questions, 'lessonId');
+//        $courseTasks = $this->getTaskService()->findTasksByIds($taskIds);
+//        $courseTasks = ArrayToolkit::index($courseTasks, 'id');
+
+
+        //根据课程ids，查找所有课程
+//        $courseIds = ArrayToolkit::column($questions, 'courseId');
+//        $courses = $this->getCourseService()->findCoursesByIds($courseIds);
+
 
         $user = $this->getUser();
         //搜索，传入用户id和课程id，用于搜索
-        $searchCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
+        //$searchCourses根据课程id到的课程信息，找course_v8表
+//        $searchCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
+
+//        var_dump($courses);
+//        exit();
 
         $showTasks = $this->getTaskService()->findTasksByCourseId($request->query->get('courseId', 0));
         $showTasks = ArrayToolkit::index($showTasks, 'id');
 
         return $this->render('test-question-manage/index.html.twig', array(
-            'courseSet' => $courseSet,
+//            'courseSet' => $courseSet,
             'questions' => $questions,
             'users' => $users,
             'paginator' => $paginator,
             'parentQuestion' => $parentQuestion,
             'conditions' => $conditions,
-            'courseTasks' => $courseTasks,
-            'courses' => $courses,
-            'searchCourses' => $searchCourses,
+//            'courseTasks' => $courseTasks,
+//            'courses' => $courses,
+//            'searchCourses' => $searchCourses,
             'showTasks' => $showTasks,
         ));
     }
