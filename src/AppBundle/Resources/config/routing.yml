@@ -2129,18 +2129,29 @@ uploader_finished_v2:
   defaults: { _controller: AppBundle:Uploader:finished }
   methods: [GET]
 
+
+#独立题库题目
 #独立题库题目管理页面
 test_set_manage_question:
   path: /test/{id}/manage/question
   defaults: { _controller: AppBundle:TestQuestion/Manage:index }
 
+#创建独立题库题目
+test_set_manage_question_create:
+  path: /test/{id}/manage/question/{type}/create
+  defaults: { _controller: AppBundle:TestQuestion/Manage:create }
 
 
+
+
+
+#课程题目
 #question 课程题目管理页面
 course_set_manage_question:
   path: /course_set/{id}/manage/question
   defaults: { _controller: AppBundle:Question/Manage:index }
 
+#创建课程题目
 course_set_manage_question_create:
   path: /course_set/{id}/manage/question/{type}/create
   defaults: { _controller: AppBundle:Question/Manage:create }

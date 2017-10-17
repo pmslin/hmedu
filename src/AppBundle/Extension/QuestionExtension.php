@@ -25,6 +25,11 @@ class QuestionExtension extends Extension implements ServiceProviderInterface
                     'edit' => 'AppBundle:Question/SingleChoiceQuestion:edit',
                     'show' => 'AppBundle:Question/SingleChoiceQuestion:show',
                 ),
+				'testActions' => array(
+                    'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+                    'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+                    'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
+                ),
                 'templates' => array(
                     'do' => 'question/single-choice-do.html.twig',
                 ),
@@ -36,6 +41,11 @@ class QuestionExtension extends Extension implements ServiceProviderInterface
                     'create' => 'AppBundle:Question/ChoiceQuestion:create',
                     'edit' => 'AppBundle:Question/ChoiceQuestion:edit',
                     'show' => 'AppBundle:Question/ChoiceQuestion:show',
+                ),
+				'testActions' => array(
+                    'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+                    'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+                    'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
                 ),
                 'templates' => array(
                     'do' => 'question/choice-do.html.twig',
@@ -49,6 +59,11 @@ class QuestionExtension extends Extension implements ServiceProviderInterface
                     'edit' => 'AppBundle:Question/EssayQuestion:edit',
                     'show' => 'AppBundle:Question/EssayQuestion:show',
                 ),
+				'testActions' => array(
+                    'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+                    'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+                    'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
+                ),
                 'templates' => array(
                     'do' => 'question/essay-do.html.twig',
                 ),
@@ -60,6 +75,11 @@ class QuestionExtension extends Extension implements ServiceProviderInterface
                     'create' => 'AppBundle:Question/UncertainChoiceQuesiton:create',
                     'edit' => 'AppBundle:Question/UncertainChoiceQuesiton:edit',
                     'show' => 'AppBundle:Question/UncertainChoiceQuesiton:show',
+                ),
+				'testActions' => array(
+                    'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+                    'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+                    'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
                 ),
                 'templates' => array(
                     'do' => 'question/uncertain-choice-do.html.twig',
@@ -73,6 +93,11 @@ class QuestionExtension extends Extension implements ServiceProviderInterface
                     'edit' => 'AppBundle:Question/DetermineQuestion:edit',
                     'show' => 'AppBundle:Question/DetermineQuestion:show',
                 ),
+				'testActions' => array(
+                    'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+                    'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+                    'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
+                ),
                 'templates' => array(
                     'do' => 'question/determine-do.html.twig',
                 ),
@@ -85,6 +110,11 @@ class QuestionExtension extends Extension implements ServiceProviderInterface
                     'edit' => 'AppBundle:Question/FillQuestion:edit',
                     'show' => 'AppBundle:Question/FillQuestion:show',
                 ),
+				'testActions' => array(
+                    'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+                    'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+                    'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
+                ),
                 'templates' => array(
                     'do' => 'question/fill-do.html.twig',
                 ),
@@ -96,6 +126,11 @@ class QuestionExtension extends Extension implements ServiceProviderInterface
                     'create' => 'AppBundle:Question/MaterialQuestion:create',
                     'edit' => 'AppBundle:Question/MaterialQuestion:edit',
                     'show' => 'AppBundle:Question/MaterialQuestion:show',
+                ),
+				'testActions' => array(
+                    'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+                    'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+                    'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
                 ),
                 'templates' => array(
                     'do' => 'question/material-do.html.twig',

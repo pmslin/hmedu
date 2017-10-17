@@ -17,8 +17,10 @@ use AppBundle\Common\Exception\ResourceNotFoundException;
 class ManageController extends BaseController
 {
     //....在用
-    /*
-     * $id 独立题库试卷id
+    /** 独立题库题目列表
+     * @param Request $request
+     * @param $id 独立题库试卷id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, $id)
     {
@@ -105,11 +107,19 @@ class ManageController extends BaseController
         ));
     }
 
+    //在用
+    /**创建独立题库题目
+     * @param Request $request
+     * @param $id 试卷id
+     * @param $type 要创建的题型
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request, $id, $type)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
-        if ($request->getMethod() === 'POST') {
+        if ($request->getMethod() === 'POST') { //提交题目
+
             $data = $request->request->all();
 
             $data['courseSetId'] = $courseSet['id'];
@@ -153,7 +163,9 @@ class ManageController extends BaseController
         }
 
         $questionConfig = $this->getQuestionConfig();
-        $createController = $questionConfig[$type]['actions']['create'];
+        $createController = $questionConfig[$type]['testActions']['create'];  //testActions是独立题库的控制器地址，根据传过来的type值来获取对应的题型控制器
+//        print_r($createController);
+//        exit();
 
         return $this->forward($createController, array(
             'request' => $request,
@@ -394,6 +406,7 @@ class ManageController extends BaseController
 
     protected function getQuestionConfig()
     {
+        //AppBundle/Extension/QuestionExtension
         return $this->get('extension.manager')->getQuestionTypes();
     }
 

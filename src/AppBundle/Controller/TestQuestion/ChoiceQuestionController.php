@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\Controller\Question;
+namespace AppBundle\Controller\TestQuestion;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class SingleChoiceQuestionController extends BaseQuestionController
+class ChoiceQuestionController extends BaseQuestionController
 {
     public function showAction(Request $request, $id, $courseId)
     {
@@ -24,7 +24,7 @@ class SingleChoiceQuestionController extends BaseQuestionController
         $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
         $courseTasks = $this->getTaskService()->findTasksByCourseId($question['courseId']);
 
-        return $this->render('question-manage/single-choice-form.html.twig', array(
+        return $this->render('question-manage/choice-form.html.twig', array(
             'courseSet' => $courseSet,
             'question' => $question,
             'parentQuestion' => $parentQuestion,
@@ -38,13 +38,13 @@ class SingleChoiceQuestionController extends BaseQuestionController
     {
         $user = $this->getUser();
         $courseSet = $this->getCourseSetService()->getCourseSet($courseSetId);
-//        print_r($courseSet);
+
         $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
 
         $parentId = $request->query->get('parentId', 0);
         $parentQuestion = $this->getQuestionService()->get($parentId);
 
-        return $this->render('question-manage/single-choice-form.html.twig', array(
+        return $this->render('question-manage/choice-form.html.twig', array(
             'courseSet' => $courseSet,
             'parentQuestion' => $parentQuestion,
             'type' => $type,
