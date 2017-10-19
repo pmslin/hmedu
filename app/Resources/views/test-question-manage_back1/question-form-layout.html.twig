@@ -1,18 +1,11 @@
-{% extends 'admin/layout.html.twig' %}
-
-{% set menu = 'admin_test_manage' %}
+{% extends 'courseset-manage/layout.html.twig' %}
 
 {% block title %}
   {% if question|default(null) %}{{'编辑题目'|trans}}{% else %}{{'添加题目'|trans}}{% endif %} - {{ parent() }}
 {% endblock %}
 
 {% set side_nav = 'question' %}
-
-
-
 {% do script(['libs/es-ckeditor/ckeditor.js','libs/jquery-validation.js','app/js/question-manage/form/index.js']) %}
-
-
 
 {% block main %}
 
@@ -26,16 +19,16 @@
   <div class="panel-body">
 
     <ol class="breadcrumb">
-      <li><a href="{{ path('course_set_manage_question',{id:1}) }}">{{'题目管理'|trans}}</a></li>
+      <li><a href="{{ path('course_set_manage_question',{id:courseSet.id}) }}">{{'题目管理'|trans}}</a></li>
       {% if parentQuestion %}
-        <li><a href="{{ path('course_set_manage_question',{id:1, parentId: parentQuestion.id}) }}">{{ questionTypesDict[parentQuestion.type] }}</a></li>
+        <li><a href="{{ path('course_set_manage_question',{id:courseSet.id, parentId: parentQuestion.id}) }}">{{ questionTypesDict[parentQuestion.type] }}</a></li>
       {% endif %}
       <li>{% if question|default(null) %}{{'编辑题目'|trans}}{% else %}{{'添加题目'|trans}}{% endif %} </li>
       <li class="active">{{ questionTypesDict[type] }}</li>
     </ol>
 
     <div id="question-creator-widget">
-      <form id="question-create-form" data-role="question-form" class="form-horizontal quiz-question" method="post" action="{% if question|default(null) %}{{ path('course_set_manage_question_update',{courseSetId:1, questionId:question.id, goto:app.request.get('goto')}) }}{% else %}{{ path('course_set_manage_question_create',{id:1, type:type, parentId:parentQuestion.id|default(0), goto:app.request.get('goto')}) }}{% endif %}">
+      <form id="question-create-form" data-role="question-form" class="form-horizontal quiz-question" method="post" action="{% if question|default(null) %}{{ path('course_set_manage_question_update',{courseSetId:courseSet.id, questionId:question.id, goto:app.request.get('goto')}) }}{% else %}{{ path('course_set_manage_question_create',{id:courseSet.id, type:type, parentId:parentQuestion.id|default(0), goto:app.request.get('goto')}) }}{% endif %}">
 
         {{ web_macro.flash_messages() }}
 
@@ -43,11 +36,11 @@
           <div class="form-group">
             <div class="col-md-2 control-label"><label>{{'从属'|trans}}</label></div>
             <div class="col-md-8 controls">
-              <select class="form-control width-150" name="courseId" data-role="courseId" data-url="{{ path('course_set_manage_show_tasks',{courseSetId:1})}}">
+              <select class="form-control width-150" name="courseId" data-role="courseId" data-url="{{ path('course_set_manage_show_tasks',{courseSetId:courseSet.id})}}">
                 <option value="0" {% if not question.courseId|default(0) %}selected{% endif %}>{{'本课程'|trans}}</option>
-                {#{% for course in courses if course %}#}
-                  {#<option value="{{ course.id }}" {% if question.courseId|default(0) == course.id %}selected{% endif %}>{{ course.title }}</option>#}
-                {#{% endfor %}#}
+                {% for course in courses if course %}
+                  <option value="{{ course.id }}" {% if question.courseId|default(0) == course.id %}selected{% endif %}>{{ course.title }}</option>
+                {% endfor %}
               </select>
               <select class="form-control width-150" {% if not question.id|default(0) > 0 or not question.courseId|default(0) %}style="display:none;"{% endif %} name="lessonId" data-role="lessonId">
                 <option value="0" {% if not question.lessonId|default(0) %}selected{% endif %}>{{'请选择'|trans}}</option>
@@ -110,7 +103,7 @@
               {% endif %}
               <button type="button" data-role="submit" class="btn btn-primary submit-btn" data-submission="submit" data-loading-text="{{'正在保存'|trans}}...">{{'保存'|trans}}</button>
             {% endblock %}
-            <a href="{{ path('course_set_manage_question', {id:1, parentId:parentQuestion.id|default(0)}) }}" class="btn btn-link">{{'返回'|trans}}</a>
+            <a href="{{ path('course_set_manage_question', {id:courseSet.id, parentId:parentQuestion.id|default(0)}) }}" class="btn btn-link">{{'返回'|trans}}</a>
           </div>
         </div>
 

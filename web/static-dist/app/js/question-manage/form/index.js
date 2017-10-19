@@ -1,4 +1,4 @@
-webpackJsonp(["app/js/question-manage/form/index"], {
+webpackJsonp(["app/js/question-manage/form/index"], { 
     b13eefde5dd7af09b834: function (e, t, a) {
         "use strict";
         function n(e) {

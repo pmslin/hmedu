@@ -9,7 +9,7 @@ new BatchSelect($('#quiz-table-container'));
 new DeleteAction($('#quiz-table-container'));
 shortLongText($('#quiz-table-container'));
 
-
+alert(123);
 new SelectLinkage($('[name="courseId"]'),$('[name="lessonId"]'));
 
 
