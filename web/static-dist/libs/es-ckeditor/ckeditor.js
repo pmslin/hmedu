@@ -1,5 +1,4 @@
 (function () {
-    alert(123123);
     window.CKEDITOR && window.CKEDITOR.dom || (window.CKEDITOR || (window.CKEDITOR = function () {
         var e = /(^|.*[\\\/])ckeditor\.js(?:\?.*|;.*)?$/i, t = {
             timestamp: "F0UE",

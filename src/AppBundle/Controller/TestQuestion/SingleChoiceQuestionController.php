@@ -29,7 +29,7 @@ class SingleChoiceQuestionController extends BaseQuestionController
         $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
         $courseTasks = $this->getTaskService()->findTasksByCourseId($question['courseId']);
 
-        return $this->render('question-manage/single-choice-form.html.twig', array(
+        return $this->render('test-question-manage/test-single-choice-form.html.twig', array(
             'courseSet' => $courseSet,
             'question' => $question,
             'parentQuestion' => $parentQuestion,

@@ -122,6 +122,9 @@ class ManageController extends BaseController
 
             $data = $request->request->all();
 
+            var_dump($data);
+            exit();
+
             $data['courseSetId'] = $courseSet['id'];
 
             $question = $this->getQuestionService()->create($data);
@@ -165,7 +168,7 @@ class ManageController extends BaseController
 
         $questionConfig = $this->getQuestionConfig();
         $createController = $questionConfig[$type]['testActions']['create'];  //testActions是独立题库的控制器地址，根据传过来的type值来获取对应的题型控制器
-        //例如：创建，修改，显示控制器
+        //例如：创建，修改，显示控制器  控制器在同目录下 （控制器包含新增修改要跳转的页面等）
 //        'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
 //        'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
 //        'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',

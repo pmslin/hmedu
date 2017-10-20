@@ -24,7 +24,7 @@ class UncertainChoiceQuesitonController extends BaseQuestionController
         $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
         $courseTasks = $this->getTaskService()->findTasksByCourseId($question['courseId']);
 
-        return $this->render('question-manage/uncertain-choice-form.html.twig', array(
+        return $this->render('test-question-manage/test-uncertain-choice-form.html.twig', array(
             'courseSet' => $courseSet,
             'question' => $question,
             'parentQuestion' => $parentQuestion,
@@ -43,7 +43,7 @@ class UncertainChoiceQuesitonController extends BaseQuestionController
         $parentId = $request->query->get('parentId', 0);
         $parentQuestion = $this->getQuestionService()->get($parentId);
 
-        return $this->render('question-manage/uncertain-choice-form.html.twig', array(
+        return $this->render('test-question-manage/test-uncertain-choice-form.html.twig', array(
             'courseSet' => $courseSet,
             'parentQuestion' => $parentQuestion,
             'type' => $type,
