@@ -34,20 +34,31 @@ class FillQuestionController extends BaseQuestionController
         ));
     }
 
-    public function createAction(Request $request, $courseSetId, $type)
+    //在用....
+    /**创建独立题库页面--填空题
+     * @param Request $request
+     * @param $testPaperId 独立试卷id
+     * @param $type 题型
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function createAction(Request $request, $testPaperId, $type)
     {
-        $user = $this->getUser();
-        $courseSet = $this->getCourseSetService()->getCourseSet($courseSetId);
-        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
+//        $user = $this->getUser();
+
+        $TestpaperInfo = $this->getTestpaperService()->getTestpaper($testPaperId);  //试卷
+
+//        $courseSet = $this->getCourseSetService()->getCourseSet($courseSetId);
+//        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
 
         $parentId = $request->query->get('parentId', 0);
-        $parentQuestion = $this->getQuestionService()->get($parentId);
+        $parentQuestion = $this->getQuestionService()->get($parentId);//上一级题目，用于页面返回按钮
 
         return $this->render('test-question-manage/test-fill-form.html.twig', array(
-            'courseSet' => $courseSet,
+//            'courseSet' => $courseSet,
+            'TestpaperInfo'=>$TestpaperInfo,
             'parentQuestion' => $parentQuestion,
             'type' => $type,
-            'courses' => $manageCourses,
+//            'courses' => $manageCourses,
         ));
     }
 }

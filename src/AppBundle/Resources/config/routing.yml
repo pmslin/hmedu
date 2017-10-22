@@ -2141,7 +2141,10 @@ test_set_manage_question_create:
   path: /test/{id}/manage/question/{type}/create
   defaults: { _controller: AppBundle:TestQuestion/Manage:create }
 
-
+#编辑独立题库题目
+test_set_manage_question_update:
+  path: /test/{testId}/manage/question/{questionId}/update
+  defaults: { _controller: AppBundle:TestQuestion/Manage:update }
 
 
 
@@ -2156,6 +2159,7 @@ course_set_manage_question_create:
   path: /course_set/{id}/manage/question/{type}/create
   defaults: { _controller: AppBundle:Question/Manage:create }
 
+#编辑课程题目
 course_set_manage_question_update:
   path: /course_set/{courseSetId}/manage/question/{questionId}/update
   defaults: { _controller: AppBundle:Question/Manage:update }

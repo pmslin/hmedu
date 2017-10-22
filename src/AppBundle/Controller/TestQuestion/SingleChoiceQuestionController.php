@@ -15,7 +15,13 @@ class SingleChoiceQuestionController extends BaseQuestionController
         // TODO: Implement showAction() method.
     }
 
-
+    //在用。。。
+    /*** 修改独立题库题目--单选题
+     * @param Request $request
+     * @param $courseSetId
+     * @param $questionId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Request $request, $courseSetId, $questionId)
     {
         list($courseSet, $question) = $this->tryGetCourseSetAndQuestion($courseSetId, $questionId);
@@ -43,27 +49,29 @@ class SingleChoiceQuestionController extends BaseQuestionController
     //在用....
     /**创建独立题库页面--单选题
      * @param Request $request
-     * @param $courseSetId
+     * @param $testPaperId 独立试卷id
      * @param $type 题型
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function createAction(Request $request, $courseSetId, $type)
+    public function createAction(Request $request, $testPaperId, $type)
     {
-        $user = $this->getUser();
+//        $user = $this->getUser();
+
+        $TestpaperInfo = $this->getTestpaperService()->getTestpaper($testPaperId);  //试卷
+
 //        $courseSet = $this->getCourseSetService()->getCourseSet($courseSetId);
-
 //        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
-
 
         $parentId = $request->query->get('parentId', 0);
         $parentQuestion = $this->getQuestionService()->get($parentId);//上一级题目，用于页面返回按钮
 
-//        print_r($parentQuestion);
+//        print_r($testPaperId);
 //        exit();
 
 
         return $this->render('test-question-manage/test-single-choice-form.html.twig', array(
 //            'courseSet' => $courseSet,
+            'TestpaperInfo'=>$TestpaperInfo,
             'parentQuestion' => $parentQuestion,
             'type' => $type,
 //            'courses' => $manageCourses,

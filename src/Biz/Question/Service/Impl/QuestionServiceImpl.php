@@ -16,6 +16,7 @@ class QuestionServiceImpl extends BaseService implements QuestionService
         return $this->getQuestionDao()->get($id);
     }
 
+    //创建题目
     public function create($fields)
     {
         $argument = $fields;
@@ -45,6 +46,7 @@ class QuestionServiceImpl extends BaseService implements QuestionService
         }
 
         $fields['target'] = empty($fields['courseSetId']) ? '' : 'course-'.$fields['courseSetId'];
+
 
         $question = $this->getQuestionDao()->create($fields);
 

@@ -17,16 +17,16 @@ use AppBundle\Common\Exception\ResourceNotFoundException;
 class ManageController extends BaseController
 {
     //....在用
-    /** 独立题库题目列表
+    /** 独立题库的题目列表页面
      * @param Request $request
      * @param $id 独立题库试卷id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, $id)
     {
-//        var_dump($id);exit();
+//        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
-        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
+        $testPaerInfo=$this->getTestpaperService()->getTestpaper($id);  //试卷信息
 
         //课程是否上锁
 //        if ($courseSet['locked']) {
@@ -66,7 +66,6 @@ class ManageController extends BaseController
         );
 
 
-
         //题目更新人信息？
         $users = $this->getUserService()->findUsersByIds(ArrayToolkit::column($questions, 'updatedUserId'));
 
@@ -87,13 +86,14 @@ class ManageController extends BaseController
         //$searchCourses根据课程id到的课程信息，找course_v8表
 //        $searchCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
 
-//        var_dump($courses);
+//        var_dump($id);
 //        exit();
 
         $showTasks = $this->getTaskService()->findTasksByCourseId($request->query->get('courseId', 0));
         $showTasks = ArrayToolkit::index($showTasks, 'id');
 
         return $this->render('test-question-manage/index.html.twig', array(
+            'testPaerInfo'    => $testPaerInfo,
 //            'courseSet' => $courseSet,
             'questions' => $questions,
             'users' => $users,
@@ -116,37 +116,40 @@ class ManageController extends BaseController
      */
     public function createAction(Request $request, $id, $type)
     {
-        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
+        $TestpaperInfo = $this->getTestpaperService()->getTestpaper($id);
 
         if ($request->getMethod() === 'POST') { //提交题目
 
             $data = $request->request->all();
 
-            var_dump($data);
-            exit();
+            $data['isTest']=1;
+            $data['testCategoryId']=$id;
 
-            $data['courseSetId'] = $courseSet['id'];
+//            var_dump($data);
+//            exit();
 
-            $question = $this->getQuestionService()->create($data);
+//            $data['courseSetId'] = $courseSet['id'];
 
-            if ($data['submission'] === 'continue') {
+            $question = $this->getQuestionService()->create($data); //创建题目
+
+            if ($data['submission'] === 'continue') {   //添加题目（出材料题外）
                 $urlParams = ArrayToolkit::parts($question, array('target', 'difficulty', 'parentId'));
                 $urlParams['type'] = $type;
-                $urlParams['id'] = $courseSet['id'];
+                $urlParams['id'] = $TestpaperInfo['id'];
                 $urlParams['goto'] = $request->query->get('goto', null);
                 $this->setFlashMessage('success', $this->getServiceKernel()->trans('题目添加成功，请继续添加。'));
 
-                return $this->redirect($this->generateUrl('course_set_manage_question_create', $urlParams));
+                return $this->redirect($this->generateUrl('test_set_manage_question_create', $urlParams));
             }
-            if ($data['submission'] === 'continue_sub') {
+            if ($data['submission'] === 'continue_sub') {   //添加材料题
                 $this->setFlashMessage('success', $this->getServiceKernel()->trans('题目添加成功，请继续添加子题。'));
 
                 return $this->redirect(
                     $request->query->get(
                         'goto',
                         $this->generateUrl(
-                            'course_set_manage_question',
-                            array('id' => $courseSet['id'], 'parentId' => $question['id'])
+                            'test_set_manage_question',
+                            array('id' => $TestpaperInfo['id'], 'parentId' => $question['id'])
                         )
                     )
                 );
@@ -159,8 +162,8 @@ class ManageController extends BaseController
                 $request->query->get(
                     'goto',
                     $this->generateUrl(
-                        'course_set_manage_question',
-                        array('id' => $courseSet['id'], 'parentId' => $question['parentId'])
+                        'test_set_manage_question',
+                        array('id' => $TestpaperInfo['id'], 'parentId' => $question['parentId'])
                     )
                 )
             );
@@ -178,17 +181,29 @@ class ManageController extends BaseController
 
         return $this->forward($createController, array(
             'request' => $request,
-            'courseSetId' => $courseSet['id'],
+            'testPaperId' => $TestpaperInfo['id'],
             'type' => $type,
         ));
     }
 
-    public function updateAction(Request $request, $courseSetId, $questionId)
+    //在用...
+    /***编辑独立题库题目
+     * @param Request $request
+     * @param $testId 试卷id
+     * @param $questionId  题目id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function updateAction(Request $request, $testId, $questionId)
     {
-        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+//        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+
+        $testPaper = $this->getTestpaperService()->getTestpaper($testId);
+
+//        var_dump($testPaper);
+//        exit();
 
         $question = $this->getQuestionService()->get($questionId);
-        if (!$question || $question['courseSetId'] != $courseSetId) {
+        if (!$question || $question['testCategoryId'] != $testId) {
             throw new ResourceNotFoundException('question', $questionId);
         }
 
@@ -210,11 +225,12 @@ class ManageController extends BaseController
         }
 
         $questionConfig = $this->getQuestionConfig();
-        $createController = $questionConfig[$question['type']]['actions']['edit'];
+        $createController = $questionConfig[$question['type']]['testActions']['edit'];
 
         return $this->forward($createController, array(
             'request' => $request,
-            'courseSetId' => $courseSet['id'],
+            'testId' => $testId,
+//            'courseSetId' => $courseSet['id'],
             'questionId' => $question['id'],
         ));
     }
@@ -452,6 +468,14 @@ class ManageController extends BaseController
     protected function getQuestionService()
     {
         return $this->createService('Question:QuestionService');
+    }
+
+    /**
+     * @return QuestionService
+     */
+    protected function getTestpaperService()
+    {
+        return $this->createService('Testpaper:TestpaperService');
     }
 
     /**

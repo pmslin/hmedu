@@ -32,6 +32,8 @@ class BaseQuestion extends BizAware
             'updatedUserId',
             'updatedTime',
             'createdTime',
+            'isTest',
+            'testCategoryId',
         ));
 
         if (!empty($fields['analysis'])) {

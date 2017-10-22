@@ -33,6 +33,14 @@ class BaseQuestionController extends BaseController
     }
 
     /**
+     * @return QuestionService
+     */
+    protected function getTestpaperService()
+    {
+        return $this->createService('Testpaper:TestpaperService');
+    }
+
+    /**
      * @return TaskService
      */
     protected function getTaskService()

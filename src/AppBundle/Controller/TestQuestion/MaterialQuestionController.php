@@ -34,17 +34,28 @@ class MaterialQuestionController extends BaseQuestionController
         ));
     }
 
-    public function createAction(Request $request, $courseSetId, $type)
+    //在用....
+    /**创建独立题库页面--材料题
+     * @param Request $request
+     * @param $testPaperId 独立试卷id
+     * @param $type 题型
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function createAction(Request $request, $testPaperId, $type)
     {
-        $user = $this->getUser();
-        $courseSet = $this->getCourseSetService()->getCourseSet($courseSetId);
-        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
+//        $user = $this->getUser();
+
+        $TestpaperInfo = $this->getTestpaperService()->getTestpaper($testPaperId);  //试卷
+
+//        $courseSet = $this->getCourseSetService()->getCourseSet($courseSetId);
+//        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
 
         return $this->render('test-question-manage/test-material-form.html.twig', array(
-            'courseSet' => $courseSet,
+//            'courseSet' => $courseSet,
+            'TestpaperInfo'=>$TestpaperInfo,
             'parentQuestion' => array(),
             'type' => $type,
-            'courses' => $manageCourses,
+//            'courses' => $manageCourses,
         ));
     }
 }
