@@ -183,11 +183,12 @@ class ManageController extends BaseController
             'request' => $request,
             'testPaperId' => $TestpaperInfo['id'],
             'type' => $type,
+
         ));
     }
 
     //在用...
-    /***编辑独立题库题目
+    /***编辑独立题库题目，页面和编辑功能
      * @param Request $request
      * @param $testId 试卷id
      * @param $questionId  题目id
@@ -198,9 +199,6 @@ class ManageController extends BaseController
 //        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
 
         $testPaper = $this->getTestpaperService()->getTestpaper($testId);
-
-//        var_dump($testPaper);
-//        exit();
 
         $question = $this->getQuestionService()->get($questionId);
         if (!$question || $question['testCategoryId'] != $testId) {
@@ -217,15 +215,19 @@ class ManageController extends BaseController
                 $request->query->get(
                     'goto',
                     $this->generateUrl(
-                        'course_set_manage_question',
-                        array('id' => $courseSet['id'], 'parentId' => $question['parentId'])
+                        'test_set_manage_question',
+                        array('id' => $testPaper['id'], 'parentId' => $question['parentId'])
                     )
                 )
             );
         }
 
         $questionConfig = $this->getQuestionConfig();
-        $createController = $questionConfig[$question['type']]['testActions']['edit'];
+        $createController = $questionConfig[$question['type']]['testActions']['edit'];//testActions是独立题库的控制器地址，根据传过来的type值来获取对应的题型控制器
+        //例如：创建，修改，显示控制器  控制器在同目录下 （控制器包含新增修改要跳转的页面等）
+//        'create' => 'AppBundle:TestQuestion/SingleChoiceQuestion:create',
+//        'edit' => 'AppBundle:TestQuestion/SingleChoiceQuestion:edit',
+//        'show' => 'AppBundle:TestQuestion/SingleChoiceQuestion:show',
 
         return $this->forward($createController, array(
             'request' => $request,
@@ -235,17 +237,28 @@ class ManageController extends BaseController
         ));
     }
 
-    public function deleteAction(Request $request, $courseSetId, $questionId)
+
+    //在用。。。。
+    /***删除独立题库题目
+     * @param Request $request
+     * @param $testId 试卷id
+     * @param $questionId 题目id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function deleteAction(Request $request, $testId, $questionId)
     {
-        $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+//        $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+
         $question = $this->getQuestionService()->get($questionId);
-        if (!$question || $question['courseSetId'] != $courseSetId) {
+        if (!$question || $question['testCategoryId'] != $testId) {
             throw new ResourceNotFoundException('question', $questionId);
         }
         $this->getQuestionService()->delete($questionId);
 
         return $this->createJsonResponse(true);
     }
+
+
 
     public function deletesAction(Request $request, $courseSetId)
     {

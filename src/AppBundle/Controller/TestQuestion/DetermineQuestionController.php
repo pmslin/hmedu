@@ -6,31 +6,49 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DetermineQuestionController extends BaseQuestionController
 {
+    //PS:注意namespace命名空间要改过来，还有继承的控制器要复制过来
+
+
     public function showAction(Request $request, $id, $courseId)
     {
         // TODO: Implement showAction() method.
     }
 
-    public function editAction(Request $request, $courseSetId, $questionId)
+
+
+
+    //在用。。。
+    /*** 修改独立题库题目--判断题
+     * @param Request $request
+     * @param $testId 试卷id
+     * @param $questionId 题目id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction(Request $request, $testId, $questionId)
     {
-        list($courseSet, $question) = $this->tryGetCourseSetAndQuestion($courseSetId, $questionId);
-        $user = $this->getUser();
+//        list($courseSet, $question) = $this->tryGetCourseSetAndQuestion($courseSetId, $questionId);
+
+        //获取试卷和题目，返回这两个数组
+        list($testPaper, $question) = $this->tryGetTestAndQuestion($testId, $questionId);
+
+//        $user = $this->getUser();
 
         $parentQuestion = array();
         if ($question['parentId'] > 0) {
             $parentQuestion = $this->getQuestionService()->get($question['parentId']);
         }
 
-        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
-        $courseTasks = $this->getTaskService()->findTasksByCourseId($question['courseId']);
+//        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSetId);
+//        $courseTasks = $this->getTaskService()->findTasksByCourseId($question['courseId']);
 
         return $this->render('test-question-manage/test-determine-form.html.twig', array(
-            'courseSet' => $courseSet,
+//            'courseSet' => $courseSet,
+            'TestpaperInfo'    =>  $testPaper,
             'question' => $question,
             'parentQuestion' => $parentQuestion,
             'type' => $question['type'],
-            'courseTasks' => $courseTasks,
-            'courses' => $manageCourses,
+//            'courseTasks' => $courseTasks,
+//            'courses' => $manageCourses,
         ));
     }
 

@@ -24,6 +24,19 @@ class BaseQuestionController extends BaseController
         return array($courseSet, $question);
     }
 
+    //获取试卷和题目，返回这两个数组
+    protected function tryGetTestAndQuestion($testId, $questionId)
+    {
+        $testPaper = $this->getTestpaperService()->getTestpaper($testId);
+        $question = $this->getQuestionService()->get($questionId);
+
+        if ($question['testCategoryId'] != $testId) {
+            throw new NotFoundException('试卷id和该题目id不一致，question#{$questionId} not found');
+        }
+
+        return array($testPaper, $question);
+    }
+
     /**
      * @return QuestionService
      */
