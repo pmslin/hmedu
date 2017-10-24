@@ -2218,6 +2218,15 @@ manage_test_create:
   path: /manage/test/create
   defaults: { _controller: AppBundle:Test/Manage:create }
 
+#编辑独立题库试卷信息
+test_set_manage_testpaper_update:
+    path: /testpaper/{testpaperId}/update
+    defaults: { _controller: AppBundle:Test/Manage:update }
+
+
+
+
+
 #testpaper
 course_set_manage_testpaper:
   path: /course_set/{id}/manage/testpaper

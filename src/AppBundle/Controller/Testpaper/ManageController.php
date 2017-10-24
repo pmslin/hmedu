@@ -292,6 +292,7 @@ class ManageController extends BaseController
         return $this->createJsonResponse($result);
     }
 
+    //课程试卷修改
     public function updateAction(Request $request, $courseSetId, $testpaperId)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);

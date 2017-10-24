@@ -1,0 +1,58 @@
+{% extends 'test/layout.html.twig' %}
+{% block title %}{{'基础信息'|trans}} - {{ parent() }}{% endblock %}
+{% set side_nav = 'profile' %}
+
+
+{% do script(['libs/jquery-validation.js', 'libs/jquery.js','libs/es-ckeditor/ckeditor.js', 'libs/select2.js','libs/jquery-nouislider.js','app/js/testpaper-manage/create/index.js']) %}
+
+
+
+
+{% block main %}
+
+<div class="panel panel-default panel-col test-creator">
+  <div class="panel-heading clearfix">{{'修改试卷'|trans}}</div>
+  
+  
+  <div class="panel-body">
+
+    {#<form id="testpaper-form" class="form-horizontal" method="post" data-build-check-url="{{ path('test_build_check'}}" data-auto-submit="false" data-have-base-fields="true" data-have-build-fields="true">#}
+    <form id="testpaper-form" class="form-horizontal" method="post" data-auto-submit="false" data-have-base-fields="true" data-have-build-fields="true">
+      {{ web_macro.flash_messages() }}
+
+      <div id="colorpicker">
+        <div class="sliders" id="red"></div>
+        <div class="sliders" id="green"></div>
+        <div class="sliders" id="blue"></div>
+        <div class="result"></div>
+      </div>
+
+	  {% include 'test/manage/create-base-info.html.twig'%}
+	  
+	  
+	  <div class="form-group">
+          <label class="col-md-2 control-label" for="testCategoryId">{{ '分类'|trans }}</label>
+          <div class="col-md-8 controls">
+            <select id="testCategoryId" name="testCategoryId" class="form-control width-input width-input-large">
+              {{ select_options(category_choices('test'), testpaper.testCategoryId, '分类'|trans) }}
+            </select>
+            <div class="help-block" style="display:none;"></div>
+          </div>
+        </div>
+
+		      
+      <div class="form-group mbm">
+        <div class="col-md-8 col-md-offset-2 controls">
+			<button id="testpaper-create-btn" data-loading-text="{{'正在提交'|trans}}" type="button" class="btn btn-primary" data-role="submit" data-check-url="{{ path('test_build_check')}}">{{'保存'|trans}}</button>
+			<a href="{{ path('admin_test') }}" class="btn btn-link">{{'返回'|trans}}</a>
+        </div>
+      </div>
+
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('site') }}">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

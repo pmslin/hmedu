@@ -20,7 +20,7 @@ use Codeages\Biz\Framework\Service\Exception\NotFoundException;
 class ManageController extends BaseController
 {
 
-
+    //在用。。。
     //创建题库试卷
     public function createAction(Request $request)
     {
@@ -44,15 +44,19 @@ class ManageController extends BaseController
 //            $this->show_print($testpaper);exit();
 
             if ($testpaper['id']>0){
-                return $this->redirect(
-                    $this->generateUrl(
-                        'test_set_manage_question',
-                        array('id' => $testpaper['id'])
-                    )
+                return $this->createMessageResponse('info', '页面正在跳转...', '新增试卷成功', 2,
+                    $this->generateUrl('test_set_manage_question', array('id' => $testpaper['id']))
+
+
                 );
+//                return $this->redirect(
+//                    $this->generateUrl(
+//                        'test_set_manage_question',
+//                        array('id' => $testpaper['id'])
+//                    )
+//                );
             }else{
-                echo "新建试卷失败！";
-                exit();
+                return $this->createMessageResponse('error', '新建试卷失败！');
             }
         }
 
@@ -96,6 +100,43 @@ class ManageController extends BaseController
         $result = $this->getTestpaperService()->canBuildTestpaper($type, $data);
 
         return $this->createJsonResponse($result);
+    }
+
+
+    //在用
+    /***独立题库试卷修改
+     * @param Request $request
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function updateAction(Request $request, $testpaperId)
+    {
+//        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+
+        $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
+
+//        if (empty($testpaper) || $testpaper['courseSetId'] != $courseSetId) {
+//            return $this->createMessageResponse('error', 'testpaper not found');
+//        }
+
+        if ($request->getMethod() === 'POST') {
+            $data = $request->request->all();
+            $this->getTestpaperService()->updateTestpaper($testpaper['id'], $data);
+
+            $this->setFlashMessage('success', $this->getServiceKernel()->trans('试卷信息保存成功！'));
+
+            return $this->redirect($this->generateUrl('admin_test'));
+        }
+
+
+        $category=$this->getCategoryService()->getGroupByCode('test');//根据试卷（test）大类分类code获取category_group数据
+        $categoryList=$this->getCategoryService()->getCategoryTree($category['id']);//根据大类分组id获得试卷分类数据
+
+        return $this->render('test/update.html.twig', array(
+//            'courseSet' => $courseSet,
+            'testpaper' => $testpaper,
+            'categoryList' =>  $categoryList,
+        ));
     }
 
 
@@ -161,6 +202,14 @@ class ManageController extends BaseController
     protected function getClassroomService()
     {
         return $this->createService('Classroom:ClassroomService');
+    }
+
+    /**
+     * @return ClassroomService
+     */
+    protected function getCategoryService()
+    {
+        return $this->createService('Taxonomy:CategoryService');
     }
 
     /**
