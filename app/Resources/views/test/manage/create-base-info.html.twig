@@ -6,6 +6,13 @@
 </div>
 
 <div class="form-group">
+  <div class="col-md-2 control-label"><label for="name-field" class="control-label-required">{{'试卷限时'|trans}}</label></div>
+  <div class="col-md-8 controls">
+    <input class="form-control" value="{% if testpaper.limitedTime | default(null)%}{{testpaper.limitedTime }}{% endif %}" name="limitedTime" id="name-field"/>
+  </div>
+</div>
+
+<div class="form-group">
   <div class="col-md-2 control-label"><label for="description-field" class="control-label-required">{{'试卷说明'|trans}}</label></div>
   <div class="col-md-8 controls">
     <textarea class="form-control" id="description-field" name="description" data-image-upload-url="{{ path('editor_upload', {token:upload_token('course')}) }}">{% if testpaper.description | default(null)%}{{testpaper.description }}{% endif %}</textarea>

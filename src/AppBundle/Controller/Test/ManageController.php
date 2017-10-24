@@ -40,14 +40,20 @@ class ManageController extends BaseController
 //            $this->show_print($fields);exit();
 
             $testpaper = $this->getTestpaperService()->buildTestpaper($fields, 'testpaper');
+
 //            $this->show_print($testpaper);exit();
 
-//            return $this->redirect(
-//                $this->generateUrl(
-//                    'course_set_manage_testpaper_questions',
-//                    array('courseSetId' => $courseSet['id'], 'testpaperId' => $testpaper['id'])
-//                )
-//            );
+            if ($testpaper['id']>0){
+                return $this->redirect(
+                    $this->generateUrl(
+                        'test_set_manage_question',
+                        array('id' => $testpaper['id'])
+                    )
+                );
+            }else{
+                echo "新建试卷失败！";
+                exit();
+            }
         }
 
 //        $types = $this->getQuestionTypes();

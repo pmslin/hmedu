@@ -2147,7 +2147,7 @@ test_set_manage_question_update:
   defaults: { _controller: AppBundle:TestQuestion/Manage:update }
 
 #删除独立题库题目
-course_set_manage_question_delete:
+test_set_manage_question_delete:
   path: /test/{testId}/manage/question/delete/{questionId}
   defaults: { _controller: AppBundle:TestQuestion/Manage:delete }
   methods: [POST]
@@ -2155,7 +2155,7 @@ course_set_manage_question_delete:
 
 
 
-  
+
 
 
 #课程题目
@@ -2210,6 +2210,8 @@ course_set_manage_question_check_num:
   path: /course_set/{courseSetId}/manage/question/check/num
   defaults: { _controller: AppBundle:Question/Manage:showQuestionTypesNum }
   methods: [POST]
+
+
 
 #创建独立题库试卷
 manage_test_create:

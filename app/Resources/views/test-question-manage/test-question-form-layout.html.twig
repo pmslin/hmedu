@@ -11,7 +11,7 @@
 
 
 {% do script(['libs/es-ckeditor/ckeditor.js','libs/jquery-validation.js','app/js/question-manage/form/index.js']) %}
-
+{# 路径 \web\static-dist\app\js\question-manage\form #}
 
 
 {% block main %}
@@ -19,9 +19,23 @@
 {% set parentQuestion = parentQuestion|default(null) %}
 {% set questionTypesDict = getQuestionTypes() %}
 
+<div class="es-section course-manage-header clearfix">
+    <img class="picture" src="/assets/img/default/cloud_document.png"> <!-- courseSet.largePicture -->
+
+	<h1 class="title" style="padding-top:15px;">
+        <a class="link-dark" href="/app_dev.php/course/39">{{TestpaperInfo.name|trans}}</a>
+                {#  <span class="label label-success ">已发布</span>	#}
+    </h1>
+	<div class="toolbar hidden-xs">
+        <div class="btn-group">
+			<a class="btn btn-default btn-sm" href="{{ path('test_set_manage_question',{id:TestpaperInfo.id}) }} ">{{'返回试卷'|trans}}</a>
+		</div>    
+    </div>
+</div>
+
 <div class="panel panel-default panel-col">
   <div class="panel-heading clearfix">
-    {{'题目管理'|trans}}
+    {{'题目管理'|trans}} 
   </div>
   <div class="panel-body">
 

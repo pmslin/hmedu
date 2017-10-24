@@ -1,4 +1,4 @@
-{% extends 'admin/layout.html.twig' %}
+{% extends 'test-question-manage/layout.html.twig' %}
 
 {% set menu = 'admin_test_manage' %}
 
@@ -9,12 +9,28 @@
 {% set parentId = parentQuestion.id|default(0) %}
 
 {% set side_nav = 'question' %}
-{% do script(['app/js/question-manage/index.js',]) %}
+
+{% do script(['app/js/question-manage/index.js']) %}
+{# web/static-dist #}
 
 {% block main %}
 
  {% set questionTypes = getQuestionTypes() %}
 
+ <div class="es-section course-manage-header clearfix">
+    <img class="picture" src="/assets/img/default/cloud_document.png"> <!-- courseSet.largePicture -->
+
+	<h1 class="title" style="padding-top:15px;">
+        <a class="link-dark" href="/app_dev.php/course/39">{{testPaerInfo.name|trans}}</a>
+                {#  <span class="label label-success ">已发布</span>	#}
+    </h1>
+	<div class="toolbar hidden-xs">
+        <div class="btn-group">
+			<a class="btn btn-default btn-sm" href="{{ path('admin_test') }} ">{{'返回试卷管理'|trans}}</a>
+		</div>    
+    </div>
+</div>
+ 
   <div class="panel panel-default panel-col">
     <div class="panel-heading">
       <div class="pull-right">
