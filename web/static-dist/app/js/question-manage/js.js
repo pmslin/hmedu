@@ -1,0 +1,1 @@
+alert('web/static-dist');

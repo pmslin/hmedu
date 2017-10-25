@@ -335,20 +335,33 @@ class ManageController extends BaseController
         return $this->createJsonResponse($result);
     }
 
-    public function questionPickerAction(Request $request, $id)
+    //在用。。。 未完成
+    /***独立题库试卷“题目管理”--“新增试题”
+     * @param Request $request
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function questionPickerAction(Request $request, $testpaperId)
     {
-        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
+//        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
+
+        $testPaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
         $conditions = $request->query->all();
 
         $conditions['parentId'] = 0;
-        $conditions['courseSetId'] = $courseSet['id'];
+        $conditions['isTest'] = 1;
+        $conditions['testCategoryId'] = $testpaperId;
+
+        unset($conditions['type']);
 
         $paginator = new Paginator(
             $request,
             $this->getQuestionService()->searchCount($conditions),
             7
         );
+
+
 
         $questions = $this->getQuestionService()->search(
             $conditions,
@@ -357,30 +370,37 @@ class ManageController extends BaseController
             $paginator->getPerPageCount()
         );
 
-        $user = $this->getUser();
-        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
+//        var_dump($conditions);
+//        exit();
 
-        return $this->render('question-manage/question-picker.html.twig', array(
-            'courseSet' => $courseSet,
+//        $user = $this->getUser();
+//        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
+
+        return $this->render('test-question-manage/question-picker.html.twig', array(
+//            'courseSet' => $courseSet,
             'questions' => $questions,
             'replace' => empty($conditions['replace']) ? '' : $conditions['replace'],
             'paginator' => $paginator,
             'courseTasks' => $this->getQuestionRanges($request->query->get('courseId', 0)),
             'conditions' => $conditions,
             'targetType' => $request->query->get('targetType', 'testpaper'),
-            'courses' => $manageCourses,
+//            'courses' => $manageCourses,
+            'testPaper' => $testPaper,
         ));
     }
 
+    //在用。。未完成。 选中题目后题目无法显示在列表
     /**
-     * 课程试卷新增题目时，选中题目（只是选中并未保存）
+     * 独立题库试卷新增题目时，选中题目（只是选中并未保存）
      * @param Request $request
-     * @param $courseSetId
+     * @param $testpaperId 试卷id
      * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function pickedQuestionAction(Request $request, $courseSetId)
+    public function pickedQuestionAction(Request $request, $testpaperId)
     {
-        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+//        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+
+        $testPaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
         $questionIds = $request->request->get('questionIds', array(0));
 
@@ -391,7 +411,7 @@ class ManageController extends BaseController
         $questions = $this->getQuestionService()->findQuestionsByIds($questionIds);
 
         foreach ($questions as &$question) {
-            if ($question['courseSetId'] != $courseSetId) {
+            if ($question['testCategoryId'] != $testpaperId) {
                 throw new ResourceNotFoundException('question', $question['id']);
             }
             if ($question['subCount'] > 0) {
@@ -399,18 +419,20 @@ class ManageController extends BaseController
             }
         }
 
-        $user = $this->getUser();
-        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
-        $taskIds = ArrayToolkit::column($questions, 'lessonId');
-        $courseTasks = $this->getTaskService()->findTasksByIds($taskIds);
-        $courseTasks = ArrayToolkit::index($courseTasks, 'id');
+//        $user = $this->getUser();
+//        $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
+//        $taskIds = ArrayToolkit::column($questions, 'lessonId');
+//        $courseTasks = $this->getTaskService()->findTasksByIds($taskIds);
+//        $courseTasks = ArrayToolkit::index($courseTasks, 'id');
 
-        return $this->render('question-manage/question-picked.html.twig', array(
-            'courseSet' => $courseSet,
+
+        return $this->render('test-question-manage/question-picked.html.twig', array(
+//            'courseSet' => $courseSet,
             'questions' => $questions,
             'targetType' => $request->query->get('targetType', 'testpaper'),
-            'courseTasks' => $courseTasks,
-            'courses' => $manageCourses,
+//            'courseTasks' => $courseTasks,
+//            'courses' => $manageCourses,
+            'testPaper' => $testPaper,
         ));
     }
 

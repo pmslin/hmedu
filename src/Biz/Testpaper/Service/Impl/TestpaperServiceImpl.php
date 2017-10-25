@@ -665,6 +665,7 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         );
     }
 
+    //将题目加入到试卷 testpaper_item_v8表
     public function updateTestpaperItems($testpaperId, $fields)
     {
         $newItems = $fields['questions'];
@@ -686,17 +687,17 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         $questions = $this->getQuestionService()->findQuestionsByIds($questionIds);
 
         try {
-            $this->beginTransaction();
+            $this->beginTransaction(); //开始事务
 
-            $this->deleteItemsByTestId($testpaper['id']);
-            $this->createItems($newItems, $questions, $testpaper['id']);
+            $this->deleteItemsByTestId($testpaper['id']); //根据试卷id先将所有旧记录删除
+            $this->createItems($newItems, $questions, $testpaper['id']); //再增加新记录，绑定试卷和题目
 
-            $testpaper = $this->updateTestpaperByItems($testpaper['id'], $fields);
-            $this->commit();
+            $testpaper = $this->updateTestpaperByItems($testpaper['id'], $fields);  //更新试卷信息
+            $this->commit(); //提交事务
 
             return $testpaper;
         } catch (\Exception $e) {
-            $this->rollback();
+            $this->rollback(); //回滚事务
             throw $e;
         }
     }
@@ -732,10 +733,12 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         return $items;
     }
 
+
+    //试卷和题目关联时，修改试卷表信息
     protected function updateTestpaperByItems($testpaperId, $fields)
     {
         $testpaper = $this->getTestpaper($testpaperId);
-
+//var_dump($fields);exit();
         $items = $this->findItemsByTestId($testpaperId);
         $conditions = array(
             'testId' => $testpaperId,

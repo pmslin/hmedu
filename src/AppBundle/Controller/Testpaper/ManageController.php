@@ -394,6 +394,7 @@ class ManageController extends BaseController
         ));
     }
 
+    //课程试卷“管理题目”页面。POST是新增、修改、删除题目到试卷功能
     public function questionsAction(Request $request, $courseSetId, $testpaperId)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
@@ -401,14 +402,14 @@ class ManageController extends BaseController
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
         if (!$testpaper || $testpaper['courseSetId'] != $courseSetId) {
-            return $this->createMessageResponse('error', 'testpaper not found');
+            return $this->createMessageResponse('error', 'testpaper not found 找不到试卷');
         }
 
         if ($testpaper['status'] != 'draft') {
             return $this->createMessageResponse('error', '已发布或已关闭的试卷不能再修改题目');
         }
 
-        if ($request->getMethod() === 'POST') {
+        if ($request->getMethod() === 'POST') { //新增、修改、删除题目到试卷功能
             $fields = $request->request->all();
 
             if (empty($fields['questions'])) {
@@ -428,8 +429,8 @@ class ManageController extends BaseController
             ));
         }
 
-        $items = $this->getTestpaperService()->findItemsByTestId($testpaper['id']);
-        $questions = $this->getTestpaperService()->showTestpaperItems($testpaper['id']);
+        $items = $this->getTestpaperService()->findItemsByTestId($testpaper['id']); //试卷题目关联信息
+        $questions = $this->getTestpaperService()->showTestpaperItems($testpaper['id']); //题型题目数组
 
         $hasEssay = $this->getQuestionService()->hasEssay(ArrayToolkit::column($items, 'questionId'));
 
@@ -439,6 +440,9 @@ class ManageController extends BaseController
         $manageCourses = $this->getCourseService()->findUserManageCoursesByCourseSetId($user['id'], $courseSet['id']);
 
         $courseTasks = $this->getQuestionRanges($testpaper['id']);
+
+//        var_dump($questions);
+//        exit();
 
         return $this->render('testpaper/manage/question.html.twig', array(
             'courseSet' => $courseSet,
@@ -480,6 +484,7 @@ class ManageController extends BaseController
         ));
     }
 
+    //课程试卷  预览试卷
     public function previewAction(Request $request, $courseSetId, $testpaperId)
     {
         $this->getCourseSetService()->tryManageCourseSet($courseSetId);
@@ -494,6 +499,7 @@ class ManageController extends BaseController
         }
 
         $questions = $this->getTestpaperService()->showTestpaperItems($testpaper['id']);
+//        print_r($questions);
 
         $total = $this->getTestpaperService()->countQuestionTypes($testpaper, $questions);
 

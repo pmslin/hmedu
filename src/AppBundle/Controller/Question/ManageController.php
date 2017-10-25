@@ -273,6 +273,8 @@ class ManageController extends BaseController
         $conditions['parentId'] = 0;
         $conditions['courseSetId'] = $courseSet['id'];
 
+        unset($conditions['type']); //原来系统只筛选question表type字段的material材料题，不知道是否是bug。unset掉不做type查询限制
+
         $paginator = new Paginator(
             $request,
             $this->getQuestionService()->searchCount($conditions),

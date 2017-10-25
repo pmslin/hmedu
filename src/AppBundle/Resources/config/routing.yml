@@ -2152,6 +2152,17 @@ test_set_manage_question_delete:
   defaults: { _controller: AppBundle:TestQuestion/Manage:delete }
   methods: [POST]
 
+#独立题库试卷“题目管理”--“新增试题”
+test_set_manage_question_picker:
+  path: /test/{testpaperId}/manage/question/picker
+  defaults: { _controller: AppBundle:TestQuestion/Manage:questionPicker }
+
+#独立题库试卷“题目管理”--“新增试题”--“选择”（选择要新增的试题到试卷）
+test_set_manage_question_picked:
+  path:  /testpaper/{testpaperId}/manage/question/picked
+  defaults: { _controller: AppBundle:TestQuestion/Manage:pickedQuestion }
+
+
 
 
 
@@ -2189,10 +2200,12 @@ course_set_manage_question_preview:
   path: /course_set/{courseSetId}/manage/question/{questionId}/preview
   defaults: { _controller: AppBundle:Question/Manage:preview }
 
+#课程试卷“题目管理”--“新增试题” 页面
 course_set_manage_question_picker:
   path: /course_set/{id}/manage/question/picker
   defaults: { _controller: AppBundle:Question/Manage:questionPicker }
 
+#课程试卷“题目管理”--“新增试题”--“选择”（选择要新增的试题到试卷）
 course_set_manage_question_picked:
   path:  /course_set/{courseSetId}/manage/question/picked
   defaults: { _controller: AppBundle:Question/Manage:pickedQuestion }
@@ -2222,6 +2235,19 @@ manage_test_create:
 test_set_manage_testpaper_update:
     path: /testpaper/{testpaperId}/update
     defaults: { _controller: AppBundle:Test/Manage:update }
+
+#独立题库试卷管理题目页面和新增、修改、删除题目到试卷功能
+test_set_manage_testpaper_questions:
+  path: /testpaper/{testpaperId}/questions
+  defaults: { _controller: AppBundle:Test/Manage:questions }
+
+#独立题库试卷  预览试卷
+test_set_manage_testpaper_preivew:
+  path: /testpaper/{testpaperId}/preview
+  defaults: { _controller: AppBundle:Test/Manage:preview }
+
+
+
 
 
 
@@ -2268,10 +2294,12 @@ course_set_manage_testpaper_deletes:
   defaults: { _controller: AppBundle:Testpaper/Manage:deletes }
   methods: [POST]
 
+#课程试卷  预览试卷
 course_set_manage_testpaper_preivew:
   path: /course_set/{courseSetId}/manage/testpaper/{testpaperId}/preview
   defaults: { _controller: AppBundle:Testpaper/Manage:preview }
 
+#课程试卷管理题目
 course_set_manage_testpaper_questions:
   path: /course_set/{courseSetId}/manage/testpaper/{testpaperId}/questions
   defaults: { _controller: AppBundle:Testpaper/Manage:questions }
