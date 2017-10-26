@@ -21,7 +21,7 @@ class ManageController extends BaseController
 {
 
     //在用。。。
-    //创建题库试卷
+    //创建独立题库试卷页面  和  创建独立题库试卷功能
     public function createAction(Request $request)
     {
 
@@ -60,7 +60,7 @@ class ManageController extends BaseController
             }
         }
 
-//        $types = $this->getQuestionTypes();
+        $types = $this->getQuestionTypes();  //用于
 //
 //        $conditions = array(
 //            'types' => array_keys($types),
@@ -79,11 +79,28 @@ class ManageController extends BaseController
         return $this->render('test/create.html.twig', array(
             'courseSet' => '',
             'ranges' => '',
-            'types' => '',
+            'types' => $types,
             'questionNums' => '',
             'courses' => '',
         ));
     }
+
+    protected function getQuestionTypes()
+    {
+        $typesConfig = $this->get('extension.manager')->getQuestionTypes();
+
+        $types = array();
+        foreach ($typesConfig as $type => $typeConfig) {
+            $types[$type] = array(
+                'name' => $typeConfig['name'],
+                'hasMissScore' => $typeConfig['hasMissScore'],
+            );
+        }
+
+        return $types;
+    }
+
+
 
     //创建题库试卷，检测字段
     public function buildCheckAction(Request $request)

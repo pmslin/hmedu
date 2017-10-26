@@ -2324,12 +2324,12 @@ course_manage_testpaper_questions:
   path: /course/{courseId}/manage/testpaper/{testpaperId}/items
   defaults: { _controller: AppBundle:Testpaper/Manage:questions }
 
-#点击创建题库试卷，检测字段
+#点击创建独立题库试卷，检测字段合法性
 test_build_check:
   path: /build/check
   defaults: { _controller: AppBundle:Test/Manage:buildCheck }
 
-#点击创建课程试卷，检测字段
+#点击创建课程试卷，检测字段合法性
 course_set_manage_testpaper_build_check:
   path: /course_set/{courseSetId}/manage/{type}/build/check
   defaults: { _controller: AppBundle:Testpaper/Manage:buildCheck }

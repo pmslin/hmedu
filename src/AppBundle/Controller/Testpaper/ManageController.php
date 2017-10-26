@@ -76,7 +76,7 @@ class ManageController extends BaseController
         if ($request->getMethod() === 'POST') {
             $fields = $request->request->all();
 
-//            $this->show_print($fields);exit();
+            $this->show_print($fields);exit();
 
             $fields['courseSetId'] = $courseSet['id'];
             $fields['courseId'] = 0;

@@ -353,7 +353,7 @@ class ManageController extends BaseController
         $conditions['isTest'] = 1;
         $conditions['testCategoryId'] = $testpaperId;
 
-        unset($conditions['type']);
+//        unset($conditions['type']);
 
         $paginator = new Paginator(
             $request,
