@@ -34,7 +34,7 @@ class ManageController extends BaseController
 
             $fields['courseId'] = 0;
             $fields['pattern'] = 'questionType';
-            $fields['counts']['single_choice'] = 0;
+//            $fields['counts']['single_choice'] = 0;
             $fields['isTest'] = 1;
 
             $fields['mode'] = "rand"; //题目生成规则，题库写定为默认生成
@@ -64,9 +64,9 @@ class ManageController extends BaseController
 
         $types = $this->getQuestionTypes();  //用于
 //
-        $conditions = array(
+        $conditions = array( //独立题库创建试卷页面，各题型数量筛选条件
             'types' => array_keys($types),
-            'isTest' => 1,
+//            'isTest' => 1,
             'parentId' => 0,
         );
 
