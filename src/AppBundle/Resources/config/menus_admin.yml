@@ -379,7 +379,23 @@ admin:
                                     router_name: manage_test_create
                                     group: topBtn
                                     blank: 1
-                    
+                
+                #后台题库管理
+                admin_test_list_show:
+                    name: 题库管理
+                    children:
+                        admin_test_list_manage:
+                            name: 题库管理
+                            router_name: manage_testlist
+                            children:
+                                admin_course_content_manage:
+                                    name: 管理考试-----------
+                                admin_course_add:
+                                    name: 创建试题
+                                    router_name: manage_test_create
+                                    group: topBtn
+                                    blank: 1
+
                 admin_course_question:
                     name: 问答管理
                     children:

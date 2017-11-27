@@ -24,24 +24,26 @@ class ManageController extends BaseController
     public function testPaperListAction(Request $request){
         $testPaper=$this->getTestpaperService()->getTestpaperByIsTest();
 
+//        var_dump($testPaper);
+
         return $this->render(
-            'admin/test-set/index.html.twig',
+            'test/test-paper-list.html.twig',
             array(
-                'testPaper'=>$testPaper,
-//                'conditions' => '',
-//                'courseSets' => '',
-//                'users' => '',
-//                'categories' => '',
-//                'paginator' => '',
-//                'liveSetEnabled' => '',
-//                'default' => '',
-//                'classrooms' => '',
-//                'filter' => '',
-//                'searchCourseSetsNum' => '',
-//                'publishedCourseSetsNum' => '',
-//                'closedCourseSetsNum' => '',
-//                'unPublishedCourseSetsNum' => '',
-//                'courseSet'=>'',
+                'testpapers'=>$testPaper,
+                'conditions' => '',
+                'courseSets' => '',
+                'users' => '',
+                'categories' => '',
+                'paginator' => '',
+                'liveSetEnabled' => '',
+                'default' => '',
+                'classrooms' => '',
+                'filter' => '',
+                'searchCourseSetsNum' => '',
+                'publishedCourseSetsNum' => '',
+                'closedCourseSetsNum' => '',
+                'unPublishedCourseSetsNum' => '',
+                'courseSet'=>'',
 
             )
         );

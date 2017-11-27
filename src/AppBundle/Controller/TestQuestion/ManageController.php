@@ -399,7 +399,7 @@ class ManageController extends BaseController
     public function pickedQuestionAction(Request $request, $testpaperId)
     {
 //        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
-
+//echo 123;exit();
         $testPaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
         $questionIds = $request->request->get('questionIds', array(0));
@@ -409,6 +409,7 @@ class ManageController extends BaseController
         }
 
         $questions = $this->getQuestionService()->findQuestionsByIds($questionIds);
+//        var_dump($questions);exit();
 
         foreach ($questions as &$question) {
             if ($question['testCategoryId'] != $testpaperId) {
