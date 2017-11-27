@@ -20,6 +20,33 @@ use Codeages\Biz\Framework\Service\Exception\NotFoundException;
 class ManageController extends BaseController
 {
 
+    //独立题库试卷列表
+    public function testPaperListAction(Request $request){
+        $testPaper=$this->getTestpaperService()->getTestpaperByIsTest();
+
+        return $this->render(
+            'admin/test-set/index.html.twig',
+            array(
+                'testPaper'=>$testPaper,
+//                'conditions' => '',
+//                'courseSets' => '',
+//                'users' => '',
+//                'categories' => '',
+//                'paginator' => '',
+//                'liveSetEnabled' => '',
+//                'default' => '',
+//                'classrooms' => '',
+//                'filter' => '',
+//                'searchCourseSetsNum' => '',
+//                'publishedCourseSetsNum' => '',
+//                'closedCourseSetsNum' => '',
+//                'unPublishedCourseSetsNum' => '',
+//                'courseSet'=>'',
+
+            )
+        );
+    }
+
     //在用。。。
     //创建独立题库试卷页面  和  创建独立题库试卷功能
     public function createAction(Request $request)

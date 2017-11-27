@@ -2246,14 +2246,17 @@ test_set_manage_testpaper_preivew:
   path: /testpaper/{testpaperId}/preview
   defaults: { _controller: AppBundle:Test/Manage:preview }
 
+#独立题库 试卷列表 （前台页面显示）
+manage_testlist:
+  path: /manage/testlist
+  defaults: { _controller: AppBundle:Test/Manage:testPaperList }
 
 
 
 
 
 
-
-#testpaper
+#testpaper 课程试卷列表
 course_set_manage_testpaper:
   path: /course_set/{id}/manage/testpaper
   defaults: { _controller: AppBundle:Testpaper/Manage:index }
