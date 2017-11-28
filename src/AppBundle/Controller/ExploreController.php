@@ -18,11 +18,16 @@ class ExploreController extends BaseController
 {
     const EMPTY_COURSE_SET_IDS = 0;
 
+    /***前台展示课程列表
+     * @param Request $request
+     * @param $category 分类名称
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function courseSetsAction(Request $request, $category)
     {
-        $conditions = $request->query->all();
+        $conditions = $request->query->all(); //获取筛选条件
 
-        if (!isset($conditions['filter'])) {
+        if (!isset($conditions['filter'])) { //定义默认筛选条件，如果没有设置则写默认参数，默认筛选全部
             $filter = array(
                 'type' => 'all',
                 'price' => 'all',
@@ -148,13 +153,13 @@ class ExploreController extends BaseController
         return $this->render(
             'course-set/explore.html.twig',
             array(
-                'courseSets' => $courseSets,
-                'category' => $category,
-                'filter' => $filter,
-                'orderBy' => $orderBy,
-                'paginator' => $paginator,
+                'courseSets' => $courseSets, //课程列表
+                'category' => $category, //筛选分类名称
+                'filter' => $filter, //筛选条件
+                'orderBy' => $orderBy, //排序
+                'paginator' => $paginator, //分页
                 'consultDisplay' => true,
-                'categoryArray' => $categoryArray,
+                'categoryArray' => $categoryArray, //分类信息
                 'categoryArrayDescription' => $categoryArrayDescription,
                 'categoryParent' => $categoryParent,
                 'levels' => $levels,

@@ -1723,7 +1723,7 @@ course_manage_chapter_delete:
     defaults: { _controller: AppBundle:Course/ChapterManage:delete }
     methods: [POST]
 
-#course 课程列表
+#course 课程前台列表
 course_set_explore:
    path:  /course/explore/{category}
    defaults: { _controller: AppBundle:Explore:courseSets, category:'' }
