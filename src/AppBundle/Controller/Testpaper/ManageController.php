@@ -318,6 +318,12 @@ class ManageController extends BaseController
         ));
     }
 
+    /***删除课程试卷
+     * @param Request $request
+     * @param $courseSetId 课程id
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function deleteAction(Request $request, $courseSetId, $testpaperId)
     {
         $this->getCourseSetService()->tryManageCourseSet($courseSetId);
@@ -354,6 +360,14 @@ class ManageController extends BaseController
         return $this->createMessageResponse('error', 'testpaper not found');
     }
 
+
+    /***发布课程试卷
+     * @param Request $request
+     * @param $courseSetId 课程id
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws NotFoundException
+     */
     public function publishAction(Request $request, $courseSetId, $testpaperId)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
@@ -374,6 +388,13 @@ class ManageController extends BaseController
         ));
     }
 
+    /***关闭课程试卷
+     * @param Request $request
+     * @param $courseSetId 课程id
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws NotFoundException
+     */
     public function closeAction(Request $request, $courseSetId, $testpaperId)
     {
         $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);

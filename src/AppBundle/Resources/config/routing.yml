@@ -1723,7 +1723,7 @@ course_manage_chapter_delete:
     defaults: { _controller: AppBundle:Course/ChapterManage:delete }
     methods: [POST]
 
-#course
+#course 课程列表
 course_set_explore:
    path:  /course/explore/{category}
    defaults: { _controller: AppBundle:Explore:courseSets, category:'' }
@@ -2251,6 +2251,26 @@ manage_testlist:
   path: /manage/testlist
   defaults: { _controller: AppBundle:Test/Manage:testPaperList }
 
+#删除独立试卷
+manage_testpaper_delete:
+  path: manage/testpaper/{testpaperId}/delete
+  defaults: { _controller: AppBundle:Test/Manage:delete }
+  methods: [POST]
+
+#发布独立题库试卷
+manage_testpaper_publish:
+  path: /manage/testpaper/{testpaperId}/publish
+  defaults: { _controller: AppBundle:Test/Manage:publish }
+  methods: [POST]
+
+#关闭独立题库试卷
+manage_testpaper_close:
+  path: /manage/testpaper/{testpaperId}/close
+  defaults: { _controller: AppBundle:Test/Manage:close }
+  methods: [POST]
+
+
+
 
 
 
@@ -2282,11 +2302,13 @@ course_set_manage_testpaper_publish:
   defaults: { _controller: AppBundle:Testpaper/Manage:publish }
   methods: [POST]
 
+#关闭课程试卷
 course_set_manage_testpaper_close:
   path: /course_set/{courseSetId}/manage/testpaper/{testpaperId}/close
   defaults: { _controller: AppBundle:Testpaper/Manage:close }
   methods: [POST]
 
+#删除课程试卷
 course_set_manage_testpaper_delete:
   path: /course_set/{courseSetId}/manage/testpaper/{testpaperId}/delete
   defaults: { _controller: AppBundle:Testpaper/Manage:delete }

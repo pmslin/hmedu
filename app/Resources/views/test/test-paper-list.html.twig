@@ -1,7 +1,7 @@
 {% extends 'test/layout.html.twig' %}
 {% import 'macro.html.twig' as web_macro %}
 
-{% block title %}{{ '试卷管理'|trans }} - {{ parent() }}{% endblock %}
+{% block title %}{{ '题库试卷管理'|trans }} - {{ parent() }}{% endblock %}
 
 {% set side_nav = 'testpaper' %}
 {% set parentId = parentId | default(null) %}
@@ -12,7 +12,7 @@
 
   <div class="panel panel-default panel-col">
     <div class="panel-heading">
-      <a href="{{ path('course_set_manage_testpaper_create',{id:1}) }}"
+      <a href="{{ path('manage_test_create') }}"
          class="btn btn-info btn-sm pull-right mls"><span class="es-icon es-icon-anonymous-iconfont"></span>{{ '创建试卷'|trans }}</a>
       {{ '试卷管理'|trans }}
     </div>
@@ -34,7 +34,7 @@
         </thead>
         <tbody>
         {% for testpaper in testpapers %}
-          {# {% set user = users[testpaper.updatedUserId] %} #}
+          {% set user = users[testpaper.updatedUserId] %} 
           {% include 'test/testpaper-list-tr.html.twig' %}
         {% else %}
           <tr>
@@ -52,7 +52,7 @@
         <button class="btn btn-default btn-sm mlm" data-role="batch-delete" data-name="{{ '试卷'|trans }}" data-url="{{ path('course_set_manage_testpaper_deletes',{courseSetId:1}) }}">{{ '删除'|trans }}</button>
       </div>
 
-      {# {{ web_macro.paginator(paginator) }} #} 
+       {{ web_macro.paginator(paginator) }} 
 
       <div class="color-gray mtl">
         {{ '提示：试卷一旦发布不能修改，发布后的试卷需要'|trans }}

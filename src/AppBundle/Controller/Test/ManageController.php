@@ -20,31 +20,39 @@ use Codeages\Biz\Framework\Service\Exception\NotFoundException;
 class ManageController extends BaseController
 {
 
-    //独立题库试卷列表
+    //独立题库试卷列表 在用
     public function testPaperListAction(Request $request){
-        $testPaper=$this->getTestpaperService()->getTestpaperByIsTest();
+//        $testPaper=$this->getTestpaperService()->getTestpaperByIsTest();
 
-//        var_dump($testPaper);
+        //分页
+        $conditions = array(
+            'type' => 'testpaper',
+            'isTest'    =>  1,
+        );
+
+        $paginator = new Paginator(
+            $this->get('request'),
+            $this->getTestpaperService()->searchTestpaperCount($conditions),
+            10
+        );
+
+        $testpapers = $this->getTestpaperService()->searchTestpapers(
+            $conditions,
+            array('createdTime' => 'DESC'),
+            $paginator->getOffsetCount(),
+            $paginator->getPerPageCount()
+        );
+
+        //试卷更新人
+        $userIds = ArrayToolkit::column($testpapers, 'updatedUserId');
+        $users = $this->getUserService()->findUsersByIds($userIds);
 
         return $this->render(
             'test/test-paper-list.html.twig',
             array(
-                'testpapers'=>$testPaper,
-                'conditions' => '',
-                'courseSets' => '',
-                'users' => '',
-                'categories' => '',
-                'paginator' => '',
-                'liveSetEnabled' => '',
-                'default' => '',
-                'classrooms' => '',
-                'filter' => '',
-                'searchCourseSetsNum' => '',
-                'publishedCourseSetsNum' => '',
-                'closedCourseSetsNum' => '',
-                'unPublishedCourseSetsNum' => '',
-                'courseSet'=>'',
-
+                'testpapers'=>$testpapers,
+                'users' => $users,
+                'paginator' => $paginator,
             )
         );
     }
@@ -159,8 +167,6 @@ class ManageController extends BaseController
      */
     public function updateAction(Request $request, $testpaperId)
     {
-//        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
-
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
 //        if (empty($testpaper) || $testpaper['courseSetId'] != $courseSetId) {
@@ -181,7 +187,6 @@ class ManageController extends BaseController
         $categoryList=$this->getCategoryService()->getCategoryTree($category['id']);//根据大类分组id获得试卷分类数据
 
         return $this->render('test/update.html.twig', array(
-//            'courseSet' => $courseSet,
             'testpaper' => $testpaper,
             'categoryList' =>  $categoryList,
         ));
@@ -196,8 +201,6 @@ class ManageController extends BaseController
      */
     public function questionsAction(Request $request, $testpaperId)
     {
-//        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
-
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
 
@@ -239,7 +242,6 @@ class ManageController extends BaseController
 //        $courseTasks = $this->getQuestionRanges($testpaper['id']);
 
         return $this->render('test/manage/question.html.twig', array(
-//            'courseSet' => $courseSet,
             'testpaper' => $testpaper,
             'questions' => $questions,
             'hasEssay' => $hasEssay,
@@ -247,6 +249,75 @@ class ManageController extends BaseController
 //            'courseTasks' => $courseTasks,
 //            'courses' => $manageCourses,
         ));
+    }
+
+    /***发布独立题库试卷 在用
+     * @param Request $request
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws NotFoundException
+     */
+    public function publishAction(Request $request, $testpaperId)
+    {
+        $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
+        if (empty($testpaper)) {
+            throw new NotFoundException("找不到该试卷 testpaper#{$testpaperId} not found");
+        }
+
+        $testpaper = $this->getTestpaperService()->publishTestpaper($testpaperId); //发布操作
+
+        $user = $this->getUserService()->getUser($testpaper['updatedUserId']);
+
+        return $this->render('test/testpaper-list-tr.html.twig', array(
+            'testpaper' => $testpaper,
+            'user' => $user,
+        ));
+    }
+
+    /***关闭独立题库试卷 在用
+     * @param Request $request
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws NotFoundException
+     */
+    public function closeAction(Request $request, $testpaperId)
+    {
+
+        $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
+        if (empty($testpaper)) {
+            throw new NotFoundException("找不到该试卷 testpaper#{$testpaperId} not found");
+        }
+
+        $testpaper = $this->getTestpaperService()->closeTestpaper($testpaperId);
+
+        $user = $this->getUserService()->getUser($testpaper['updatedUserId']);
+
+        return $this->render('test/testpaper-list-tr.html.twig', array(
+            'testpaper' => $testpaper,
+            'user' => $user,
+        ));
+    }
+
+
+    /***删除独立题库试卷  在用
+     * @param Request $request
+     * @param $courseSetId
+     * @param $testpaperId 试卷id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteAction(Request $request, $testpaperId)
+    {
+//        $this->getCourseSetService()->tryManageCourseSet($courseSetId);
+
+        $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
+
+        if (empty($testpaper) ) {
+            return $this->createMessageResponse('error', '没有该试卷 testpaper not found');
+        }
+
+        $this->getTestpaperService()->deleteTestpaper($testpaperId);
+
+        return $this->createJsonResponse(true);
     }
 
 

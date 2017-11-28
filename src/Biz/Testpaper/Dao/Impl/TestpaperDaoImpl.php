@@ -86,6 +86,7 @@ class TestpaperDaoImpl extends GeneralDaoImpl implements TestpaperDao
             'id IN (:ids)',
             'copyId = :copyId',
             'copyId > :copyIdGT',
+            'isTest = :isTest',
         );
 
         $declares['serializes'] = array(
