@@ -78,15 +78,15 @@ class TestPaperController extends BaseController
         unset($conditions['orderBy']);
 
         $conditions['isTest'] = 1;
-        $conditions['status'] = 'open';
+        $conditions['status'] = 'draft';  //open
 //        $conditions['testCategoryId'] = $conditions['categoryId'];
 
         $paginator = new Paginator(
             $this->get('request'),
-            $this->getCourseSetService()->countCourseSets($conditions),
+            $this->getTestpaperService()->searchTestpaperCount($conditions),
             20
         );
-
+//var_dump($paginator);
         $testpapers = array();
 
         $testpapers = $this->getTestpaperService()->searchTestpapers(

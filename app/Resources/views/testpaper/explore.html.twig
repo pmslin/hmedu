@@ -2,7 +2,7 @@
 
 {% set mobile = is_show_mobile_page() %}
 {% set bodyClass = 'course-list-page ' %}
-{% set siteNav = 'testpaper/explore' %}
+{% set siteNav = 'course/explore' %}
 
 {% do script(['libs/echo-js.js','app/js/course/explore/index.js']) %}
 
@@ -47,7 +47,7 @@
 
   {{ render(controller('AppBundle:Category:treeNav',{tags:tags, path:path, category:category, filter: {type: type,price: price,currentLevelId: currentLevelId},orderBy: orderBy, group:'test'})) }} 	{# 调用分类控制器，group:'course' 是获取哪个分类 #}
 
-  <div class="es-filter">
+  {# <div class="es-filter">
     <ul class="nav nav-sort clearfix">
       <li>
         <a
@@ -109,16 +109,46 @@
         "> {{ '免费课程'|trans }}
       </label>
     </div>
-  </div>
+  </div> #}
 
   <div class="course-list">
-    <div class="row">
+    <div class="">
       {% if testpapers %}
-        {% for testpaper in testpapers %}
-          <div class="col-lg-3 col-md-4 col-xs-6">
+	  
+		<div class="course-detail-content" style="background:#fff;">
+		<ul class="task-list task-list-md task-list-hover">
+		
+			 {% for testpaper in testpapers %}
+		
+			<li class="task-item task-content mouse-control">
+				<i class="es-icon es-icon-undone-check color-gray left-menu"></i>
+					<a class="title" href="/app_dev.php/course/42/task/278/show">
+					  <span style="font-size:16px; "> {{ testpaper.name }} </span>	 <br />
+					  <span style="font-size:12px; color:#A9A9A9;">考试时长：{{testpaper.limitedTime}}  总分：{{testpaper.score}} </span>
+					</a>
+				<span class="right-menu color-gray ">
+				<a class="btn btn-primary" href="/app_dev.php/course/40/task/275/show">
+                      开始考试
+                  </a>
+				</span>
+				<span class="right-menu mouse-enter"> </span>
+			</li>
+			
+			{% endfor %}
+			
+		</ul>
+	</div>
+	  
+	  
+        {# {% for testpaper in testpapers %}
+          <div class="es-section" style="background:#fff; border:1px solid #e0e3e9; ">
             {% include 'testpaper/widgets/testpaper-list.html.twig' with {testpaper: testpaper} %}
           </div>
-        {% endfor %}
+        {% endfor %} #}
+		
+		
+		
+		
       {% else %}
         <div class="empty">{{ '该分类还没有题库呢'|trans }}</div>
       {% endif %}
