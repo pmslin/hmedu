@@ -2,7 +2,7 @@
 
 {% set mobile = is_show_mobile_page() %}
 {% set bodyClass = 'course-list-page ' %}
-{% set siteNav = 'course/explore' %}
+{% set siteNav = 'testpaper/explore' %}
 
 {% do script(['libs/echo-js.js','app/js/course/explore/index.js']) %}
 
@@ -16,11 +16,11 @@
     <div class="container">
       <div class="title">
         <i class="es-icon es-icon-viewcomfy"></i>
-        {{ '课程列表'|trans }}
+        {{ '题库列表'|trans }}
       </div>
 
       {% set classrooms = data('Classrooms',{count:1}) %}
-      <div class="more">
+      {# <div class="more">
         {% if classrooms|default(null) %}
           <a class="btn btn-primary btn-lg" href="{{ path('classroom_explore') }}">
             {{ '查看%name%'|trans({'%name%': setting('classroom.name')|default('班级'|trans)}) }}
@@ -29,7 +29,7 @@
         <a class="btn btn-primary btn-lg" href="{{ path('open_course_explore') }}">
           {{ '查看公开课'|trans }}
         </a>
-      </div>
+      </div> #}
     </div>
   </div>
 
@@ -45,7 +45,7 @@
   {% set currentLevelId = filter.currentLevelId|default('all') %}
   {% set path = app.request.get('_route') %}
 
-  {{ render(controller('AppBundle:Category:treeNav',{tags:tags, path:path, category:category, filter: {type: type,price: price,currentLevelId: currentLevelId},orderBy: orderBy, group:'course'})) }} 	{# 调用分类控制器，group:'course' 是获取哪个分类 #}
+  {{ render(controller('AppBundle:Category:treeNav',{tags:tags, path:path, category:category, filter: {type: type,price: price,currentLevelId: currentLevelId},orderBy: orderBy, group:'test'})) }} 	{# 调用分类控制器，group:'course' 是获取哪个分类 #}
 
   <div class="es-filter">
     <ul class="nav nav-sort clearfix">
@@ -113,14 +113,14 @@
 
   <div class="course-list">
     <div class="row">
-      {% if courseSets %}
-        {% for courseSet in courseSets %}
+      {% if testpapers %}
+        {% for testpaper in testpapers %}
           <div class="col-lg-3 col-md-4 col-xs-6">
-            {% include 'course/widgets/course-grid.html.twig' with {courseSet: courseSet} %}
+            {% include 'testpaper/widgets/testpaper-list.html.twig' with {testpaper: testpaper} %}
           </div>
         {% endfor %}
       {% else %}
-        <div class="empty">{{ '该分类下无课程'|trans }}</div>
+        <div class="empty">{{ '该分类还没有题库呢'|trans }}</div>
       {% endif %}
     </div>
   </div>

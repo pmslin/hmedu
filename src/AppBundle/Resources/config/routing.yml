@@ -1723,6 +1723,14 @@ course_manage_chapter_delete:
     defaults: { _controller: AppBundle:Course/ChapterManage:delete }
     methods: [POST]
 
+
+#testpaper 独立题库试卷前台列表
+testpaper_explore:
+   path:  /testpaper/explore/{category}
+   defaults: { _controller: AppBundle:TestPaper:testPaper, category:'' }
+
+
+
 #course 课程前台列表
 course_set_explore:
    path:  /course/explore/{category}

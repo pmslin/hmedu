@@ -89,6 +89,17 @@ class CategoryController extends BaseController
         return $this->getCategoryService()->findAllCategoriesByParentId($parentCategory['id']);
     }
 
+
+    /***获取分类
+     * @param Request $request
+     * @param $category
+     * @param $tags
+     * @param $path
+     * @param array $filter
+     * @param string $orderBy
+     * @param string $group 对应的分类code  category_group表
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function treeNavAction(Request $request, $category, $tags, $path, $filter = array('price' => 'all', 'type' => 'all', 'currentLevelId' => 'all'), $orderBy = 'latest', $group = 'course')
     {
         $categories = $this->makeCategories($group);

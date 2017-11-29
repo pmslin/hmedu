@@ -1,5 +1,7 @@
 <?php
 
+//新建
+
 namespace AppBundle\Controller;
 
 use AppBundle\Common\ArrayToolkit;
@@ -14,16 +16,16 @@ use Biz\Taxonomy\Service\CategoryService;
 use Biz\Taxonomy\Service\TagService;
 use Symfony\Component\HttpFoundation\Request;
 
-class ExploreController extends BaseController
+class TestPaperController extends BaseController
 {
     const EMPTY_COURSE_SET_IDS = 0;
 
-    /***前台展示课程列表
+    /***前台展示课程列表  在用
      * @param Request $request
      * @param $category 分类名称
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function courseSetsAction(Request $request, $category)
+    public function testPaperAction(Request $request, $category)
     {
         $conditions = $request->query->all(); //获取筛选条件
 
@@ -46,20 +48,20 @@ class ExploreController extends BaseController
         );
 
         list($conditions, $levels) = $this->mergeConditionsByVip($conditions, $filter['currentLevelId']);
+//
+//        unset($conditions['code']);
 
-        unset($conditions['code']);
+//        if (isset($conditions['ids']) && $conditions['ids'] === self::EMPTY_COURSE_SET_IDS) {
+//            $conditions['ids'] = array(0);
+//        }
 
-        if (isset($conditions['ids']) && $conditions['ids'] === self::EMPTY_COURSE_SET_IDS) {
-            $conditions['ids'] = array(0);
-        }
-
-        if ($filter['price'] === 'free') { //筛选免费课程
-            $conditions['price'] = '0.00';
-        }
-
-        if ($filter['type'] === 'live') {   //筛选直播课程
-            $conditions['type'] = 'live';
-        }
+//        if ($filter['price'] === 'free') { //筛选免费课程
+//            $conditions['price'] = '0.00';
+//        }
+//
+//        if ($filter['type'] === 'live') {   //筛选直播课程
+//            $conditions['type'] = 'live';
+//        }
 //        $conditions['type'] = 'normal';//..定义默认显示的课程类型
         unset($conditions['filter']);
 
@@ -75,8 +77,9 @@ class ExploreController extends BaseController
         $orderBy = empty($conditions['orderBy']) ? $orderBy : $conditions['orderBy'];
         unset($conditions['orderBy']);
 
-        $conditions['parentId'] = 0;
-        $conditions['status'] = 'published';
+        $conditions['isTest'] = 1;
+        $conditions['status'] = 'open';
+//        $conditions['testCategoryId'] = $conditions['categoryId'];
 
         $paginator = new Paginator(
             $this->get('request'),
@@ -84,79 +87,91 @@ class ExploreController extends BaseController
             20
         );
 
-        $courseSets = array();
-        if ($orderBy !== 'recommendedSeq') { //如果不是筛选：推荐recommendedSeq
-            //获取课程
-            $courseSets = $this->getCourseSetService()->searchCourseSets(
-                $conditions,
-                $orderBy,
-                $paginator->getOffsetCount(),
-                $paginator->getPerPageCount()
-            );
-        }
+        $testpapers = array();
 
-        if ($orderBy === 'recommendedSeq') {  //如果筛选：推荐recommendedSeq
-            $conditions['recommended'] = 1;
-            $recommendCount = $this->getCourseSetService()->countCourseSets($conditions);
-            $currentPage = $request->query->get('page') ? $request->query->get('page') : 1;
-            $recommendPage = (int) ($recommendCount / 20);
-            $recommendLeft = $recommendCount % 20;
+        $testpapers = $this->getTestpaperService()->searchTestpapers(
+            $conditions,
+            array('createdTime' => 'DESC'),
+            $paginator->getOffsetCount(),
+            $paginator->getPerPageCount()
+        );
 
-            if ($currentPage <= $recommendPage) {
-                $courseSets = $this->getCourseSetService()->searchCourseSets(
-                    $conditions,
-                    $orderBy,
-                    ($currentPage - 1) * 20,
-                    20
-                );
-            } elseif (($recommendPage + 1) == $currentPage) {
-                $courseSets = $this->getCourseSetService()->searchCourseSets(
-                    $conditions,
-                    $orderBy,
-                    ($currentPage - 1) * 20,
-                    20
-                );
-                $conditions['recommended'] = 0;
-                $coursesTemp = $this->getCourseSetService()->searchCourseSets(
-                    $conditions,
-                    array('createdTime' => 'DESC'),
-                    0,
-                    20 - $recommendLeft
-                );
-                $courseSets = array_merge($courseSets, $coursesTemp);
-            } else {
-                $conditions['recommended'] = 0;
-                $courseSets = $this->getCourseSetService()->searchCourseSets(
-                    $conditions,
-                    array('createdTime' => 'DESC'),
-                    (20 - $recommendLeft) + ($currentPage - $recommendPage - 2) * 20,
-                    20
-                );
-            }
-        }
+//        var_dump($conditions);
+//        var_dump($testpapers);exit();
 
-        $courseSets = ArrayToolkit::index($courseSets, 'id');
-        $courses = $this->getCourseService()->findCoursesByCourseSetIds(ArrayToolkit::column($courseSets, 'id'));
-        $courses = $this->fillCourseTryLookVideo($courses);
+//        if ($orderBy !== 'recommendedSeq') { //如果不是筛选：推荐recommendedSeq
+//            //获取课程
+//            $courseSets = $this->getCourseSetService()->searchCourseSets(
+//                $conditions,
+//                $orderBy,
+//                $paginator->getOffsetCount(),
+//                $paginator->getPerPageCount()
+//            );
+//        }
 
-        $tryLookVideoCourses = array_filter($courses, function ($course) {
-            return !empty($course['tryLookVideo']);
-        });
-        $courses = ArrayToolkit::index($courses, 'courseSetId');
-        $tryLookVideoCourses = ArrayToolkit::index($tryLookVideoCourses, 'courseSetId');
+//        if ($orderBy === 'recommendedSeq') {  //如果筛选：推荐recommendedSeq
+//            $conditions['recommended'] = 1;
+//            $recommendCount = $this->getCourseSetService()->countCourseSets($conditions);
+//            $currentPage = $request->query->get('page') ? $request->query->get('page') : 1;
+//            $recommendPage = (int) ($recommendCount / 20);
+//            $recommendLeft = $recommendCount % 20;
+//
+//            if ($currentPage <= $recommendPage) {
+//                $courseSets = $this->getCourseSetService()->searchCourseSets(
+//                    $conditions,
+//                    $orderBy,
+//                    ($currentPage - 1) * 20,
+//                    20
+//                );
+//            } elseif (($recommendPage + 1) == $currentPage) {
+//                $courseSets = $this->getCourseSetService()->searchCourseSets(
+//                    $conditions,
+//                    $orderBy,
+//                    ($currentPage - 1) * 20,
+//                    20
+//                );
+//                $conditions['recommended'] = 0;
+//                $coursesTemp = $this->getCourseSetService()->searchCourseSets(
+//                    $conditions,
+//                    array('createdTime' => 'DESC'),
+//                    0,
+//                    20 - $recommendLeft
+//                );
+//                $courseSets = array_merge($courseSets, $coursesTemp);
+//            } else {
+//                $conditions['recommended'] = 0;
+//                $courseSets = $this->getCourseSetService()->searchCourseSets(
+//                    $conditions,
+//                    array('createdTime' => 'DESC'),
+//                    (20 - $recommendLeft) + ($currentPage - $recommendPage - 2) * 20,
+//                    20
+//                );
+//            }
+//        }
 
-        array_walk($courseSets, function (&$courseSet) use ($courses, $tryLookVideoCourses) {
-            if (isset($tryLookVideoCourses[$courseSet['id']])) {
-                $courseSet['course'] = $tryLookVideoCourses[$courseSet['id']];
-            } else {
-                $courseSet['course'] = $courses[$courseSet['id']];
-            }
-        });
+//        $courseSets = ArrayToolkit::index($courseSets, 'id');
+//        $courses = $this->getCourseService()->findCoursesByCourseSetIds(ArrayToolkit::column($courseSets, 'id'));
+//        $courses = $this->fillCourseTryLookVideo($courses);
+//
+//        $tryLookVideoCourses = array_filter($courses, function ($course) {
+//            return !empty($course['tryLookVideo']);
+//        });
+//        $courses = ArrayToolkit::index($courses, 'courseSetId');
+//        $tryLookVideoCourses = ArrayToolkit::index($tryLookVideoCourses, 'courseSetId');
+//
+//        array_walk($courseSets, function (&$courseSet) use ($courses, $tryLookVideoCourses) {
+//            if (isset($tryLookVideoCourses[$courseSet['id']])) {
+//                $courseSet['course'] = $tryLookVideoCourses[$courseSet['id']];
+//            } else {
+//                $courseSet['course'] = $courses[$courseSet['id']];
+//            }
+//        });
 
         return $this->render(
-            'course-set/explore.html.twig',
+            'testpaper/explore.html.twig',
             array(
-                'courseSets' => $courseSets, //课程列表
+                'testpapers'   =>  $testpapers, //试卷列表
+                'courseSets' => "", //课程列表
                 'category' => $category, //筛选分类名称
                 'filter' => $filter, //筛选条件
                 'orderBy' => $orderBy, //排序
@@ -247,7 +262,7 @@ class ExploreController extends BaseController
         return array($conditions, $tags);
     }
 
-    //根据查询条件获取分类   categoryId课程所属分类Id
+    //根据查询条件获取分类   在用 testCategoryId试卷所属分类Id
     protected function mergeConditionsByCategory($conditions, $category)
     {
         $categoryArray = array();
@@ -266,7 +281,7 @@ class ExploreController extends BaseController
         if (!empty($conditions['code'])) {
             $categoryArray = $this->getCategoryService()->getCategoryByCode($conditions['code']);
 
-            $conditions['categoryId'] = $categoryArray['id'];
+            $conditions['testCategoryId'] = $categoryArray['id'];
         }
 
         $category = array(
@@ -556,6 +571,14 @@ class ExploreController extends BaseController
     protected function getUserService()
     {
         return $this->createService('User:UserService');
+    }
+
+    /**
+     * @return TestpaperService
+     */
+    protected function getTestpaperService()
+    {
+        return $this->createService('Testpaper:TestpaperService');
     }
 
     /**
