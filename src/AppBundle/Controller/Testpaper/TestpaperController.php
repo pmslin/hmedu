@@ -49,7 +49,7 @@ class TestpaperController extends BaseController
             'courseId'  => 0,
             'limitedTime'   => $testpaper['limitedTime']
         );
-        $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields); //往考试记录表testpapet_result_v8表插入记录(有记录返回记录，没有记录新增记录)
+        $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields); //往考试记录表testpaper_result_v8表插入记录(有记录返回记录，没有记录新增记录)
 
         if ('doing' === $testpaperResult['status']) {
             return $this->redirect($this->generateUrl('testpaper_show', array('resultId' => $testpaperResult['id'])));
@@ -104,7 +104,7 @@ class TestpaperController extends BaseController
         );
     }
 
-    /***试卷  点击开始做题（用户已做过的试卷），继续做题或显示考试结果提示页面
+    /***试卷  考试页面，继续做题或显示考试结果提示页面，做题来到的页面
      * @param Request $request
      * @param $resultId 做题记录表id  testpaper_result_v8
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -133,8 +133,8 @@ class TestpaperController extends BaseController
 
         $favorites = $this->getQuestionService()->findUserFavoriteQuestions($testpaperResult['userId']); //最爱  标记？收藏？
 
-        $activity = $this->getActivityService()->getActivity($testpaperResult['lessonId']);
-        $testpaperActivity = $this->getTestpaperActivityService()->getActivity($activity['mediaId']);
+        $activity = $this->getActivityService()->getActivity($testpaperResult['lessonId']); //根据testpaper_result_v8表的lessonId获取acticity表数据 主键查询
+        $testpaperActivity = $this->getTestpaperActivityService()->getActivity($activity['mediaId']);  //根据activity表的mediaId获取activity_testpaper表数据  主键查询
 
         if ($testpaperActivity['testMode'] === 'realTime') {
             $testpaperResult['usedTime'] = time() - $activity['startTime'];
@@ -143,7 +143,7 @@ class TestpaperController extends BaseController
         $attachments = $this->getTestpaperService()->findAttachments($testpaper['id']);
         $limitedTime = $testpaperActivity['limitedTime'] * 60 - $testpaperResult['usedTime'];
         $limitedTime = $limitedTime > 0 ? $limitedTime : 1;
-
+//var_dump($activity);
         return $this->render('testpaper/start-do-show.html.twig', array(
             'questions' => $questions,
             'limitedTime' => $limitedTime,
