@@ -1558,7 +1558,7 @@ course_text_activity_auto_save:
     defaults: { _controller: AppBundle:Activity/Text:autoSave }
     methods: [POST]
 
-#task
+#task 课程页面点击任务（课时）
 course_task_show:
     path:  /course/{courseId}/task/{id}/show
     defaults: { _controller: AppBundle:Task:show }
@@ -2367,10 +2367,19 @@ course_set_manage_testpaper_build_check:
   path: /course_set/{courseSetId}/manage/{type}/build/check
   defaults: { _controller: AppBundle:Testpaper/Manage:buildCheck }
 
+#开始考试（未做过的试卷）
 testpaper_do:
   path: /lesson/{lessonId}/testpaper/{testId}/do
   defaults: { _controller: AppBundle:Testpaper/Testpaper:doTestpaper }
 
+
+#独立题库开始考试（未做过的试卷）
+test_do:
+  path: /test/{testId}/do
+  defaults: { _controller: AppBundle:Testpaper/Testpaper:doTestBank }
+
+
+#点击开始做题（用户已做过的试卷）
 testpaper_show:
   path: /testpaper/{resultId}/show
   defaults: { _controller: AppBundle:Testpaper/Testpaper:doTest }

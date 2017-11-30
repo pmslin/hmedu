@@ -18,6 +18,56 @@ use AppBundle\Common\Exception\AccessDeniedException;
 
 class TestpaperController extends BaseController
 {
+    //独立题库开始考试（未做过的试卷）
+    public function doTestBankAction(Request $request, $testId)
+    {
+        $user = $this->getUser();
+
+        $testpaper = $this->getTestpaperService()->getTestpaperByIdAndType($testId, 'testpaper');
+
+        if (empty($testpaper)) {
+            throw $this->createResourceNotFoundException('testpaper', $testId);
+        }
+
+        if ($testpaper['status'] === 'draft') {
+            return $this->createMessageResponse('info', $this->getServiceKernel()->trans('该试卷未发布，如有疑问请联系老师！'));
+        }
+
+        if ($testpaper['status'] === 'closed') {
+            return $this->createMessageResponse('info', $this->getServiceKernel()->trans('该试卷已关闭，如有疑问请联系老师！'));
+        }
+
+//        $result = $this->testpaperActivityCheck($lessonId, $testpaper);
+//        if (!$result['result']) {
+//            return $this->createMessageResponse('info', $result['message']);
+//        }
+
+        //*******
+//        $fields = $this->getTestpaperFields(277);
+        $fields = array(
+            'lessonId'  => 0,
+            'courseId'  => 0,
+            'limitedTime'   => $testpaper['limitedTime']
+        );
+        $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields); //往考试记录表testpapet_result_v8表插入记录(有记录返回记录，没有记录新增记录)
+
+        if ('doing' === $testpaperResult['status']) {
+            return $this->redirect($this->generateUrl('testpaper_show', array('resultId' => $testpaperResult['id'])));
+        }
+
+        return $this->redirect(
+            $this->generateUrl('testpaper_result_show', array('resultId' => $testpaperResult['id']))
+        );
+    }
+
+
+
+    /***开始考试（未做过的试卷）
+     * @param Request $request
+     * @param $testId
+     * @param $lessonId activity表id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function doTestpaperAction(Request $request, $testId, $lessonId)
     {
         $user = $this->getUser();
@@ -42,7 +92,8 @@ class TestpaperController extends BaseController
         }
 
         $fields = $this->getTestpaperFields($lessonId);
-        $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields);
+//        var_dump($fields);exit();
+        $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields); //往考试记录表testpapet_result_v8表插入记录(有记录返回记录，没有记录新增记录)
 
         if ('doing' === $testpaperResult['status']) {
             return $this->redirect($this->generateUrl('testpaper_show', array('resultId' => $testpaperResult['id'])));
@@ -53,10 +104,16 @@ class TestpaperController extends BaseController
         );
     }
 
+    /***试卷  点击开始做题（用户已做过的试卷），继续做题或显示考试结果提示页面
+     * @param Request $request
+     * @param $resultId 做题记录表id  testpaper_result_v8
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function doTestAction(Request $request, $resultId)
     {
         $testpaperResult = $this->getTestpaperService()->getTestpaperResult($resultId);
 
+        //判断试卷是否是finished评卷结束，reviewing评卷中。是的话显示试卷结果提示页面
         if (in_array($testpaperResult['status'], array('reviewing', 'finished'))) {
             return $this->redirect(
                 $this->generateUrl('testpaper_result_show', array('resultId' => $testpaperResult['id']))
@@ -68,13 +125,13 @@ class TestpaperController extends BaseController
             return $this->createMessageResponse('info', 'access denied');
         }
 
-        $testpaper = $this->getTestpaperService()->getTestpaperByIdAndType($testpaperResult['testId'], $testpaperResult['type']);
+        $testpaper = $this->getTestpaperService()->getTestpaperByIdAndType($testpaperResult['testId'], $testpaperResult['type']); //根据试卷id和试卷类型找到试卷
 
-        $questions = $this->getTestpaperService()->showTestpaperItems($testpaper['id'], $testpaperResult['id']);
+        $questions = $this->getTestpaperService()->showTestpaperItems($testpaper['id'], $testpaperResult['id']); //根据试卷id和试卷做题记录id，找到题目
 
-        $total = $this->getTestpaperService()->countQuestionTypes($testpaper, $questions);
+        $total = $this->getTestpaperService()->countQuestionTypes($testpaper, $questions); //根据试卷和题目，计算题数和总分
 
-        $favorites = $this->getQuestionService()->findUserFavoriteQuestions($testpaperResult['userId']);
+        $favorites = $this->getQuestionService()->findUserFavoriteQuestions($testpaperResult['userId']); //最爱  标记？收藏？
 
         $activity = $this->getActivityService()->getActivity($testpaperResult['lessonId']);
         $testpaperActivity = $this->getTestpaperActivityService()->getActivity($activity['mediaId']);
@@ -359,6 +416,7 @@ class TestpaperController extends BaseController
 
     protected function getTestpaperFields($activityId)
     {
+        //activity表
         $activity = $this->getActivityService()->getActivity($activityId);
         $testpaperActivity = $this->getTestpaperActivityService()->getActivity($activity['mediaId']);
 

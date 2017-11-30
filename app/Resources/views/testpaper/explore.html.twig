@@ -122,12 +122,12 @@
 		
 			<li class="task-item task-content mouse-control">
 				<i class="es-icon es-icon-undone-check color-gray left-menu"></i>
-					<a class="title" href="/app_dev.php/course/42/task/278/show">
+					<a class="title" href="{{ path('test_do', {testId:testpaper.id}) }}">
 					  <span style="font-size:16px; "> {{ testpaper.name }} </span>	 <br />
 					  <span style="font-size:12px; color:#A9A9A9;">考试时长：{{testpaper.limitedTime}}  总分：{{testpaper.score}} </span>
 					</a>
 				<span class="right-menu color-gray ">
-				<a class="btn btn-primary" href="/app_dev.php/course/40/task/275/show">
+				<a class="btn btn-primary" href="{{ path('test_do', {testId: testpaper.id}) }}">
                       开始考试
                   </a>
 				</span>

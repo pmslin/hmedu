@@ -78,7 +78,7 @@ class TestPaperController extends BaseController
         unset($conditions['orderBy']);
 
         $conditions['isTest'] = 1;
-        $conditions['status'] = 'draft';  //open
+        $conditions['status'] = 'open';  //open  draft
 //        $conditions['testCategoryId'] = $conditions['categoryId'];
 
         $paginator = new Paginator(

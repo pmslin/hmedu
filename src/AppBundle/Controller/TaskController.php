@@ -15,6 +15,12 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class TaskController extends BaseController
 {
+    /***课程页面点击任务（课时）
+     * @param Request $request
+     * @param $courseId 课程id
+     * @param $id 任务id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function showAction(Request $request, $courseId, $id)
     {
         $preview = $request->query->get('preview');
