@@ -14,6 +14,14 @@ class TestpaperActivityDaoImpl extends GeneralDaoImpl implements TestpaperActivi
         return $this->findInField('id', $ids);
     }
 
+    //根据试卷id查找
+    public function findByMediaId($mediaId)
+    {
+        $sql = "SELECT * FROM {$this->table()} WHERE mediaId = ?";
+
+        return $this->db()->fetchAll($sql, array($mediaId)) ?: array();
+    }
+
     public function findByMediaIds($mediaIds)
     {
         return $this->findInField('mediaId', $mediaIds);

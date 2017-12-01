@@ -8,6 +8,8 @@ interface TestpaperActivityService
 
     public function findActivitiesByIds($ids);
 
+    public function findActivitiesByMediaId($mediaIds);
+
     public function findActivitiesByMediaIds($mediaIds);
 
     public function createActivity($fields);

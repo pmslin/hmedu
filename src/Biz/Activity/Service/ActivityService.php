@@ -12,6 +12,8 @@ interface ActivityService
 
     public function findActivities($ids, $fetchMedia = false);
 
+    public function findActivitiesByMediaId($mediaIds);
+
     public function findActivitiesByCourseIdAndType($courseId, $type, $fetchMedia = false);
 
     public function findActivitiesByCourseSetIdAndType($courseSetId, $type, $fetchMedia = false);
@@ -35,6 +37,8 @@ interface ActivityService
      * @return mixed
      */
     public function preUpdateCheck($activityId, $fields);
+
+    public function createActivityFortest($fields);
 
     public function createActivity($activity);
 

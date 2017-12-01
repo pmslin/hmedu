@@ -20,7 +20,7 @@ class TestPaperController extends BaseController
 {
     const EMPTY_COURSE_SET_IDS = 0;
 
-    /***前台展示课程列表  在用
+    /***前台展示独立题库列表  在用
      * @param Request $request
      * @param $category 分类名称
      * @return \Symfony\Component\HttpFoundation\Response

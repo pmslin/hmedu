@@ -43,13 +43,23 @@ class TestpaperController extends BaseController
 //        }
 
         //*******
-//        $fields = $this->getTestpaperFields(277);
-        $fields = array(
-            'lessonId'  => 0,
-            'courseId'  => 0,
-            'limitedTime'   => $testpaper['limitedTime']
-        );
+
+        $activityTestpaper = $this->getTestpaperActivityService()->findActivitiesByMediaId($testpaper['id']);
+//        var_dump($activityTestpaper[0]['id']);exit();
+        $activity = $this->getActivityService()->findActivitiesByMediaId($activityTestpaper[0]['id']);
+//        var_dump($activity);exit();
+        $fields = $this->getTestpaperFields($activity[0]['id']);
+        $fields['test']=1;
+//        echo $testpaper['id'];
+//        var_dump($fields);exit();
+
+//        $fields = array(
+//            'lessonId'  => 0,
+//            'courseId'  => 0,
+//            'limitedTime'   => $testpaper['limitedTime']
+//        );
         $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields); //往考试记录表testpaper_result_v8表插入记录(有记录返回记录，没有记录新增记录)
+        //以此来判断当前用户是否做过这个题目，如果做过则显示考试结果页面，未做过则进入考试页面
 
         if ('doing' === $testpaperResult['status']) {
             return $this->redirect($this->generateUrl('testpaper_show', array('resultId' => $testpaperResult['id'])));

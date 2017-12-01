@@ -21,6 +21,15 @@ class ActivityDaoImpl extends GeneralDaoImpl implements ActivityDao
         return $this->findInField('id', $ids);
     }
 
+
+    //根据试卷activity_testpaper id查找
+    public function findByMediaId($mediaId)
+    {
+        $sql = "SELECT * FROM {$this->table()} WHERE mediaId = ?";
+
+        return $this->db()->fetchAll($sql, array($mediaId)) ?: array();
+    }
+
     public function getByCopyIdAndCourseSetId($copyId, $courseSetId)
     {
         return $this->getByFields(array('copyId' => $copyId, 'fromCourseSetId' => $courseSetId));

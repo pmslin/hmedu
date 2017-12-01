@@ -428,14 +428,27 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
 
         $testpaper = $this->getTestpaper($id);
         $user = $this->getCurrentUser();
+//echo $fields['test'];
+        if (isset($fields['test'])){
+            $testpaperResult = $this->getUserUnfinishResult(
+                $testpaper['id'],
+                0,
+                0,
+                $testpaper['type'],
+                $user['id']
+            );
+        }else{
+            $testpaperResult = $this->getUserUnfinishResult(
+                $testpaper['id'],
+                $fields['courseId'],
+                $fields['lessonId'],
+                $testpaper['type'],
+                $user['id']
+            );
+        }
 
-        $testpaperResult = $this->getUserUnfinishResult(
-            $testpaper['id'],
-            $fields['courseId'],
-            $fields['lessonId'],
-            $testpaper['type'],
-            $user['id']
-        );
+//        var_dump($testpaperResult);exit();
+
 
         if (!$testpaperResult) {
             $fields = array(

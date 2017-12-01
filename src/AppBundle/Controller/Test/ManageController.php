@@ -264,15 +264,55 @@ class ManageController extends BaseController
             throw new NotFoundException("找不到该试卷 testpaper#{$testpaperId} not found");
         }
 
-        $testpaper = $this->getTestpaperService()->publishTestpaper($testpaperId); //发布操作
 
-        $user = $this->getUserService()->getUser($testpaper['updatedUserId']);
+
+//        try{
+//            $this->beginTransaction(); //开始事务
+//            $this->getConnection()->beginTransaction();
+            $testpaper = $this->getTestpaperService()->publishTestpaper($testpaperId); //发布操作
+
+            $user = $this->getUserService()->getUser($testpaper['updatedUserId']);
+
+
+            //插数据到activity_testpaper表
+            $activityTestpaperFields = array(
+                "mediaId"   =>  $testpaper['id'], //试卷id
+                "limitedTime"   =>  $testpaper['limitedTime'],  //考试时间，限制时长
+                "finishCondition"   => array('type'=>'submit','finishScore'=>"0"), //
+
+            );
+            $activityTestpaper = $this->getTestpaperActivityService()->createActivity($activityTestpaperFields);
+
+
+            //插数据到activity表
+            $activityFields = array(
+                "title" =>  $testpaper['name'], //标题
+                "mediaId"   =>  $activityTestpaper['id'],   //activity_testpaper表id
+                "mediaType" =>  "testpaper",    //活动类型（试题类型）
+                "content"   =>  $testpaper['description'],  //活动内容
+                "length"    =>  $testpaper['limitedTime'],  //时长，限制时长
+                "createdTime"   =>  time(),//创建时间
+                'fromCourseId'  =>  0,
+                'fromCourseSetId'   =>  0
+            );
+//            var_dump($activity);
+            $activity = $this->getActivityService()->createActivityFortest($activityFields);
+
+//            $this->getItemResultDao()->db()->commit();//提交事务
+//        }catch (\Exception $e){
+//            $this->getItemResultDao()->db()->rollback();//回滚事务
+//        }
+
+
+
 
         return $this->render('test/testpaper-list-tr.html.twig', array(
             'testpaper' => $testpaper,
             'user' => $user,
         ));
     }
+
+
 
     /***关闭独立题库试卷 在用
      * @param Request $request
@@ -443,6 +483,14 @@ class ManageController extends BaseController
     protected function getCategoryService()
     {
         return $this->createService('Taxonomy:CategoryService');
+    }
+
+    /**
+     * @return ActivityService
+     */
+    protected function getActivityService()
+    {
+        return $this->createService('Activity:ActivityService');
     }
 
     /**

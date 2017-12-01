@@ -8,5 +8,7 @@ interface TestpaperActivityDao extends GeneralDaoInterface
 {
     public function findByIds($ids);
 
+    public function findByMediaId($mediaId);
+
     public function findByMediaIds($mediaIds);
 }

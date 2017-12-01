@@ -28,6 +28,12 @@ class ActivityServiceImpl extends BaseService implements ActivityService
         return $activity;
     }
 
+    //根据试卷id查找
+    public function findActivitiesByMediaId($mediaId)
+    {
+        return $this->getActivityDao()->findByMediaId($mediaId);
+    }
+
     public function getActivityByCopyIdAndCourseSetId($copyId, $courseSetId)
     {
         return $this->getActivityDao()->getByCopyIdAndCourseSetId($copyId, $courseSetId);
@@ -130,13 +136,22 @@ class ActivityServiceImpl extends BaseService implements ActivityService
         $activityInstance->preUpdateCheck($activity, $fields);
     }
 
+    //独立题库插入记录
+    public function createActivityFortest($fields)
+    {
+        return $this->getActivityDao()->create($fields);
+    }
+
     public function createActivity($fields)
     {
         if ($this->invalidActivity($fields)) {
             throw $this->createInvalidArgumentException('activity is invalid');
         }
 
-        $this->getCourseService()->tryManageCourse($fields['fromCourseId']);
+        if ($fields['fromCourseId'] != 0){
+            $this->getCourseService()->tryManageCourse($fields['fromCourseId']);
+        }
+
 
         $activityConfig = $this->getActivityConfig($fields['mediaType']);
         $materials = $this->getMaterialsFromActivity($fields, $activityConfig);

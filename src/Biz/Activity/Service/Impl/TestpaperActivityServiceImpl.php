@@ -19,6 +19,12 @@ class TestpaperActivityServiceImpl extends BaseService implements TestpaperActiv
         return $this->getTestpaperActivityDao()->findByIds($ids);
     }
 
+    //根据试卷id查找
+    public function findActivitiesByMediaId($mediaId)
+    {
+        return $this->getTestpaperActivityDao()->findByMediaId($mediaId);
+    }
+
     public function findActivitiesByMediaIds($mediaIds)
     {
         $activities = $this->getTestpaperActivityDao()->findByMediaIds($mediaIds);
