@@ -428,17 +428,21 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
 
         $testpaper = $this->getTestpaper($id);
         $user = $this->getCurrentUser();
-//echo $fields['test'];
-        if (isset($fields['test'])){
-            $testpaperResult = $this->getUserUnfinishResult(
-                $testpaper['id'],
-                0,
-                0,
-                $testpaper['type'],
-                $user['id']
+
+
+        //筛选testpaper_result表是否有该用户做题记录，如果有返回做题记录，如果没有创建做题记录
+        //独立题库流程 （将courseId设置为零）
+        if (isset($fields['test'])){ //独立题库试卷跑这里
+            $testpaperResult = $this->getUserLatelyResultByTestId( //获取用户试卷做题记录（独立题库试卷）
+                $user['id'], //用户id
+                $testpaper['id'],//试卷id
+                0, //独立题库，courseId为0
+                $fields['lessonId'], //activity的id
+                $testpaper['type'] //试卷类型
+
             );
-        }else{
-            $testpaperResult = $this->getUserUnfinishResult(
+        }else{ // status != 'finished'   //课程试卷跑这里
+            $testpaperResult = $this->getUserUnfinishResult(    //获取未做完的试卷记录（课程试卷）
                 $testpaper['id'],
                 $fields['courseId'],
                 $fields['lessonId'],
@@ -447,9 +451,8 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
             );
         }
 
-//        var_dump($testpaperResult);exit();
 
-
+        //如果没有做题记录，新插入做题记录
         if (!$testpaperResult) {
             $fields = array(
                 'paperName' => $testpaper['name'],

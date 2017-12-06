@@ -2244,7 +2244,7 @@ test_set_manage_testpaper_update:
     path: /testpaper/{testpaperId}/update
     defaults: { _controller: AppBundle:Test/Manage:update }
 
-#独立题库试卷管理题目页面和新增、修改、删除题目到试卷功能
+#独立题库试卷管理题目页面和新增、修改、删除题目到试卷功能    post提交：保存试卷
 test_set_manage_testpaper_questions:
   path: /testpaper/{testpaperId}/questions
   defaults: { _controller: AppBundle:Test/Manage:questions }

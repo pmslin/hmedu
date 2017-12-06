@@ -209,7 +209,7 @@ class ManageController extends BaseController
 //            return $this->createMessageResponse('error', '已发布或已关闭的试卷不能再修改题目');
 //        }
 
-        if ($request->getMethod() === 'POST') { //新增、修改、删除题目到试卷功能
+        if ($request->getMethod() === 'POST') { //新增、修改、删除题目到试卷功能   保存试卷
             $fields = $request->request->all();
 
             if (empty($fields['questions'])) {
@@ -225,7 +225,7 @@ class ManageController extends BaseController
             $this->setFlashMessage('success', $this->getServiceKernel()->trans('试卷题目保存成功！'));
 
             return $this->createJsonResponse(array(
-                'goto' => $this->generateUrl('admin_test'),
+                'goto' => $this->generateUrl('manage_testlist'),
             ));
         }
 

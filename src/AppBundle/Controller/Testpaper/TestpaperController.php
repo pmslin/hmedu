@@ -18,7 +18,7 @@ use AppBundle\Common\Exception\AccessDeniedException;
 
 class TestpaperController extends BaseController
 {
-    //独立题库开始考试（未做过的试卷）
+    //独立题库开始考试按钮，如果是已做完试卷显示结果页面，如果该试卷未做或未交卷则显示做题页面
     public function doTestBankAction(Request $request, $testId)
     {
         $user = $this->getUser();
@@ -44,30 +44,30 @@ class TestpaperController extends BaseController
 
         //*******
 
-        $activityTestpaper = $this->getTestpaperActivityService()->findActivitiesByMediaId($testpaper['id']);
-//        var_dump($activityTestpaper[0]['id']);exit();
-        $activity = $this->getActivityService()->findActivitiesByMediaId($activityTestpaper[0]['id']);
-//        var_dump($activity);exit();
-        $fields = $this->getTestpaperFields($activity[0]['id']);
-        $fields['test']=1;
-//        echo $testpaper['id'];
-//        var_dump($fields);exit();
+        $activityTestpaper = $this->getTestpaperActivityService()->findActivitiesByMediaId($testpaper['id']); //activity_testpaper 数据
+        rsort($activityTestpaper);//数组倒序，由此拿到表中最新记录
 
-//        $fields = array(
-//            'lessonId'  => 0,
-//            'courseId'  => 0,
-//            'limitedTime'   => $testpaper['limitedTime']
-//        );
-        $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields); //往考试记录表testpaper_result_v8表插入记录(有记录返回记录，没有记录新增记录)
+        $activity = $this->getActivityService()->findActivitiesByMediaId($activityTestpaper[0]['id']); //activity 数据
+        rsort($activity); //数组倒序，由此拿到表中最新记录
+
+        $fields = $this->getTestpaperFields($activity[0]['id']);
+        $fields['test']=1; //标记为题库，传到下面的方法，来筛选不同的
+
+
+        //往考试记录表testpaper_result_v8表插入记录(有记录返回记录，没有记录新增记录)
+        $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields);
         //以此来判断当前用户是否做过这个题目，如果做过则显示考试结果页面，未做过则进入考试页面
 
+        //如果试卷是还在做题状态，则显示做题页面
         if ('doing' === $testpaperResult['status']) {
             return $this->redirect($this->generateUrl('testpaper_show', array('resultId' => $testpaperResult['id'])));
         }
 
+        //如果其他状态，如已经交卷，finished 则显示结果页面
         return $this->redirect(
             $this->generateUrl('testpaper_result_show', array('resultId' => $testpaperResult['id']))
         );
+
     }
 
 
@@ -96,13 +96,21 @@ class TestpaperController extends BaseController
             return $this->createMessageResponse('info', $this->getServiceKernel()->trans('该试卷已关闭，如有疑问请联系老师！'));
         }
 
-        $result = $this->testpaperActivityCheck($lessonId, $testpaper);
-        if (!$result['result']) {
-            return $this->createMessageResponse('info', $result['message']);
+
+        //查找activity表，看是否是独立题库试卷
+        $activity = $this->getActivityService()->getActivity($lessonId);
+        if ($activity['fromCourseId'] != 0){
+            //一个检测方法，课程试卷可能可用。  在独立题库走到这里时过不去，所以在这里做个判断，如果课程id不为零（即课程试卷）再去做检测。课程id为零（即独立题库试卷）不做检测
+            $result = $this->testpaperActivityCheck($lessonId, $testpaper);
+            if (!$result['result']) {
+                return $this->createMessageResponse('info', $result['message']);
+            }
         }
 
+
+
         $fields = $this->getTestpaperFields($lessonId);
-//        var_dump($fields);exit();
+
         $testpaperResult = $this->getTestpaperService()->startTestpaper($testpaper['id'], $fields); //往考试记录表testpapet_result_v8表插入记录(有记录返回记录，没有记录新增记录)
 
         if ('doing' === $testpaperResult['status']) {
