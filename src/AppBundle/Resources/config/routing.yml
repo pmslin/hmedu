@@ -2950,6 +2950,7 @@ course_member_deadline_reach:
     path:  /course/{id}/member/deadline/reach
     defaults: { _controller: AppBundle:Course/Course:deadlineReach }
 
+#购买课程
 course_buy:
     path: /course/{id}/buy
     defaults: { _controller: AppBundle:Course/CourseOrder:buy }
@@ -2958,7 +2959,7 @@ course_order_repay:
     path:  /course/order/repay
     defaults: { _controller: AppBundle:Course/CourseOrder:repay }
 
-# last route
+# last route 展示课程详情页面
 course_show:
   path: /course/{id}/{tab}
   defaults: { _controller: AppBundle:Course/Course:show, tab: 'summary' }

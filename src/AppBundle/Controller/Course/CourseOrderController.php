@@ -9,6 +9,11 @@ use AppBundle\Controller\BaseController;
 
 class CourseOrderController extends BaseController
 {
+    /***购买课程
+     * @param Request $request
+     * @param $id 课程Id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function buyAction(Request $request, $id)
     {
         $course = $this->getCourseService()->getCourse($id);

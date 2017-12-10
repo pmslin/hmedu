@@ -44,16 +44,24 @@ class CourseController extends CourseBaseController
         );
     }
 
+    /***展示课程详情页面
+     * @param Request $request
+     * @param $id 课程id
+     * @param string $tab
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction(Request $request, $id, $tab = 'summary')
     {
         $tab = $this->prepareTab($tab);
         $user = $this->getCurrentUser();
 
+        //course_v8表
         $course = $this->getCourseService()->getCourse($id);
         if (empty($course)) {
             throw $this->createNotFoundException('该教学计划不存在！');
         }
 
+        //course_set_v8表
         $courseSet = $this->getCourseSetService()->getCourseSet($course['courseSetId']);
         if (empty($courseSet)) {
             throw $this->createNotFoundException('该教学计划所属课程不存在！');
