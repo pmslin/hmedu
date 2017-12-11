@@ -304,6 +304,11 @@ admin_user_edit:
     path:  /user/{id}/edit
     defaults: { _controller: AppBundle:Admin/User:edit }
 
+#题库权限
+admin_test_member:
+    path:  /user/{id}/editd
+    defaults: { _controller: AppBundle:Admin/User:editd }
+
 admin_user_org_update:
     path: /user/{id}/org/update
     defaults: { _controller: AppBundle:Admin/User:orgUpdate}

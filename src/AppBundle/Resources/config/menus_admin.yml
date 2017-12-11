@@ -43,6 +43,13 @@ admin:
                                     visable: (user.type != 'system')
                                     router_params:
                                         id: (user.id)
+                                admin_test_member:
+                                    name: '题库权限'
+                                    mode: modal
+                                    group: groupButton
+                                    visable: (user.type != 'system')
+                                    router_params:
+                                        id: (user.id)
                                 admin_user_roles:
                                     name: '设置用户组'
                                     mode: modal
