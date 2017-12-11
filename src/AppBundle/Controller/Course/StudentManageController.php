@@ -127,6 +127,12 @@ class StudentManageController extends BaseController
         );
     }
 
+    /***课程添加学院页面 / POST提交为添加学员操作
+     * @param Request $request
+     * @param $courseSetId 课程id
+     * @param $courseId 教学计划id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createCourseStudentAction(Request $request, $courseSetId, $courseId)
     {
         if ($request->isMethod('POST')) {
@@ -138,7 +144,7 @@ class StudentManageController extends BaseController
             }
 
             $data['userId'] = $user['id'];
-            $this->getCourseMemberService()->becomeStudentAndCreateOrder($user['id'], $courseId, $data);
+            $this->getCourseMemberService()->becomeStudentAndCreateOrder($user['id'], $courseId, $data); //添加课程学员，创建订单-orders表，添加学员到课程-course_member表
             $this->setFlashMessage('success', '添加学员成功');
 
             return $this->redirect(
@@ -236,6 +242,12 @@ class StudentManageController extends BaseController
         );
     }
 
+    /***课程添加学员 检测输入的学员合法性
+     * @param Request $request
+     * @param $courseSetId 课程id
+     * @param $courseId 教学计划id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function checkStudentAction(Request $request, $courseSetId, $courseId)
     {
         $keyword = $request->query->get('value');

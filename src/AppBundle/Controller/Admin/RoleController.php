@@ -103,6 +103,12 @@ class RoleController extends BaseController
         return $this->createJsonResponse(array('result' => true));
     }
 
+
+    /***后台-系统-角色管理-查看 角色详情页面
+     * @param Request $request
+     * @param $id 角色id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction(Request $request, $id)
     {
         $role = $this->getRoleService()->getRole($id);

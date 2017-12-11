@@ -1796,6 +1796,7 @@ course_set_manage_course_quit_records:
   path: /course_set/{courseSetId}/manage/course/{courseId}/quit_records
   defaults: {_controller: AppBundle:Course/StudentManage:studentQuitRecords}
 
+#课程添加学院页面 / POST提交为添加学员操作
 course_set_manage_course_students_add:
   path: /course_set/{courseSetId}/manage/course/{courseId}/students/add
   defaults: {_controller: AppBundle:Course/StudentManage:createCourseStudent}

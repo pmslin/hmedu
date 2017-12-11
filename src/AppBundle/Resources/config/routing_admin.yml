@@ -2228,6 +2228,7 @@ admin_role_delete:
     defaults: { _controller: AppBundle:Admin/Role:delete }
     methods: [POST]
 
+#后台-系统-角色管理-查看 角色详情页面
 admin_role_show:
     path:  /role/{id}/show
     defaults: { _controller: AppBundle:Admin/Role:show }

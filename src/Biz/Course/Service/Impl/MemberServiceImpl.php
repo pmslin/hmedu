@@ -28,6 +28,14 @@ use Biz\Classroom\Service\ClassroomService;
  */
 class MemberServiceImpl extends BaseService implements MemberService
 {
+    /** 添加课程学员，创建订单，添加学员到课程
+     * @param $userId
+     * @param $courseId
+     * @param $data
+     * @return array
+     * @throws \Codeages\Biz\Framework\Service\Exception\NotFoundException
+     * @throws \Codeages\Biz\Framework\Service\Exception\ServiceException
+     */
     public function becomeStudentAndCreateOrder($userId, $courseId, $data)
     {
         if (!ArrayToolkit::requireds($data, array('price', 'remark'))) {
@@ -55,7 +63,7 @@ class MemberServiceImpl extends BaseService implements MemberService
         $courseSet = $this->getCourseSetService()->getCourseSet($course['courseSetId']);
         $orderTitle = "购买课程《{$courseSet['title']}》- {$course['title']}";
         $orderPayment = '';
-        if (isset($data['isAdminAdded']) && $data['isAdminAdded'] == 1) {
+        if (isset($data['isAdminAdded']) && $data['isAdminAdded'] == 1) { //在订单标题标记为“管理员添加”
             $orderTitle = $orderTitle.'(管理员添加)';
             $orderPayment = 'outside';
         }
@@ -75,7 +83,7 @@ class MemberServiceImpl extends BaseService implements MemberService
             'payment' => $orderPayment,
         );
 
-        $order = $this->getOrderService()->createSystemOrder($systemOrder);
+        $order = $this->getOrderService()->createSystemOrder($systemOrder); //创建订单 orders表
 
         $info = array(
             'orderId' => $order['id'],
@@ -83,7 +91,7 @@ class MemberServiceImpl extends BaseService implements MemberService
             'becomeUseMember' => isset($data['becomeUseMember']) ? $data['becomeUseMember'] : false,
         );
 
-        $this->becomeStudent($order['targetId'], $order['userId'], $info);
+        $this->becomeStudent($order['targetId'], $order['userId'], $info); //添加学员到课程
 
         $member = $this->getCourseMember($course['id'], $user['id']);
 
@@ -547,6 +555,14 @@ class MemberServiceImpl extends BaseService implements MemberService
         );
     }
 
+    /***课程添加学员，插入课程学员记录表 course_member表
+     * @param $courseId 教学计划id
+     * @param $userId 用户id
+     * @param array $info 需要插入表的参数
+     * @return mixed
+     * @throws \Codeages\Biz\Framework\Service\Exception\NotFoundException
+     * @throws \Codeages\Biz\Framework\Service\Exception\ServiceException
+     */
     public function becomeStudent($courseId, $userId, $info = array())
     {
         $course = $this->getCourseService()->getCourse($courseId);
@@ -584,16 +600,18 @@ class MemberServiceImpl extends BaseService implements MemberService
             $deadline = $course['expiryEndDate'];
         }
 
+        //检测订单是否已经生成（添加记录前需要先生成订单）
         if (!empty($info['orderId'])) {
             $order = $this->getOrderService()->getOrder($info['orderId']);
 
-            if (empty($order)) {
+            if (empty($order)) { //没有订单，不能加入
                 throw $this->createServiceException("订单(#{$info['orderId']}})不存在，加入教学计划失败！");
             }
         } else {
             $order = null;
         }
 
+        //已学课时
         $conditions = array(
             'userId' => $userId,
             'status' => 'finish',
@@ -601,6 +619,7 @@ class MemberServiceImpl extends BaseService implements MemberService
         );
         $count = $this->getTaskResult()->countTaskResults($conditions);
 
+        //准备需要插入course_member表的数据
         $fields = array(
             'courseId' => $courseId,
             'userId' => $userId,
@@ -618,7 +637,7 @@ class MemberServiceImpl extends BaseService implements MemberService
             $fields['remark'] = empty($info['note']) ? '' : $info['note'];
         }
 
-        $member = $this->getMemberDao()->create($fields);
+        $member = $this->getMemberDao()->create($fields); //课程添加学员记录插入course_member表
 
         $this->refreshMemberNoteNumber($courseId, $userId);
 
