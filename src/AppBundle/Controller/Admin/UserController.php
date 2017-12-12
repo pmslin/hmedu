@@ -286,6 +286,12 @@ class UserController extends BaseController
         ));
     }
 
+
+    /***设置用户组页面 / post提交
+     * @param Request $request
+     * @param $id 用户id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function rolesAction(Request $request, $id)
     {
         $user = $this->getUserService()->getUser($id);
@@ -319,6 +325,40 @@ class UserController extends BaseController
 
         return $this->render('admin/user/roles-modal.html.twig', array(
             'user' => $user,
+        ));
+    }
+
+
+    /*** 题目权限
+     * @param Request $request
+     * @param $id 用户id
+     */
+    public function testMemberAction(Request $request, $id){
+        $user = $this->getUserService()->getUser($id);
+        $currentUser = $this->getUser();
+        $groupId = $this->getCategoryService()->getGroupByCode("test")['id']; //题库分组分类id
+        $testCategory = $this->getCategoryService()->getCategoryTree($groupId);
+//        var_dump($testCategory) ;
+
+//        $tree = PermissionBuilder::instance()->groupedPermissions($testCategory);
+//        $res = $tree->toArray();
+
+        if ($request->getMethod() === 'POST') {
+            echo 123;
+            $params = $request->request->all();
+            if (!empty($params['testCategoryId'])){
+                $testCategoryId=$params['testCategoryId'];
+                var_dump($testCategoryId);
+                exit();
+            }
+
+
+        }
+
+        return $this->render('admin/user/test-member-modal.html.twig', array(
+            'user' => $user,
+//            'testCategory' =>  json_encode($testCategory),
+            'testCategory' =>  $testCategory,
         ));
     }
 
@@ -531,6 +571,16 @@ class UserController extends BaseController
                 $this->getTokenService()->destoryToken($token['token']);
             }
         }
+    }
+
+
+
+    /**
+     * @return CategoryService
+     */
+    protected function getCategoryService()
+    {
+        return $this->createService('Taxonomy:CategoryService');
     }
 
     /**
