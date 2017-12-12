@@ -25,8 +25,18 @@ class DefaultController extends BaseController
         return $this->redirect($permissionPath);
     }
 
+    //管理后台按钮，后台首页
     public function indexAction(Request $request)
     {
+
+        //管理后台按钮，后台首页直接进入用户管理页面
+        return $this->redirect(
+            $this->generateUrl('admin_user')
+        );
+
+
+
+
         $weekAndMonthDate = array('weekDate' => date('Y-m-d', time() - 6 * 24 * 60 * 60), 'monthDate' => date('Y-m-d', time() - 29 * 24 * 60 * 60));
 
         return $this->render('admin/default/index.html.twig', array(
