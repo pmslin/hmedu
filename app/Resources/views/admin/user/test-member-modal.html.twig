@@ -8,16 +8,9 @@
 <form id="test-member-form" class="form-horizontal" method="post" action="{{ url('admin_test_member', {id:user.id}) }}" data-currentuser="{{ app.user.id }}" data-edituser="{{ user.id }}">
   <div class="checkboxs" id="old-checkboxs">
     {% set admin_roles = get_admin_roles() %}
-    {% for role in admin_roles if (role.code in app.user.roles or role.createdUserId == app.user.id) or 'ROLE_SUPER_ADMIN' in app.user.roles %}
-      <label>
-        <input type="checkbox" name="roles[]" value="{{role.code}}" {% if role.code in user.roles %}checked="checked"{% endif %}>{{role.name}}
-      </label>
-    {% endfor %}
-  </div>
-  
-  
-  {% for cat in testCategory if(cat.parentId == 0) %}
-	<br /> <span>{{cat.name}} </span> <br /> 
+   
+    {% for cat in testCategory if(cat.parentId == 0) %}
+	 <h4>{{cat.name}} </h4> 
 	 {% for cats in testCategory if(cats.parentId == cat.id) %}
 		<br /> <span>{{cats.name}} : </span>
 		<div style="margin-left:auto;">
@@ -26,9 +19,10 @@
 		{% endfor %}
 		</div>
 	 {% endfor %}
-  {% endfor %}
-	  
-
+    {% endfor %}
+   
+  </div>
+  
   <input type="hidden" name="_csrf_token" value="{{ csrf_token('site') }}">
 </form>
 {% endblock %}
@@ -41,6 +35,4 @@
   <script>app.load('user/test-member-modal');</script>
   
 
-  
-  
 {% endblock %}

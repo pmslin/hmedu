@@ -329,7 +329,7 @@ class UserController extends BaseController
     }
 
 
-    /*** 题目权限
+    /*** 题目权限页面 / 添加题库权限
      * @param Request $request
      * @param $id 用户id
      */
@@ -343,13 +343,34 @@ class UserController extends BaseController
 //        $tree = PermissionBuilder::instance()->groupedPermissions($testCategory);
 //        $res = $tree->toArray();
 
-        if ($request->getMethod() === 'POST') {
+
+
+
+
+
+        if ($request->getMethod() === 'POST') { //添加题库权限
             echo 123;
-            $params = $request->request->all();
+//            $params = $request->request->all();
+
+            $aa = $this->getTestMemberService()->getUser($groupId);
+            var_dump($aa);
+            echo 666;
+            exit();
+
             if (!empty($params['testCategoryId'])){
-                $testCategoryId=$params['testCategoryId'];
-                var_dump($testCategoryId);
+                $testCategoryId_arr=$params['testCategoryId'];
+                foreach ($testCategoryId_arr as $k=>$v){
+
+                }
+
+
+
+                $list = $this->getTestMemberService()->getUser(20,1);
+
+                var_dump($list);
                 exit();
+
+//                return $this->createJsonResponse(true);
             }
 
 
@@ -572,6 +593,18 @@ class UserController extends BaseController
             }
         }
     }
+
+
+
+    /**
+     * @return TestMemberService
+     */
+    protected function getTestMemberService()
+    {
+        return $this->createService('Testpaper:TestMemberService');
+    }
+
+
 
 
 
