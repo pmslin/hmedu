@@ -7,94 +7,109 @@ use Codeages\Biz\Framework\Dao\GeneralDaoImpl;
 
 class TestMemberDaoImpl extends GeneralDaoImpl implements TestMemberDao
 {
-    protected $table = 'testpaper_v8';
+    protected $table = 'test_member';
 
-    public function getByIdAndType($id, $type)
+
+    public function getByTestIdAndUserId($testId, $userId)
     {
-        return $this->getByFields(array('id' => $id, 'type' => $type));
+        return $this->getByFields(array(
+            'testId' => $testId,
+            'userId' => $userId,
+        ));
     }
-
-    //获取题库试卷
-    public function getByIsTest()
+   
+   
+    protected function _buildJoinQueryBuilder($conditions, $joinConnections = '')
     {
-        $sql = "SELECT * FROM {$this->table} WHERE  isTest=1";
+        $conditions = array_filter($conditions, function ($value) {
+            if ($value === '' || $value === null) {
+                return false;
+            }
 
-        return $this->db()->fetchAll($sql);
-    }
+            return true;
+        });
 
-    public function findTestpapersByIds(array $ids)
-    {
-        return $this->findInField('id', $ids);
-    }
+        $builder = new DynamicQueryBuilder($this->db(), $conditions);
+        $builder->from($this->table(), 'm')
+            ->join('m', 'testpaper_v8', 't', 'm.testId = t.id '.$joinConnections)
+            ->andWhere('m.isLearned = :isLearned')
+            ->andWhere('m.userId = :userId')
+			->andWhere('m.testId = :testId')
+			//->andWhere('m.courseId = :courseId')
+            ->andWhere('m.role = :role')
+            ->andWhere('m.courseId = :courseId')
+            ->andWhere('m.joinedType =:joinedType')
+            ->andWhere('m.noteNum > :noteNumGreaterThan');
+            //->andWhere('c.type = :type')
+            //->andWhere('c.parentId = :parentId')
+            //->andWhere('c.serializeMode =  :serializeMode')
+            //->andWhere('c.serializeMode IN ( :serializeModes)');
 
-    public function findTestpapersByIdsAndType($ids, $type)
-    {
-        $marks = str_repeat('?,', count($ids) - 1).'?';
-
-        $sql = "select * from {$this->table()} where id in ({$marks}) and type = ?";
-        $params = $ids;
-        $params[] = $type;
-
-        return $this->db()->fetchAll($sql, $params);
-    }
-
-    public function findTestpapersByCopyIdAndCourseSetIds($copyId, $courseSetIds)
-    {
-        if (empty($courseSetIds)) {
-            return array();
-        }
-
-        $marks = str_repeat('?,', count($courseSetIds) - 1).'?';
-
-        $parmaters = array_merge(array($copyId), $courseSetIds);
-
-        $sql = "SELECT * FROM {$this->table()} WHERE copyId= ? AND courseSetId IN ({$marks})";
-
-        return $this->db()->fetchAll($sql, $parmaters) ?: array();
-    }
-
-    public function findTestpapersByCopyIdAndLockedTarget($copyId, $lockedTarget)
-    {
-        $sql = "SELECT * FROM {$this->table} WHERE copyId = ?  AND target IN {$lockedTarget}";
-
-        return $this->db()->fetchAll($sql, array($copyId));
-    }
-
-    public function getTestpaperByCopyIdAndCourseSetId($copyId, $courseSetId)
-    {
-        return $this->getByFields(array('copyId' => $copyId, 'courseSetId' => $courseSetId));
-    }
-
-    public function deleteByCourseSetId($courseSetId)
-    {
-        return $this->db()->delete($this->table(), array('courseSetId' => $courseSetId));
+        return $builder;
     }
 
     public function declares()
     {
-        $declares['orderbys'] = array(
-            'createdTime',
+        return array(
+            'timestamps' => array('createdTime', 'updatedTime'),
+            'orderbys' => array(
+                'createdTime',
+                'lastLearnTime',
+                'classroomId',
+                'id',
+                'updatedTime',
+                'lastViewTime',
+                'seq',
+            ),
+            'conditions' => array(
+                'id NOT IN (:excludeIds)',
+                'userId = :userId',
+				'testId = :testId',
+                //'courseSetId = :courseSetId',
+                //'courseId = :courseId',
+                'isLearned = :isLearned',
+                'joinedType = :joinedType',
+                'role = :role',
+                'isVisible = :isVisible',
+                'classroomId = :classroomId',
+                'noteNum > :noteNumGreaterThan',
+                'createdTime >= :startTimeGreaterThan',
+                'createdTime < :startTimeLessThan',
+				'testId IN (:testId)',
+                //'courseId IN (:courseIds)',
+                //'courseSetId IN (:courseSetIds)',
+                'userId IN (:userIds)',
+                'learnedNum >= :learnedNumGreaterThan',
+                'learnedNum < :learnedNumLessThan',
+                'deadline >= :deadlineGreaterThan',
+                'lastViewTime >= :lastViewTime_GE',
+                'lastLearnTime >= :lastLearnTimeGreaterThan',
+                'updatedTime >= :updatedTime_GE',
+                'finishedTime >= :finishedTime_GE',
+                'finishedTime <= :finishedTime_LE',
+            ),
         );
-
-        $declares['conditions'] = array(
-            'courseSetId = :courseSetId',
-            'courseId = :courseId',
-            'courseId IN (:courseIds)',
-            'status = :status',
-            'type = :type',
-            'type IN (:types)',
-            'id IN (:ids)',
-            'copyId = :copyId',
-            'copyId > :copyIdGT',
-            'isTest = :isTest',
-            'testCategoryId = :testCategoryId',
-        );
-
-        $declares['serializes'] = array(
-            'metas' => 'json',
-            'passedCondition' => 'json',
-        );
-
-        return $declares;
     }
+
+    /**
+     * @param  $conditions
+     * @param  $sql
+     *
+     * @return array
+     */
+    protected function applySqlParams($conditions, $sql)
+    {
+        $params = array();
+        $conditions = array_filter($conditions, function ($value) {
+            return !empty($value);
+        });
+        foreach ($conditions as $key => $value) {
+            $sql .= $key.' = ? AND ';
+            array_push($params, $value);
+        }
+
+        return array($sql, $params);
+    }
+	
+	
 }

@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var Notify = require('common/bootstrap-notify');
-//alert(6668777777);
+
 	exports.run = function() {
         var $form = $("#test-member-form"),
             isTeacher = $form.find('input[value=ROLE_TEACHER]').prop('checked'),

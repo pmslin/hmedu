@@ -28,7 +28,7 @@ use Biz\Classroom\Service\ClassroomService;
  */
 class MemberServiceImpl extends BaseService implements MemberService
 {
-    /** 添加课程学员，创建订单，添加学员到课程
+    /** 添加课程学员：创建订单，添加学员到课程
      * @param $userId
      * @param $courseId
      * @param $data
@@ -38,7 +38,7 @@ class MemberServiceImpl extends BaseService implements MemberService
      */
     public function becomeStudentAndCreateOrder($userId, $courseId, $data)
     {
-        if (!ArrayToolkit::requireds($data, array('price', 'remark'))) {
+        if (!ArrayToolkit::requireds($data, array('price', 'remark'))) { //检测是否缺少参数
             throw $this->createServiceException('parameter is invalid!');
         }
 
@@ -75,12 +75,12 @@ class MemberServiceImpl extends BaseService implements MemberService
         $systemOrder = array(
             'userId' => $userId,
             'title' => $orderTitle,
-            'targetType' => OrderService::TARGETTYPE_COURSE,
-            'targetId' => $courseId,
-            'amount' => $data['price'],
-            'totalPrice' => $course['price'],
-            'snPrefix' => OrderService::SNPREFIX_C,
-            'payment' => $orderPayment,
+            'targetType' => OrderService::TARGETTYPE_COURSE,  //订单所属对象类型
+            'targetId' => $courseId, //订单所属对象ID
+            'amount' => $data['price'], //订单实付金额
+            'totalPrice' => $course['price'], //订单总价
+            'snPrefix' => OrderService::SNPREFIX_C, //订单标号前缀
+            'payment' => $orderPayment, //订单支付方式
         );
 
         $order = $this->getOrderService()->createSystemOrder($systemOrder); //创建订单 orders表
@@ -96,6 +96,7 @@ class MemberServiceImpl extends BaseService implements MemberService
         $member = $this->getCourseMember($course['id'], $user['id']);
 
         if (isset($data['isAdminAdded']) && $data['isAdminAdded'] == 1) {
+            //插入记录到notification表
             $this->getNotificationService()->notify(
                 $member['userId'],
                 'student-create',
@@ -106,6 +107,7 @@ class MemberServiceImpl extends BaseService implements MemberService
             );
         }
 
+        //插入记录到log操作记录表
         $this->getLogService()->info(
             'course',
             'add_student',
@@ -639,7 +641,7 @@ class MemberServiceImpl extends BaseService implements MemberService
 
         $member = $this->getMemberDao()->create($fields); //课程添加学员记录插入course_member表
 
-        $this->refreshMemberNoteNumber($courseId, $userId);
+        $this->refreshMemberNoteNumber($courseId, $userId); //更新笔记
 
         $this->dispatchEvent(
             'course.join',

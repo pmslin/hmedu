@@ -6,6 +6,7 @@ interface MemberService
 {
     const MAX_TEACHER = 100;
 
+    //添加课程学员：创建订单，添加学员到课程
     public function becomeStudentAndCreateOrder($userId, $courseId, $data);
 
     public function removeCourseStudent($courseId, $userId);

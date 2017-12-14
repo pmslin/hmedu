@@ -344,33 +344,57 @@ class UserController extends BaseController
 //        $res = $tree->toArray();
 
 
-
-
-
-
         if ($request->getMethod() === 'POST') { //添加题库权限
-            echo 123;
-//            $params = $request->request->all();
 
-            $aa = $this->getTestMemberService()->getUser($groupId);
-            var_dump($aa);
-            echo 666;
-            exit();
+            $data = $request->request->all();
 
-            if (!empty($params['testCategoryId'])){
-                $testCategoryId_arr=$params['testCategoryId'];
+            if (!empty($data['testCategoryId'])){
+                $user = $this->getUserService()->getUserByLoginField($data['userId']); //用户
+                if ($this->getCurrentUser()->isAdmin()) {
+                    $data['isAdminAdded'] = true;
+                }
+
+                $data['userId'] = $user['id'];
+                $data['remark'] = isset($data['remark']) ? $data['remark'] : "" ; //备注
+
+                $testCategoryId_arr=$data['testCategoryId']; //选中的试卷分类id
                 foreach ($testCategoryId_arr as $k=>$v){
+
+                    //根据试卷分类id找到所有所属试卷
+                    $testpaper = $this->getTestpaperService()->getByIsTestANDTestCategoryId($v);
+//                    var_dump($testpaper);
+//                    exit();
+
+                    foreach ($testpaper as $kt=>$kv){
+                        $data['price'] = isset($kv['price']) ? $kv['price'] : 2 ; //价格，如果试卷表有价格字段拿价格，没有写死价格为2元
+                        //添加课程学员，创建订单-orders表，添加学员到课程-test_member表
+                        $this->getTestMemberService()->becomeStudentAndCreateOrder($user['id'], $kv['id'], $data);
+                    }
+                    //循环为所属试卷添加权限
+
+
+
 
                 }
 
+                //copy
 
 
-                $list = $this->getTestMemberService()->getUser(20,1);
 
-                var_dump($list);
-                exit();
 
-//                return $this->createJsonResponse(true);
+
+//                $this->setFlashMessage('success', '添加学员成功');
+
+//                return $this->redirect(
+//                    $this->generateUrl(
+//                        'course_set_manage_course_students',
+//                        array('courseSetId' => $courseSetId, 'courseId' => $courseId)
+//                    )
+//                );
+
+
+
+                return $this->createJsonResponse(true);
             }
 
 
@@ -604,9 +628,13 @@ class UserController extends BaseController
         return $this->createService('Testpaper:TestMemberService');
     }
 
-
-
-
+    /**
+     * @return TestpaperService
+     */
+    protected function getTestpaperService()
+    {
+        return $this->createService('Testpaper:TestpaperService');
+    }
 
     /**
      * @return CategoryService

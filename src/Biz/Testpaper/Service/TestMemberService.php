@@ -6,5 +6,6 @@ use Biz\Testpaper\Builder\TestMemberBuilder;
 
 interface TestMemberService
 {
-     public function getUser($id);
+    //添加学员题库权限：创建订单，添加学员到题库
+    public function becomeStudentAndCreateOrder($userId, $testId, $data);
 }

@@ -23,6 +23,7 @@
    
   </div>
   
+   <input type="hidden" name="userId" value="{{ user.id }}">
   <input type="hidden" name="_csrf_token" value="{{ csrf_token('site') }}">
 </form>
 {% endblock %}
