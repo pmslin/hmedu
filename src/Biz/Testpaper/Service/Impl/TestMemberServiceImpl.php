@@ -4,6 +4,7 @@ namespace Biz\Testpaper\Service\Impl;
 
 use Biz\BaseService;
 use Biz\Testpaper\Service\TestMemberService;
+use AppBundle\Common\ArrayToolkit;
 
 class TestMemberServiceImpl extends BaseService implements TestMemberService
 {
