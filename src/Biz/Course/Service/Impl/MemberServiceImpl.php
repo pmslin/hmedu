@@ -124,6 +124,8 @@ class MemberServiceImpl extends BaseService implements MemberService
         if (empty($user)) {
             throw $this->createNotFoundException("User#{$user['id']} Not Found");
         }
+
+        //根据教学计划id和学员id获取添加的权限记录
         $member = $this->getMemberDao()->getByCourseIdAndUserId($courseId, $userId);
         if (empty($member)) {
             throw $this->createNotFoundException("User#{$user['id']} Not in Course#{$courseId}");
@@ -131,10 +133,12 @@ class MemberServiceImpl extends BaseService implements MemberService
         if ($member['role'] !== 'student') {
             throw $this->createInvalidArgumentException("User#{$user['id']} is Not a Student of Course#{$courseId}");
         }
+        //删除权限记录
         $result = $this->getMemberDao()->delete($member['id']);
 
         $course = $this->getCourseService()->getCourse($courseId);
 
+        //记录移除记录到log表
         $this->getLogService()->info(
             'course',
             'remove_student',
@@ -143,6 +147,7 @@ class MemberServiceImpl extends BaseService implements MemberService
 
         $this->dispatchEvent('course.quit', $course, array('userId' => $userId, 'member' => $member));
 
+        //如果是管理员操作，记录到Notification表
         if ($this->getCurrentUser()->isAdmin()) {
             $courseSet = $this->getCourseSetService()->getCourseSet($course['courseSetId']);
             $this->getNotificationService()->notify(

@@ -434,6 +434,7 @@ class OrderServiceImpl extends BaseService implements OrderService
             }
         }
 
+        //记录订单移除记录，记录到order_refund表
         $refund = $this->getOrderRefundDao()->create(array(
             'orderId' => $order['id'],
             'userId' => $order['userId'],
@@ -447,11 +448,14 @@ class OrderServiceImpl extends BaseService implements OrderService
             'createdTime' => time(),
             'operator' => empty($reason['operator']) ? 0 : $reason['operator'],
         ));
+
+        //更新orders订单表数据
         $this->getOrderDao()->update($order['id'], array(
             'status' => ($refund['status'] == 'success') ? 'paid' : 'refunding',
             'refundId' => $refund['id'],
         ));
 
+        //记录移除日志到log表
         if ($refund['status'] == 'success') {
             $this->_createLog($order['id'], 'refund_success', '订单退款成功(无退款金额)');
         } else {

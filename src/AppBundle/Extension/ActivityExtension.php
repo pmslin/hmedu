@@ -199,7 +199,7 @@ class ActivityExtension extends Extension implements ServiceProviderInterface
             ),
             'download' => array(
                 'meta' => array(
-                    'name' => '下载资料',
+                    'name' => '下载资料123',
                     'icon' => 'es-icon es-icon-filedownload',
                 ),
                 'controller' => 'AppBundle:Activity/Download',

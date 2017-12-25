@@ -68,6 +68,7 @@ class OrderController extends BaseController
         ));
     }
 
+    //创建订单
     public function createAction(Request $request)
     {
         $fields = $request->request->all();
@@ -108,7 +109,7 @@ class OrderController extends BaseController
         } catch (\Exception $e) {
             return $this->createMessageResponse('error', $e->getMessage());
         }
-
+//        echo 123;exit();
         if ($order['status'] == 'paid') {
             return $this->redirect($processor->callbackUrl($order, $this->container));
         }

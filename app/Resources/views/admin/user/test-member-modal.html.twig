@@ -15,7 +15,7 @@
 		<br /> <span>{{cats.name}} : </span>
 		<div style="margin-left:auto;">
 		{% for catss in testCategory if(catss.parentId == cats.id) %}
-			&nbsp;&nbsp;&nbsp;<input type="checkbox" name="testCategoryId[]" value="{{catss.id}}"/><span>{{catss.name}}</span> 
+			&nbsp;&nbsp;&nbsp;<input type="checkbox" name="testCategoryId[]" value="{{catss.id}}" {% if catss.id in testMemberArr %} checked {% endif %} /><span>{{catss.name}}</span> 
 		{% endfor %}
 		</div>
 	 {% endfor %}

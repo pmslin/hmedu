@@ -30,9 +30,9 @@ class TestMemberServiceImpl extends BaseService implements TestMemberService
             throw $this->createNotFoundException("没有该试卷 testpaper #{$testId} does not exist ");
         }
 
-        if ($this->isTestStudent($test['id'], $user['id'])) {
-            throw $this->createNotFoundException('用户已经添加该试卷权限，不能重复添加！');
-        }
+        if (!$this->isTestStudent($test['id'], $user['id'])) {
+//            throw $this->createNotFoundException('用户已经添加该试卷权限，不能重复添加！');
+
 
         //$courseSet = $this->getCourseSetService()->getCourseSet($course['courseSetId']);
         $orderTitle = "购买（添加权限）题库试卷《{$test['name']}》";
@@ -65,30 +65,34 @@ class TestMemberServiceImpl extends BaseService implements TestMemberService
             'becomeUseMember' => isset($data['becomeUseMember']) ? $data['becomeUseMember'] : false,
         );
 
-        $this->becomeStudent($order['targetId'], $order['userId'], $info); //添加学员到课程
+        $this->becomeStudent($order['targetId'], $order['userId'], $info); //添加学员题库权限
 
-        $member = $this->getTestMemberDao()->getByTestIdAndUserId($testId['id'], $user['id']);
+        $member = $this->getTestMemberDao()->getByTestIdAndUserId($testId, $user['id']);
 
-        if (isset($data['isAdminAdded']) && $data['isAdminAdded'] == 1) {
-            //插入记录到notification表
-            $this->getNotificationService()->notify(
-                $member['userId'],
-                'test-student-create',
-                array(
-                    'testId' => $testId,
-                    'testName' => $test['name'],
-                )
-            );
-        }
+//        if (isset($data['isAdminAdded']) && $data['isAdminAdded'] == 1) {
+//            //插入记录到notification表
+//            $this->getNotificationService()->notify(
+//                $member['userId'],
+//                'test-student-create',
+//                array(
+//                    'testId' => $testId,
+//                    'testName' => $test['name'],
+//                )
+//            );
+//        }
 
         //插入记录到log操作记录表
-        $this->getLogService()->info(
-            'test',
-            'add_test-student',
-            "题库试卷《{$test['name']}》(#{$test['id']})，添加学员{$user['nickname']}(#{$user['id']})题库权限，备注：{$data['remark']}"
-        );
+//        $this->getLogService()->info(
+//            'test',
+//            'add_test-student',
+//            "题库试卷《{$test['name']}》(#{$test['id']})，添加学员{$user['nickname']}(#{$user['id']})题库权限，备注：{$data['remark']}"
+//        );
 
         return array($test, $member, $order);
+        }
+
+        return array($test);
+
     }
 
 
@@ -162,6 +166,7 @@ class TestMemberServiceImpl extends BaseService implements TestMemberService
         $fields = array(
             'testId' => $testId,
             'userId' => $userId,
+            'testCategoryId' => $test['testCategoryId'],
             //'courseSetId' => $course['courseSetId'],
             'orderId' => empty($order) ? 0 : $order['id'],
             //'deadline' => $deadline,
@@ -206,7 +211,16 @@ class TestMemberServiceImpl extends BaseService implements TestMemberService
         }
     }
 
+    //根据用户id。   group by testCategoryId 获取数据
+    public function getByUserId($userId){
+        return  $this->getTestMemberDao()->getByUserIdGroupByTestCategory($userId);
+    }
 
+
+    //根据用户id和试卷分类id删除权限（test_member表数据）
+    public function deleteByUserIdAndTestCategoryId($userId,$TestCategoryId){
+        return  $this->getTestMemberDao()->deleteByUserIdAndTestCategoryId($userId,$TestCategoryId);
+    }
 
 
 

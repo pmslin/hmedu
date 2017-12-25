@@ -297,6 +297,7 @@ class UserController extends BaseController
         $user = $this->getUserService()->getUser($id);
         $currentUser = $this->getUser();
 
+
         if ($request->getMethod() === 'POST') {
             $roles = $request->request->get('roles');
 
@@ -338,63 +339,57 @@ class UserController extends BaseController
         $currentUser = $this->getUser();
         $groupId = $this->getCategoryService()->getGroupByCode("test")['id']; //题库分组分类id
         $testCategory = $this->getCategoryService()->getCategoryTree($groupId);
-//        var_dump($testCategory) ;
 
-//        $tree = PermissionBuilder::instance()->groupedPermissions($testCategory);
-//        $res = $tree->toArray();
+        //根据用户id获取该用户已经添加了哪些分类的题库权限
+        $testMember = $this->getTestMemberService()->getByUserId($user['id']);
+        $testMemberArr = array();
+        foreach ($testMember as $k=>$v){
+            $testMemberArr[$k] = $v['testCategoryId'];
+        }
 
 
         if ($request->getMethod() === 'POST') { //添加题库权限
-
             $data = $request->request->all();
 
             if (!empty($data['testCategoryId'])){
-                $user = $this->getUserService()->getUserByLoginField($data['userId']); //用户
+
+                //删除权限
+                //比较已勾选数组和新提交过来勾选的数组两个数组的差集。即拿到去掉勾选的id。
+                $deleteDiffArr = array_diff($testMemberArr,$data['testCategoryId']);
+                if (!empty($deleteDiffArr)){
+                    $deleteDiffString = implode(",",$deleteDiffArr);
+                    $this->getTestMemberService()->deleteByUserIdAndTestCategoryId($data['userId'],$deleteDiffString);
+                }
+
+
+                //新增权限
+//                $user = $this->getUserService()->getUserByLoginField($data['userId']); //用户
                 if ($this->getCurrentUser()->isAdmin()) {
                     $data['isAdminAdded'] = true;
                 }
 
-                $data['userId'] = $user['id'];
+//                $data['userId'] = $user['id'];
                 $data['remark'] = isset($data['remark']) ? $data['remark'] : "" ; //备注
 
                 $testCategoryId_arr=$data['testCategoryId']; //选中的试卷分类id
                 foreach ($testCategoryId_arr as $k=>$v){
-
                     //根据试卷分类id找到所有所属试卷
                     $testpaper = $this->getTestpaperService()->getByIsTestANDTestCategoryId($v);
-//                    var_dump($testpaper);
-//                    exit();
 
+                    //循环为所属试卷添加权限
                     foreach ($testpaper as $kt=>$kv){
                         $data['price'] = isset($kv['price']) ? $kv['price'] : 2 ; //价格，如果试卷表有价格字段拿价格，没有写死价格为2元
                         //添加课程学员，创建订单-orders表，添加学员到课程-test_member表
-                        $this->getTestMemberService()->becomeStudentAndCreateOrder($user['id'], $kv['id'], $data);
+                        $result = $this->getTestMemberService()->becomeStudentAndCreateOrder($data['userId'], $kv['id'], $data);
                     }
-                    //循环为所属试卷添加权限
-
-
-
-
                 }
 
-                //copy
+            }
 
-
-
-
-
-//                $this->setFlashMessage('success', '添加学员成功');
-
-//                return $this->redirect(
-//                    $this->generateUrl(
-//                        'course_set_manage_course_students',
-//                        array('courseSetId' => $courseSetId, 'courseId' => $courseId)
-//                    )
-//                );
-
-
-
+            if (!empty($result) && $result){
                 return $this->createJsonResponse(true);
+            }else{
+                return $this->createJsonResponse(false);
             }
 
 
@@ -404,6 +399,7 @@ class UserController extends BaseController
             'user' => $user,
 //            'testCategory' =>  json_encode($testCategory),
             'testCategory' =>  $testCategory,
+            'testMemberArr' => $testMemberArr,
         ));
     }
 
@@ -617,7 +613,6 @@ class UserController extends BaseController
             }
         }
     }
-
 
 
     /**

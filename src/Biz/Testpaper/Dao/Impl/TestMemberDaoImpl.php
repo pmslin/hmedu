@@ -10,12 +10,31 @@ class TestMemberDaoImpl extends GeneralDaoImpl implements TestMemberDao
     protected $table = 'test_member';
 
 
+    /***根据试卷id和用户id获取数据
+     * @param $testId 试卷id
+     * @param $userId 用户id
+     * @return null
+     */
     public function getByTestIdAndUserId($testId, $userId)
     {
         return $this->getByFields(array(
             'testId' => $testId,
             'userId' => $userId,
         ));
+    }
+
+
+    //根据用户id。   group by testCategoryId 获取数据
+    public function getByUserIdGroupByTestCategory($userId){
+        $sql = "SELECT testCategoryId FROM {$this->table} WHERE userId = {$userId} GROUP BY testCategoryId ";
+        return $this->db()->fetchAll($sql);
+    }
+
+
+    //根据用户id和试卷分类id删除权限（test_member表数据）
+    public function deleteByUserIdAndTestCategoryId($userId,$TestCategoryId){
+        $sql = "DELETE FROM {$this->table} WHERE userId = {$userId} AND testCategoryId IN ($TestCategoryId) ";
+        return $this->db()->executeUpdate($sql);
     }
    
    
@@ -35,6 +54,7 @@ class TestMemberDaoImpl extends GeneralDaoImpl implements TestMemberDao
             ->andWhere('m.isLearned = :isLearned')
             ->andWhere('m.userId = :userId')
 			->andWhere('m.testId = :testId')
+            ->andWhere('m.testCategoryId = :testCategoryId')
 			//->andWhere('m.courseId = :courseId')
             ->andWhere('m.role = :role')
             ->andWhere('m.courseId = :courseId')
@@ -60,11 +80,13 @@ class TestMemberDaoImpl extends GeneralDaoImpl implements TestMemberDao
                 'updatedTime',
                 'lastViewTime',
                 'seq',
+                'testCategoryId',
             ),
             'conditions' => array(
                 'id NOT IN (:excludeIds)',
                 'userId = :userId',
 				'testId = :testId',
+                'testCategoryId = :testCategoryId',
                 //'courseSetId = :courseSetId',
                 //'courseId = :courseId',
                 'isLearned = :isLearned',

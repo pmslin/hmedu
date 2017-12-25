@@ -165,6 +165,13 @@ class StudentManageController extends BaseController
         );
     }
 
+
+    /***移除课程学员（移除课程权限）
+     * @param $courseSetId 课程id
+     * @param $courseId 教学计划id
+     * @param $userId 学员id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function removeCourseStudentAction($courseSetId, $courseId, $userId)
     {
         $this->getCourseService()->tryManageCourse($courseId, $courseSetId);
@@ -184,8 +191,11 @@ class StudentManageController extends BaseController
                 'note' => '"'.$user['nickname'].'"'.' 手动移除',
                 'operator' => $user['id'],
             );
+            //检测是否允许和满足退款条件等检测。记录订单移除记录，记录到order_refund表。更新orders订单表数据。记录移除日志到log表。
             $this->getOrderService()->applyRefundOrder($order['id'], null, $reason);
         }
+
+        //删除权限记录。记录操作日志到log表
         $this->getCourseMemberService()->removeCourseStudent($courseId, $userId);
 
         return $this->createJsonResponse(array('success' => true));

@@ -43,6 +43,7 @@ class OrderFacadeServiceImpl extends BaseService implements OrderFacadeService
         return array(null, $orderInfo, $processor);
     }
 
+    //创建订单
     public function createOrder($targetType, $targetId, $fields)
     {
         try {
