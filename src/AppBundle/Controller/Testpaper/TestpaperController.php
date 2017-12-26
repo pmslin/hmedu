@@ -23,6 +23,12 @@ class TestpaperController extends BaseController
     {
         $user = $this->getUser();
 
+        //根据试卷id和用户id检测用户是否拥有该题库的权限
+        $testMember = $this->getTestMemberService()->getByTestIdAndUserId($testId, $user['id']);
+        if (empty($testMember)){
+            return $this->createMessageResponse('info', $this->getServiceKernel()->trans('未拥有该题库权限！'));
+        }
+
         $testpaper = $this->getTestpaperService()->getTestpaperByIdAndType($testId, 'testpaper');
 
         if (empty($testpaper)) {
@@ -463,6 +469,10 @@ class TestpaperController extends BaseController
     protected function getTestpaperService()
     {
         return $this->createService('Testpaper:TestpaperService');
+    }
+
+    protected function getTestMemberService(){
+        return $this->createService('Testpaper:TestMemberService');
     }
 
     protected function getTestpaperResultService(){

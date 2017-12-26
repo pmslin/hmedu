@@ -86,6 +86,7 @@ class TestpaperDaoImpl extends GeneralDaoImpl implements TestpaperDao
         );
 
         $declares['conditions'] = array(
+            'name LIKE (:name)',
             'courseSetId = :courseSetId',
             'courseId = :courseId',
             'courseId IN (:courseIds)',
@@ -97,6 +98,8 @@ class TestpaperDaoImpl extends GeneralDaoImpl implements TestpaperDao
             'copyId > :copyIdGT',
             'isTest = :isTest',
             'testCategoryId = :testCategoryId',
+            'TestYear = :TestYear',
+            'TestType = :TestType',
         );
 
         $declares['serializes'] = array(

@@ -211,6 +211,11 @@ class TestMemberServiceImpl extends BaseService implements TestMemberService
         }
     }
 
+    //根据试卷id和用户id获取数据
+    public function getByTestIdAndUserId($testId, $userId){
+        return $this->getTestMemberDao()->getByTestIdAndUserId($testId, $userId);
+    }
+
     //根据用户id。   group by testCategoryId 获取数据
     public function getByUserId($userId){
         return  $this->getTestMemberDao()->getByUserIdGroupByTestCategory($userId);

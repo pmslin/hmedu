@@ -142,7 +142,9 @@ class TestpaperBuilder implements TestpaperBuilderInterface
             'pattern',
             'metas',
             'isTest',
-            'testCategoryId'
+            'testCategoryId',
+            'TestYear',
+            'TestType',
         ));
 
         return $fields;

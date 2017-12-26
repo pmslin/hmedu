@@ -24,10 +24,16 @@ class ManageController extends BaseController
     public function testPaperListAction(Request $request){
 //        $testPaper=$this->getTestpaperService()->getTestpaperByIsTest();
 
+        $fields = $request->query->all();
+//        var_dump($fields);
+//        exit();
+
         //分页
         $conditions = array(
             'type' => 'testpaper',
             'isTest'    =>  1,
+            'name' => empty($fields['name']) ? '' : $fields['name'], //搜索的试卷名称
+            'testCategoryId' =>  empty($fields['testCategoryId']) ? '' : $fields['testCategoryId'], //搜索的试卷分类
         );
 
         $paginator = new Paginator(
@@ -53,6 +59,8 @@ class ManageController extends BaseController
                 'testpapers'=>$testpapers,
                 'users' => $users,
                 'paginator' => $paginator,
+                'name' =>  empty($fields['name']) ? '' : $fields['name'],
+                'testCategoryId' =>  empty($fields['testCategoryId']) ? '' : $fields['testCategoryId'],
             )
         );
     }
@@ -173,13 +181,13 @@ class ManageController extends BaseController
 //            return $this->createMessageResponse('error', 'testpaper not found');
 //        }
 
-        if ($request->getMethod() === 'POST') {
+        if ($request->getMethod() === 'POST') { //修改试卷
             $data = $request->request->all();
             $this->getTestpaperService()->updateTestpaper($testpaper['id'], $data);
 
             $this->setFlashMessage('success', $this->getServiceKernel()->trans('试卷信息保存成功！'));
 
-            return $this->redirect($this->generateUrl('admin_test'));
+            return $this->redirect($this->generateUrl('manage_testlist')); //跳转到题库管理页面
         }
 
 

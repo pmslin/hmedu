@@ -29,6 +29,9 @@ class TestPaperController extends BaseController
     {
         $conditions = $request->query->all(); //获取筛选条件
 
+//        var_dump($conditions);
+//        exit();
+
         if (!isset($conditions['filter'])) { //定义默认筛选条件，如果没有设置则写默认参数，默认筛选全部
             $filter = array(
                 'type' => 'all',
@@ -78,8 +81,11 @@ class TestPaperController extends BaseController
         unset($conditions['orderBy']);
 
         $conditions['isTest'] = 1;
-        $conditions['status'] = 'open';  //open  draft
+        $conditions['status'] = 'open';  //open  draft 只筛选发布的试卷
 //        $conditions['testCategoryId'] = $conditions['categoryId'];
+
+        $conditions['TestYear'] = empty($conditions['TestYear']) ? '' : $conditions['TestYear']; //年份
+        $conditions['TestType'] = empty($conditions['TestType']) ? '' : $conditions['TestType']; //试卷类型
 
         $paginator = new Paginator(
             $this->get('request'),
@@ -182,6 +188,8 @@ class TestPaperController extends BaseController
                 'categoryParent' => $categoryParent,
                 'levels' => $levels,
                 'tags' => $tags,
+                'TestYear' => empty($conditions['TestYear']) ? '' : $conditions['TestYear'], //年份
+                'TestType' => empty($conditions['TestType']) ? '' : $conditions['TestType'], //试卷类型
             )
         );
     }

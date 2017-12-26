@@ -8,7 +8,7 @@
 
 {% block keywords %}{% if categoryArray %}{{ categoryArray.name }}{% if categoryParent %}{{ ',' }}{{ categoryParent.name|default('') }}{% endif %}{% else %}{{ '全部' }}{% endif %}{% endblock %}
   {% block description %}{{ categoryArrayDescription|default('')|plain_text(100) }}{% endblock %}
-    {% block title %}{{ categoryArray.name|default('全部'|trans) }} - {{ setting('site.name') }}{% if setting('site.slogan') %}{{ ' - ' }}{{ setting('site.slogan') }}{% endif %}{% if not setting('copyright.owned') %} - Powered By EduSoho{% endif %}
+    {% block title %}{{ categoryArray.name|default('全部'|trans) }} - {{ setting('site.name') }}{% if setting('site.slogan') %}{{ ' - ' }}{{ setting('site.slogan') }}{% endif %}{% if not setting('copyright.owned') %} - Powered By {% endif %}
     {% endblock %}
 
 {% block top_content %}
@@ -47,6 +47,108 @@
 
   {{ render(controller('AppBundle:Category:treeNav',{tags:tags, path:path, category:category, filter: {type: type,price: price,currentLevelId: currentLevelId},orderBy: orderBy, group:'test'})) }} 	{# 调用分类控制器，group:'course' 是获取哪个分类 #}
 
+  
+  <div class="es-filter" style="background:#fff;padding-top:-20px;">
+		<ul class="nav nav-sort clearfix">
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: ''}) }}"
+			  class="{% if (TestType == '') %}active{% endif %}">
+			  {{ '全部'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '1'}) }}"
+			  class="{% if (TestType == '1') %}active{% endif %}">
+			  {{ '模拟题'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '2'}) }}"
+			  class="{% if (TestType == '2') %}active{% endif %}">
+			  {{ '历年真题'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '3'}) }}"
+			  class="{% if (TestType == '3') %}active{% endif %}">
+			  {{ '章节练习'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '4'}) }}"
+			  class="{% if (TestType == '4') %}active{% endif %}">
+			  {{ '高频考点'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '5'}) }}"
+			  class="{% if (TestType == '5') %}active{% endif %}">
+			  {{ '课后练习'|trans }}
+			</a>
+		  </li>
+		</ul>
+	</div>
+  
+    <div class="es-filter" style="background:#fff;">
+		<ul class="nav nav-sort clearfix">
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestYear: ''}) }}"
+			  class="{% if (TestYear == '') %}active{% endif %}">
+			  {{ '全部'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestYear: '2018'}) }}"
+			  class="{% if (TestYear == '2018') %}active{% endif %}">
+			  {{ '2018'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestYear: '2017'}) }}"
+			  class="{% if (TestYear == '2017') %}active{% endif %}">
+			  {{ '2017'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestYear: '2016'}) }}"
+			  class="{% if (TestYear == '2016') %}active{% endif %}">
+			  {{ '2016'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestYear: '2015'}) }}"
+			  class="{% if (TestYear == '2015') %}active{% endif %}">
+			  {{ '2015'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestYear: '2014'}) }}"
+			  class="{% if (TestYear == '2014') %}active{% endif %}">
+			  {{ '2014'|trans }}
+			</a>
+		  </li>
+		  <li>
+			<a
+			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestYear: '2013'}) }}"
+			  class="{% if (TestYear == '2013') %}active{% endif %}">
+			  {{ '2013'|trans }}
+			</a>
+		  </li>
+		</ul>
+	</div>
+  
   {# <div class="es-filter">
     <ul class="nav nav-sort clearfix">
       <li>
