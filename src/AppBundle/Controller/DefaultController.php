@@ -19,8 +19,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends BaseController
 {
+    //首页
     public function indexAction(Request $request)
     {
+//        exit();
         $user = $this->getCurrentUser();
 
         if (!empty($user['id'])) {

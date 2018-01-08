@@ -20,34 +20,9 @@
 {% set isIndex = true %}
 {% set consultDisplay = true %}
 
+
 {% block full_content %}
-  {% if appDownload  %}
-    {{ render(controller('AppBundle:Default:appDownload')) }}
-  {% endif %}
 
-  {% cache 'jianmo/home/top/banner' 600 %}
-    {{ block_show('jianmo:home_top_banner') }}
-  {% endcache %}
-  {% for config in themeConfig.blocks.left|default([]) %}
+	{% include 'default/page-content.html.twig' %}
 
-    {% set code = config.code %}
-    {% if config.sortName|default('') == 'recommended' and code == 'category-course' %}
-      {% set code = 'recommend-course' %}
-    {% endif %}
-
-    {% set category = config.categoryId|default(0) ? data('Category', {categoryId: config.categoryId})  : null %}
-    {% if code == 'friend-link' %}
-      {% include 'default/' ~ code ~ '.html.twig' with {friendlyLinks:friendlyLinks} %}
-    {% elseif code != 'footer-link' %}
-      {% if code != 'course-grid-with-condition-index' %}
-        {% cache 'jianmo/default/' ~ code 600 %}
-        {% include 'default/' ~ code ~ '.html.twig' with {config:config, category: category} %}
-        {% endcache %}
-      {% else %}
-        {% include 'default/' ~ code ~ '.html.twig' with {config:config, category: category} %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-
-  {% include 'mobile/footer-tool-bar.html.twig' with { mobile_tool_bar: 'index' } %}
 {% endblock %}
