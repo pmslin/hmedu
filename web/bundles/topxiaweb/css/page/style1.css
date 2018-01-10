@@ -27,29 +27,39 @@ ul li{list-style-type:none;}
 
 
 
-.inter_box_title { background:url("../../img/page/title_gline.jpg") repeat-x scroll 0 bottom; width: 280px; width:1200px; margin:15px auto 0px; border-bottom:2px solid #d4dde4;}
+/*--------logo 头部------------*/
+.bann_logo_box{ width:1200px; height:80px; margin:23px auto 12px;}
+.logo_pic{ width:195px; height:80px; padding-top:3px; padding-left:9px; display:block; float:left;}
+
+.module_five{width:440px;height:58px;float:left;margin-left:480px;display:inline;margin-top:25px;}
+.module_five a{ width:88px; height:28px; display:block; padding-top:30px; float:left; color:#666666; font: 15px/35px 'Microsoft Yahei'; text-align:center; background:url(../../img/page/module_list.png) no-repeat 0 0;}
+
+.module_five a.module_01{ background-position:30px 0; }
+
+.module_five a:hover{ color:#2dbb55;}
+
+.module_five a.module_01:hover{ background-position:30px -90px; }
+
+.module_five a.module_02{ background-position:-41px 0; }
+
+.module_five a.module_02:hover{ background-position:-41px -90px; }
+
+.module_five a.module_03{ background-position:-110px 0; }
+
+.module_five a.module_03:hover{ background-position:-110px -90px; }
+
+.module_five a.module_04{ background-position:-178px 0; }
+
+.module_five a.module_04:hover{ background-position:-178px -90px; }
+
+.module_five a.module_05{ background-position:-253px 0; }
+
+.module_five a.module_05:hover{ background-position:-253px -89px; }
 
 
 
 
-
-.jszp_box_text{ width:1280px; height:auto; margin:0 auto;}
-
-.jszp_box_text li{ width:400px; height:auto; float:left; overflow:hidden;}
-
-.jszp_box_text li h3{ height:36px; color:#2dbb55; padding-left:10px; font:bold 16px/36px 'Microsoft Yahei'; background:url(../../img/page/green_l.jpg) no-repeat 2px center;}
-
-.jszp_box_text li h3 a{color:#2dbb55; display:block; padding-right:12px; float:left; display:inline; }
-
-.base_list_box_jszp a{ color:#404040;  width:340px; overflow:hidden; font:normal 14px/28px 'Microsoft Yahei'; background:url(../../img/page/icon_icon.jpg) no-repeat 0 center;white-space: nowrap;}
-
-.base_list_box_jszp a:link,.base_list_box_jszp a:visited{ color:#404040}
-
-.base_list_box_jszp a:hover{ color:#fa6060; text-decoration:underline;}
-
-
-
-
+/*--------绿色导航栏------------*/
 .nav_box { background:#2dbb55; height: 75px; min-width: 1200px; width: 100%; margin-top:20px; }
 
 .nav2{ height: 56px; margin: 0 auto; width: 1200px;}
@@ -83,3 +93,145 @@ ul li{list-style-type:none;}
 .nav_jszg li.nav_sec ul{ width:460px;}
 
 
+
+
+
+.jszp_main_box{ width:1200px; height:460px; margin:30px auto 0;}
+
+/*--------学习工具------------*/
+.jszp_main_left{ width:378px; float:left;}
+
+.jszp_main_left h2{ color:#2dbb55; font:bold 16px/18px 'Microsoft Yahei';height:22px;}
+
+.jszp_main_left h2.hot_c_title{ padding-top:18px; height:27px;}
+
+.jszp_right_guide{ width:350px; padding:22px 18px 0; height:383px; border:1px solid #e5e5e5; border-top:0; background:url(../../img/page/jszp_green_l.jpg) no-repeat 0 0;}
+
+.jszp_right_guide a{color:#404040; }
+
+.left_box{width:100px; text-align:center; font-szie:18px; float:left; padding-bottom:25px; padding-left:20px;}
+
+.left_box img {width:75px; margin-bottom:3px;}
+
+.jszp_right_guide a:hover{color:#2dbb55; }
+
+
+/*--------好课推荐------------*/
+.jszp_main_central{ width:378px; float:left;}
+
+.jszp_main_central h2{ color:#2dbb55; font:bold 16px/18px 'Microsoft Yahei';height:22px;}
+
+.jszp_main_central h2.hot_c_title{ padding-top:18px; height:27px;}
+
+
+
+
+
+/*--------在线刷题------------*/
+.jszp_main_right{ width:440px; float:left;}
+
+.jszp_main_right h2{ color:#2dbb55; font:bold 16px/18px 'Microsoft Yahei';height:22px;}
+
+.jszp_main_right h2.hot_c_title{ padding-top:18px; height:27px;}
+
+.hot_course_box01{ width:376px; height:276px;  border-top:0; padding-top:8px; margin-left:-40px; background:url(../../images/newimg/jszp_green_l.jpg) no-repeat 0 0;}
+
+.hot_course_box01 li{ width:352px; height:38px; border-bottom:1px dashed #eeeeee; float:left; margin-left:10px; display:inline;}
+
+.hot_course_box01 li.short_list{ width:312px; padding-left:40px;}
+
+.hot_course_box01 li em{ width:15px; height:15px; float:left; margin:10px 13px 0 0px; border-radius:2px; color:#fff; background:#fc544c; text-align:center; border:1px solid #e83428; font:normal 12px/15px '\5b8b\4f53';}
+
+.hot_course_box01 li em.green{ background:#2dbb55; border:1px solid #11a13a;}
+
+.hot_course_box01 p{float: left; height:38px; overflow: hidden; width:228px;}
+
+.hot_course_box01 p a{ color: #404040; display: block; float: left; font:normal 14px/38px "Microsoft Yahei"; height:38px;}
+
+.hot_course_box01 p a:link,.hot_course_box01 p a:visited{ color: #404040;}
+
+.hot_course_box01 p a:hover{ color:#2dbb55; text-decoration:underline;}
+
+.hot_course_box01 span{ color:#545454; width:74px; height:24px; padding-top:7px; text-align:center; float:right;}
+
+.hot_course_box01 span a,.hot_course_box01 span a:link,.hot_course_box01 span a:visited{ color:#545454;border-radius:5px; border:1px solid #dddddd; display:block; float:right; width:72px; height:22px; font:normal 14px/22px "Microsoft Yahei";} 
+
+.hot_course_box01 span a:hover{ font-weight:bold;background:#2dbb55; border:1px solid #2dbb55; color:#fff;}
+
+
+
+
+.jszp_banner_box{ width:1200px; height:100px; margin:1px auto 0;}
+/*--------首页广告图------------*/
+
+
+
+
+
+.jszp_zixun_box{ width:1200px; height:300px; margin:1px auto 0;}
+/*--------教师资格证考试------------*/
+.jszp_zixun_box h2{ color:#2dbb55; border-bottom:2px solid #C0C0C0; padding-bottom:10px;}
+
+/*--------考试公告------------*/
+.jszp_gonggao_box{ width:320px;  float:left;}
+.jszp_gonggao_box h4{ font-weight:600;  }
+.jszp_gonggao_li a {color:#404040;}
+.jszp_gonggao_li a:hover{ color:#2dbb55; text-decoration:underline;}
+.jszp_gonggao_li p{margin-left:-40px;}
+
+/*--------考试日程------------*/
+.jszp_richeng_box{ width:230px;  float:left; padding-bottom:10px; padding-left:20px; }
+.jszp_richeng_box h4{ font-weight:600;  }
+.jszp_gonggao_li a {color:#404040;}
+.jszp_gonggao_li a:hover{ color:#2dbb55; text-decoration:underline;}
+.jszp_richeng_box_cont{ width:160px; padding-top:15px; font-size:13px;}
+#bishi:hover{color:#2dbb55;}
+#mianshi:hover{color:#2dbb55; }
+
+
+
+/*--------教师招聘动态------------*/
+.inter_box_title { background:url("../../img/page/title_gline.jpg") repeat-x scroll 0 bottom; width: 280px; width:1200px; margin:15px auto 0px; border-bottom:2px solid #C0C0C0;}
+
+.jszp_box_text{ width:1280px; height:auto; margin:0 auto; padding-top:15px; }
+
+.jszp_box_text li{ width:400px; height:auto; float:left; overflow:hidden;}
+
+.jszp_box_text li h3{ height:36px; color:#2dbb55; padding-left:10px; font:bold 16px/36px 'Microsoft Yahei'; background:url(../../img/page/green_l.jpg) no-repeat 2px center;}
+
+.jszp_box_text li h3 a{color:#2dbb55; display:block; padding-right:12px; float:left; display:inline; }
+
+.base_list_box_jszp a{ color:#404040;  width:340px; overflow:hidden; font:normal 14px/28px 'Microsoft Yahei'; background:url(../../img/page/icon_icon.jpg) no-repeat 0 center;white-space: nowrap;}
+
+.base_list_box_jszp a:link,.base_list_box_jszp a:visited{ color:#404040}
+
+.base_list_box_jszp a:hover{ color:#2dbb55; text-decoration:underline;}
+
+
+
+
+.jszp_mingshi_box{ width:1200px; height:400px; margin:1px auto 0; padding-top:20px; }
+/*--------名师风采------------*/
+.jszp_mingshi_box h2{ color:#2dbb55; border-bottom:2px solid #C0C0C0; padding-bottom:10px; }
+.jszp_mingshi_box img{ height:240px; margin-top:20px; padding-left:45px; }
+.jszp_mingshi_box img:hover{ -webkit-transform: scale(1.02);-moz-transform: scale(1.02);-ms-transform: scale(1.02);-o-transform: scale(1.02);transform: scale(1.02)}
+
+
+.jszp_jiaocai_box{ width:1200px; height:400px; margin:1px auto 0; }
+/*--------使用教材------------*/
+.jszp_jiaocai_box h2{ color:#2dbb55; border-bottom:2px solid #C0C0C0; padding-bottom:10px; }
+.books_material_list{ width:1200px; height:auto; margin:0px auto; padding-top:10px;}
+
+.books_material{ width:1200px; padding-bottom:13px; display:none; margin-left:-20px;}
+
+.books_material ul li{ width:230px; height:340px; float:left;}
+
+.books_material ul li img{ width:176px; height:243px; display:block; margin:0 auto;-webkit-transition:transform  .4s ease-out;-moz-transition:transform  .4s ease-out;-ms-transition:transform  .4s ease-out;-o-transition:transform  .4s ease-out;transition:transform  .2s ease-out}
+
+.books_material ul li img:hover{ -webkit-transform: scale(1.02);-moz-transform: scale(1.02);-ms-transform: scale(1.02);-o-transform: scale(1.02);transform: scale(1.02)}
+
+.books_material ul li a.books_title_info{color:#333333; text-align:center; margin-top:10px; font:normal 16px/26px 'Microsoft Yahei'; width:240px; height:80px; display:block; overflow:hidden; }
+
+.books_material ul li span{ font:normal 14px/22px 'Microsoft Yahei';}
+
+.books_material ul li a:hover{color:#2dbb55;}
