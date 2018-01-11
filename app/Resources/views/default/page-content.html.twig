@@ -147,21 +147,14 @@
     </div>
 
     <div class="jszp_main_right">
-        <h2>在线刷题</h2>
+        <div><h2>在线刷题</h2> <p style="float:right;">历年真题</p></div>
 
         <ul class="hot_course_box01 clearfix">
-            <li><em>荐</em>
-                <p><a href="http://www.zgjsks.com/html/zg/2018jzbs_hd/" target="_blank">2018年上半年全国教资笔试备考</a></p>
-                <span><a href="http://www.zgjsks.com/html/zg/2018jzbs_hd/" target="_blank">开始刷题</a></span></li>
-            <li><em>1</em>
-                <p><a href="http://www.zgjsks.com/html/zg/2018jz_bszb/" target="_blank">2018上半年教师资格笔试直播课</a></p>
-                <span><a href="http://www.zgjsks.com/html/zg/2018jz_bszb/" target="_blank">点击报名</a></span></li>
-            <li><em class="green">2</em>
-                <p><a href="http://www.51gouke.com/shsh/13-26-gk6234.html" target="_blank">2018上海教师资格笔试辅导课程</a></p>
-                <span><a href="http://www.51gouke.com/shsh/13-26-gk6234.html" target="_blank">点击报名</a></span></li>
-            <li><em class="green">热</em>
-                <p><a href="http://www.51gouke.com/gzgy/13-17-2079.html" target="_blank">2018贵州教师资格笔试辅导课程</a></p>
-                <span><a href="http://www.51gouke.com/gzgy/13-17-2079.html" target="_blank">点击报名</a></span></li>
+			{% for key, testInfo in testInfo %}
+				<li><em {% if key>2 %} class="green" {% endif %} >{% if key>2 %} 荐 {% else %} 热  {%  endif %}</em>
+                <p><a href="{{ path('test_do', {testId:testInfo.id}) }}" target="_blank">{{ testInfo.name }}</a></p>
+                <span><a href="{{ path('test_do', {testId:testInfo.id}) }}" target="_blank">开始刷题</a></span></li>
+			{% endfor %}
         </ul>
     </div>
 </div>

@@ -10,6 +10,8 @@ interface TestpaperService
 
     public function getTestpaperByIsTest();
 
+    public function getPageTest();
+
     public function getByIsTestANDTestCategoryId($testCategoryId);
 
     public function getTestpaperByIdAndType($id, $type);

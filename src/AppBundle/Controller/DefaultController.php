@@ -33,7 +33,14 @@ class DefaultController extends BaseController
 
         $friendlyLinks = $this->getNavigationService()->getOpenedNavigationsTreeByType('friendlyLink');
 
-        return $this->render('default/index.html.twig', array('friendlyLinks' => $friendlyLinks, 'custom' => $custom));
+        $testInfo = $this->getTestpaperService()->getPageTest();
+//        var_dump($testInfo);
+
+        return $this->render('default/index.html.twig', array(
+            'friendlyLinks' => $friendlyLinks,
+            'custom' => $custom,
+            'testInfo' => $testInfo,
+        ));
     }
 
     public function appDownloadAction()
@@ -261,6 +268,16 @@ class DefaultController extends BaseController
         $result = $this->getMeCount();
 
         return isset($result['hasMobile']) ? $result['hasMobile'] : 0;
+    }
+
+
+
+    /**
+     * @return TestpaperService
+     */
+    protected function getTestpaperService()
+    {
+        return $this->createService('Testpaper:TestpaperService');
     }
 
     /**

@@ -10,6 +10,8 @@ interface TestpaperDao extends GeneralDaoInterface
 
     public function getByIsTest();
 
+    public function getPageTest();
+
     public function getByIsTestANDTestCategoryId($testCategoryId);
 
     public function findTestpapersByIds(array $ids);

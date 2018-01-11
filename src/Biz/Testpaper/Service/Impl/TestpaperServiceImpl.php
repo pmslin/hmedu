@@ -36,6 +36,12 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
         return $this->getTestpaperDao()->getByIsTest();
     }
 
+    //获取展示在首页的试卷列表，9条
+    public function getPageTest()
+    {
+        return $this->getTestpaperDao()->getPageTest();
+    }
+
     //根据题库分类id获取对应的所有题库试卷
     public function getByIsTestANDTestCategoryId($testCategoryId)
     {
