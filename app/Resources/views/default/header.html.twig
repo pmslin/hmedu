@@ -45,14 +45,14 @@
             </a>
             <ul class="dropdown-menu" role="menu">
               <li role="presentation" class="dropdown-header">{{ app.user.nickname }}</li>
-              <li><a href="{{ path('user_show', {id:app.user.id}) }}"><i class="es-icon es-icon-person"></i>{{'个人主页'|trans}}</a></li>
-              <li><a href="{{ path('settings') }}"><i class="es-icon es-icon-setting"></i>{{'个人设置'|trans}}</a></li>
+              {# <li><a href="{{ path('user_show', {id:app.user.id}) }}"><i class="es-icon es-icon-person"></i>{{'个人主页'|trans}}</a></li> #}
+              <li><a href="{{ path('settings_avatar') }}"><i class="es-icon es-icon-setting"></i>{{'个人设置'|trans}}</a></li>
               <li class="hidden-lg user-nav-li-my">
                 <a href="{{ path('my') }}">
                   <i class="es-icon es-icon-eventnote"></i>{% if 'ROLE_TEACHER' in app.user.roles %}{{'我的教学'|trans}}{% else %}{{'我的学习'|trans}}{% endif %}
                 </a>
               </li>
-              <li><a href="{% if setting('coin.coin_enabled') %}{{path('my_coin')}}{% else %}{{path('my_bill')}}{% endif %}"><i class="es-icon es-icon-accountwallet"></i>{{'账户中心'|trans}}</a></li>
+              <li><a href="{% if setting('coin.coin_enabled') %}{{path('my_coin')}}{% else %}{{path('my_orders')}}{% endif %}"><i class="es-icon es-icon-accountwallet"></i>{{'账户中心'|trans}}</a></li>
 
               {% if has_permission('admin') %}<li><a href="{{ path('admin') }}"><i class="es-icon es-icon-dashboard"></i>{{'管理后台'|trans}}</a></li>
               {% endif %}
@@ -72,13 +72,14 @@
           <li class="visible-lg">
             <a href="{{ path('my') }}">
               {% if 'ROLE_TEACHER' in app.user.roles %}
-                {{'我的教学'|trans}}
+                {# {{'我的教学'|trans}} #}
+				{{'课程管理'|trans}}
               {% else %}
                 {{'我的学习'|trans}}
               {% endif %}
             </a>
           </li>
-          <li class="visible-lg nav-hover">
+          {# <li class="visible-lg nav-hover">
 
             {% if setting('esBar.enabled', 0) and app.user.newMessageNum > 0 %}
               <a class="hasmessage"><i class="es-icon es-icon-mail"></i><span class="dot"></span></a>
@@ -104,7 +105,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> #}
         {% else %}
           <li class="user-avatar-li nav-hover visible-xs">
             <a href="javascript:;" class="dropdown-toggle">
@@ -134,10 +135,10 @@
         {# {% include 'TopxiaWebBundle:Default:switch-language.html.twig' %} #}
       </ul>
       <form class="navbar-form navbar-right hidden-xs hidden-sm" action="{{ path('search') }}" method="get">
-        <div class="form-group">
+        {# <div class="form-group">
           <input class="form-control js-search" name="q" placeholder="{{'搜索'|trans}}">
           <button class="button es-icon es-icon-search"></button>
-        </div>
+        </div> #}
       </form>
     </div>
   </nav>

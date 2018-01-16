@@ -11,7 +11,7 @@
     </a>
     {# <h1 class="logo_right_text">|<span>教师资格</span></h1> #}
     <div class="module_five">
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default" role="navigation" style="z-index:0">
    
         <ul class="nav navbar-nav">
             <li><a href="#">题库</a></li>
@@ -132,15 +132,16 @@
 				<div class="jszp_right_guide">
 						<div id="frame" >
 			<div id="photos" class="play">
-				<img src="/files/default/2017/08-05/092012c9f72a986345.jpg" >
-				<img src="/files/default/2017/08-05/092012c9f72a986345.jpg" >
-				<img src="/files/default/2017/08-05/092012c9f72a986345.jpg" >
-				<img src="/files/default/2017/08-05/092012c9f72a986345.jpg" >
+				{% set course = data('LatestCourseSets',{count: 4, type: 'latest', categoryCode: '', notFree: 0}) %}  {# 考试公告 #}
+				{% for  course in course %}
+					{{ lazy_img(filepath(course_set_cover(course, 'large'), 'course.png'), 'img-responsive', course.title) }}
+				{% endfor %}
+					
 				<ul id="dis">
-					<li>111111111111111</li>
-					<li>22222222222222</li>
-					<li>33333333333333</li>
-					<li>44444444444444</li>
+					{% for  course in course %}
+					<li>{{ course.title }}</li>
+				{% endfor %}
+
 				</ul>
 			</div>
 		</div>

@@ -63,7 +63,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ url('admin') }}">{% if not setting('copyright.owned') %}EduSoho{% endif %}{{'管理后台'|trans}}</a>
+        <a class="navbar-brand" href="{{ url('admin') }}">{% if not setting('copyright.owned') %}翰墨教师证网站{% endif %}{{'管理后台'|trans}}</a>
       </div>
       <div class="navbar-collapse collapse">
         {% include 'admin/role/templates/navigation.html.twig' with {parentCode:'admin'} %}
@@ -153,12 +153,12 @@
   <div id="modal" class="modal" ></div>
   <div id="attachment-modal" class="modal" ></div>
   {% if setting('copyright.thirdCopyright') != 1 %}
-    <div class="fixed-bar">
+    {# <div class="fixed-bar">
       <a href="{{path('admin_feedback')}}"  target='_blank' class="icon-question-text feedback">
         <i class="es-icon es-icon-help"></i>
         <span>{{'产品'|trans}}<br/>{{'反馈'|trans}}</span>
       </a>
-    </div>
+    </div> #}
   {% endif %}
 </body>
 </html>

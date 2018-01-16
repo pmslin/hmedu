@@ -20,7 +20,7 @@
       </div>
 
       {% set classrooms = data('Classrooms',{count:1}) %}
-      <div class="more">
+      {# <div class="more">
         {% if classrooms|default(null) %}
           <a class="btn btn-primary btn-lg" href="{{ path('classroom_explore') }}">
             {{ '查看%name%'|trans({'%name%': setting('classroom.name')|default('班级'|trans)}) }}
@@ -29,7 +29,9 @@
         <a class="btn btn-primary btn-lg" href="{{ path('open_course_explore') }}">
           {{ '查看公开课'|trans }}
         </a>
-      </div>
+      </div> #}
+	  
+	  
     </div>
   </div>
 
@@ -47,7 +49,9 @@
 
   {{ render(controller('AppBundle:Category:treeNav',{tags:tags, path:path, category:category, filter: {type: type,price: price,currentLevelId: currentLevelId},orderBy: orderBy, group:'course'})) }} 	{# 调用分类控制器，group:'course' 是获取哪个分类 #}
 
-  <div class="es-filter">
+  
+  
+  {# <div class="es-filter">
     <ul class="nav nav-sort clearfix">
       <li>
         <a
@@ -109,7 +113,10 @@
         "> {{ '免费课程'|trans }}
       </label>
     </div>
-  </div>
+  </div> #}
+  
+  
+  
 
   <div class="course-list">
     <div class="row">
