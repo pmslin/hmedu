@@ -32,7 +32,7 @@
   <div class="panel-heading">
     {{ side_navs[code]|trans }}
     {% if btnGroup|default() %}
-      {% include 'course-manage/panel-header/' ~ code ~ '-btn-group.html.twig' with {code: side_nav} %}
+      {% include 'course-manage/panel-header/' ~ code ~ '-btn-group.html.twig' with {code: side_nav} %} {# 学员管理页面 #}
     {% endif %}
   </div>
 {% endif %}

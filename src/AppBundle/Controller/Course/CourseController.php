@@ -52,6 +52,7 @@ class CourseController extends CourseBaseController
      */
     public function showAction(Request $request, $id, $tab = 'summary')
     {
+//        exit();
         $tab = $this->prepareTab($tab);
         $user = $this->getCurrentUser();
 
@@ -67,22 +68,26 @@ class CourseController extends CourseBaseController
             throw $this->createNotFoundException('该教学计划所属课程不存在！');
         }
 
-        if ($this->canCourseShowRedirect($request)) {
-            $lastCourseMember = $this->getMemberService()->searchMembers(
-                array(
-                    'userId' => $user['id'],
-                    'courseSetId' => $course['courseSetId'],
-                ),
-                array('lastLearnTime' => 'desc'),
-                0,
-                1
-            );
-            if (!empty($lastCourseMember)) {
-                $lastCourseMember = reset($lastCourseMember);
 
-                return $this->redirect(($this->generateUrl('my_course_show', array('id' => $lastCourseMember['courseId']))));
-            }
-        }
+        //如果是课程创建者，跳转到创建者的课程详情页面
+//        if ($this->canCourseShowRedirect($request)) {
+//            $lastCourseMember = $this->getMemberService()->searchMembers(
+//                array(
+//                    'userId' => $user['id'],
+//                    'courseSetId' => $course['courseSetId'],
+//                ),
+//                array('lastLearnTime' => 'desc'),
+//                0,
+//                1
+//            );
+
+//            if (!empty($lastCourseMember)) {
+//                $lastCourseMember = reset($lastCourseMember);
+//
+//                return $this->redirect(($this->generateUrl('my_course_show', array('id' => $lastCourseMember['courseId']))));
+//            }
+
+//        }
 
         if ($this->isPluginInstalled('Discount')) {
             $discount = $this->getDiscountService()->getDiscount($courseSet['discountId']);
@@ -206,6 +211,7 @@ class CourseController extends CourseBaseController
         return $this->redirect($this->generateUrl('course_show', array('id' => $id)));
     }
 
+    //课程页面头部
     public function headerAction(Request $request, $course)
     {
         $courseSet = $this->getCourseSetService()->getCourseSet($course['courseSetId']);

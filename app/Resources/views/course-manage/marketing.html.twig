@@ -22,7 +22,7 @@ script(['libs/jquery-validation.js', 'libs/perfect-scrollbar.js', 'libs/bootstra
 
           <div class="es-piece">
             <div class="piece-header">加入设置</div>
-            <div class="form-group">
+            <div class="form-group"  style="display:none;">
               <label class="col-sm-2 control-label">
                 {{ '可加入'|trans }}<a class="es-icon es-icon-help text-normal link-gray" data-container="body"
                                     data-toggle="popover" data-trigger="hover"
@@ -55,7 +55,7 @@ script(['libs/jquery-validation.js', 'libs/perfect-scrollbar.js', 'libs/bootstra
             {{ slot('course.marketing.setting', {'course':course}) }}
 
             <div class="js-course-add-open-show {% if course.buyable|default(1) == 0 %} hidden {% endif %}">
-              <div class="form-group ">
+              <div class="form-group "  style="display:none;">
                 <div class="col-sm-2 control-label">
                   <label class="control-label-required">{{ '加入截止日期'|trans }}</label>
                 </div>
@@ -107,10 +107,10 @@ script(['libs/jquery-validation.js', 'libs/perfect-scrollbar.js', 'libs/bootstra
                 </div>
               </div>
             </div>
-            <hr class="mb30  bg-border-color">
+            <hr class="mb30  bg-border-color"   style="display:none;">
           {% endif %} #}
 
-          <div class="es-piece">
+          <div class="es-piece"   style="display:none;">
             <div class="piece-header">学习规则</div>
             <div class="form-group">
               <label class="col-sm-2 control-label">
@@ -189,10 +189,10 @@ script(['libs/jquery-validation.js', 'libs/perfect-scrollbar.js', 'libs/bootstra
               </div>
             {% endif %}
           </div>
-          <hr class="mb30  bg-border-color">
+          <hr class="mb30  bg-border-color"   style="display:none;">
 
           {% if courseSet.type != 'live' %}
-            <div class="es-piece ">
+            <div class="es-piece "   style="display:none;">
               <div class="piece-header">预览试看</div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">{{ '设置免费学习任务'|trans }}</label>
@@ -248,19 +248,19 @@ script(['libs/jquery-validation.js', 'libs/perfect-scrollbar.js', 'libs/bootstra
                 </div>
               </div>
             </div>
-            <hr class="mb30  bg-border-color">
+            <hr class="mb30  bg-border-color"   style="display:none;">
           {% endif %}
 
 
           <div class="es-piece">
-            <div class="piece-header">增值服务</div>
-            <div class="form-group">
+            <div class="piece-header"   style="display:none;">增值服务</div>
+            <div class="form-group"   style="display:none;">
               <label class="col-sm-2 control-label">{{ '展示承诺服务'|trans }}</label>
               <div class="col-sm-8 radios">
                 {{ radios('showServices', {'1': '是'|trans,'0': '否'|trans}, course.showServices|default(1)) }}
               </div>
             </div>
-            <div class="form-group js-services {% if course.showServices|default(1) == 0 %}hidden{% endif %}">
+            <div class="form-group js-services {% if course.showServices|default(1) == 0 %}hidden{% endif %}"   style="display:none;">
               <label class="col-sm-2 control-label">{{ '承诺提供服务'|trans }}</label>
               <div class="col-sm-8 form-control-static">
                 {% set serviceTags = services(course.services | default([])) %}

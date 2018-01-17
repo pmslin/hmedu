@@ -115,6 +115,7 @@ class CourseSetManageController extends BaseController
         );
     }
 
+    //编辑课程页面的标题头
     public function headerAction($courseSet, $course = null)
     {
         //暂时显示课程的创建者
@@ -133,6 +134,7 @@ class CourseSetManageController extends BaseController
         );
     }
 
+    //编辑课程页面的左侧栏
     public function sidebarAction($courseSetId, $curCourse, $sideNav)
     {
         $user = $this->getCurrentUser();

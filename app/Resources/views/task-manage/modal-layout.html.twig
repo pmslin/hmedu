@@ -14,16 +14,16 @@
     <ul class="es-step es-step-3 clearfix" id="task-create-step">
       <li class="doing">
         <span class="number">1</span>
-        选择教学手段123
+        选择教学手段
       </li>
       <li>
         <span class="number">2</span>
         设置内容
       </li>
-      <li>
-        <span class="number">3</span>
-        设置完成条件
-      </li>
+      {#<li>#}
+        {#<span class="number">3</span>#}
+        {#设置完成条件#}
+      {#</li>#}
     </ul>
     {% block task_create_type %}{% endblock %}
     <div id="task-create-content" class="task-create-content hidden"></div>
@@ -36,7 +36,7 @@
       <i class="es-icon es-icon-delete"></i>{{ '删除'|trans }}</button>
   {% endif %}
   <button id="course-tasks-prev" type="submit" class="btn btn-default hidden">{{ '上一步'|trans }}</button>
-  <button id="course-tasks-next" type="submit" class="btn btn-default hidden">{{ '下一步'|trans }}</button>
+  {#<button id="course-tasks-next" type="submit" class="btn btn-default hidden">{{ '下一步'|trans }}</button>#}
   <button id="course-tasks-submit" type="submit" class="btn btn-primary hidden"
           data-loading-text="{{ '正在保存...'|trans }}">{{ '保存'|trans }}</button>
 {% endblock %}

@@ -25,7 +25,8 @@
             </a>
           {% endif %}
         </li>
-        <li class="list-group-item {% if side_nav == 'detail' %}active{% endif %}">
+		
+        {# <li class="list-group-item {% if side_nav == 'detail' %}active{% endif %}">
           {% if courseSet.locked %}
             <a class="pl10" href="{{ path('course_set_manage_sync', {id: courseSet.id, sideNav: 'detail'}) }}">
               <span class="es-icon es-icon-lock mr10" aria-hidden="true"></span>{{ '详细信息'|trans }}
@@ -35,7 +36,8 @@
               {{ '详细信息'|trans }}
             </a>
           {% endif %}
-        </li>
+        </li> #}
+		
         <li class="list-group-item {% if side_nav == 'cover' %}active{% endif %}">
           {% if courseSet.locked %}
             <a class="pl10" href="{{ path('course_set_manage_sync', {id: courseSet.id, sideNav: 'cover'}) }}">
@@ -47,7 +49,8 @@
             </a>
           {% endif %}
         </li>
-        <hr class="mv5 mh10 bg-border-color"/>
+		
+        {# <hr class="mv5 mh10 bg-border-color"/>
         <li class="list-group-item {% if side_nav == 'files' %}active{% endif %}">
           {% if courseSet.locked %}
             <a class="pl10" href="{{ path('course_set_manage_sync', {id: courseSet.id, sideNav: 'files'}) }}">
@@ -80,7 +83,8 @@
               {{ '题目管理'|trans }}
             </a>
           {% endif %}
-        </li>
+        </li> #}
+		
         {{ slot('course_set.menu.extension', {'courseSet':courseSet,'sideNav':side_nav}) }}
       {% endif %}
       {#不为courseSet 或者 长度小于 1 #}
@@ -104,7 +108,8 @@
             </a>
           {% endif %}
         </li>
-        <li class="list-group-item {% if side_nav == 'info' %}active{% endif %}">
+		
+        {# <li class="list-group-item {% if side_nav == 'info' %}active{% endif %}">
           {% if courseSet.locked %}
             <a class="pl10" href="{{ path('course_set_manage_sync', {id: courseSet.id, sideNav: 'info'}) }}">
               <span class="es-icon es-icon-lock mr10" aria-hidden="true"></span>{{ '计划设置'|trans }}
@@ -114,7 +119,8 @@
               {{ '计划设置'|trans }}
             </a>
           {% endif %}
-        </li>
+        </li> #}
+		
         {% if hasLiveTasks or courseSet.type == 'live' %}
           <li class="list-group-item {% if side_nav == 'replay' %}active{% endif %}">
           {% if courseSet.locked %}
@@ -139,7 +145,8 @@
             </a>
           {% endif %}
         </li>
-        <li class="list-group-item {% if side_nav == 'teachers' %}active{% endif %}">
+		
+        {# <li class="list-group-item {% if side_nav == 'teachers' %}active{% endif %}">
           {% if courseSet.locked %}
             <a class="pl10" href="{{ path('course_set_manage_sync', {id: courseSet.id, sideNav: 'teachers'}) }}">
               <span class="es-icon es-icon-lock mr10" aria-hidden="true"></span>{{ '教师设置'|trans }}
@@ -149,13 +156,15 @@
               {{ '教师设置'|trans }}
             </a>
           {% endif %}
-        </li>
+        </li> #}
+		
         <li class="list-group-item {% if side_nav == 'students' %}active{% endif %}">
           <a href="{{ path('course_set_manage_course_students', {courseSetId: courseSet.id, courseId: curCourse.id}) }}">
             {{ setting('default.user_name')|default('学员'|trans) }}{{ '管理'|trans }}
           </a>
         </li>
-        <hr class="mv5 mh10 bg-border-color"/>
+		
+        {# <hr class="mv5 mh10 bg-border-color"/>
         <li class="list-group-item {% if side_nav == 'testpaper-check' %}active{% endif %}">
           <a href="{{ path('course_manage_testpaper_check_list', {id: curCourse.id}) }}">{{ '试卷批阅'|trans }}
           </a>
@@ -168,29 +177,29 @@
         <li class="list-group-item {% if side_nav == 'dashboard' %}active{% endif %}">
           <a href="{{ path('course_set_manage_course_dashboard',{courseSetId: courseSet.id, courseId: curCourse.id}) }}">
             {{ '学习数据'|trans }}</a>
-        </li>
+        </li> #}
 
         {#<li class="list-group-item {% if side_nav == 'question_marker' %}active{% endif %}">#}
           {#<a href="{{ path('course_manage_question_marker',{courseSetId: courseSet.id, courseId: curCourse.id}) }}">#}
             {#{{ '弹题统计' }}</a>#}
         {#</li>#}
-        {% if app.user.isAdmin() or setting('course.teacher_search_order') == 1 %}
+        {# {% if app.user.isAdmin() or setting('course.teacher_search_order') == 1 %}
           <li class="list-group-item {% if side_nav == 'orders' %}active{% endif %}">
             <a href="{{ path('course_set_manage_course_orders', {courseSetId: courseSet.id, courseId: curCourse.id}) }}">{{ '订单查询'|trans }}
             </a>
           </li>
-        {% endif %}
+        {% endif %} #}
       </div>
       {% endif %}
       {# 不是直播，不是编辑下得课程，课程编辑或者#}
       {% if isShowCourseList %}
         <div class="js-sidenav-course-list">
-          <hr class="mv5 mh10 bg-border-color"/>
+          {# <hr class="mv5 mh10 bg-border-color"/>
           <li class="list-group-item {% if side_nav == 'plan' %}active{% endif %}">
             <a href="{{ path('course_set_manage_courses', {courseSetId: courseSet.id}) }}">
               {{ '教学计划管理'|trans }}
             </a>
-          </li>
+          </li> #}
         </div>
       {% endif %}
     </ul>

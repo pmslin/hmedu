@@ -24,15 +24,15 @@
   {% set metas = course_show_metas(member|default(null) ? 'member' : 'guest') %}
   {% set route_params = app.request.attributes.get('_route_params') %}
 
-  {{ render(controller(metas.header,{request:app.request, course: course, member: member|default(null)})) }}
+  {{ render(controller(metas.header,{request:app.request, course: course, member: member|default(null)})) }}  {# 当前控制器（即显示这个页面的控制器）里面的headerAction方法 #}
 
   {{ slot('marketing.tool', {'type':'course','targetId':course.id}) }}
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-9 col-md-8 course-detail-content">
+      <div class="col-lg-12 col-md-8 course-detail-content">
         {% include 'course/announcement/block.html.twig' with { courseId:course.id } %}
-        <section class="es-section">
+        <section class="es-section"  style="display:none;">  {# 隐藏课程介绍等tab #}
           <div class="nav-btn-tab">
 
 	          {% if member|default(null) %}
@@ -62,13 +62,16 @@
 
       </div>
 
-      <div class="col-lg-3 col-md-4 course-sidebar">
+	  
+	  {# 授课教师、课程特色、学员动态  #}
+      {# <div class="col-lg-3 col-md-4 course-sidebar"> #}
         {# 积分奖励侧边栏隐藏 #}
-        {# {% if setting('reward_point.enable',0) and (course.taskRewardPoint|default(0) > 0 or course.rewardPoint|default(0) > 0)%}
+        {#{% if setting('reward_point.enable',0) and (course.taskRewardPoint|default(0) > 0 or course.rewardPoint|default(0) > 0)%}
           {% include 'course/side-bar/reward-point.html.twig' with {course: course} %}
-        {% endif %} #}
+        {% endif %}#}
+		
         {# 有些widget只有班级计划才显示 #}
-        {% for key, widget in metas.widgets %}
+        {# {% for key, widget in metas.widgets %}
           {% if (widget.showMode|default('all') == 'classroom' and course.parentId > 0)
           or (widget.showMode|default('all') == 'course' and course.parentId == 0)
           or widget.showMode|default('all') == 'all' %}
@@ -78,9 +81,10 @@
               {% include widget.uri with {course: course} %}
             {% endif %}
           {% endif %}
-        {% endfor %}
-      </div>
+        {% endfor %} #}
+      {# </div> #}
 
+	  
     </div>
   </div>
 

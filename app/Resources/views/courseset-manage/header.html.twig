@@ -27,7 +27,7 @@
     {% endif %}
   </h1>
 
-  <div class="teachers">
+  {# <div class="teachers">
     {% if courseSet.teacherIds|default(null) %}
       {{'教师：'|trans}}
       {% for id in courseSet.teacherIds %}
@@ -35,7 +35,7 @@
         <a href="{{ path('user_show',  {id:user.id}) }}" >{{ user.nickname }}</a>
       {% endfor %}
     {% endif  %}
-  </div>
+  </div> #}
 
   <div class="toolbar hidden-xs">
     {% if course.courseSetId|default(null) and course_count(course.courseSetId)|default(0) > 1 %}

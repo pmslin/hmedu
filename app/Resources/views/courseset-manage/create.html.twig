@@ -22,10 +22,12 @@
               <div class="course-select js-courseSetType active" data-type="normal"><i
                     class="es-icon es-icon-putongkecheng "></i>
                 <div class="course-type">普通课程</div>
-                <div class="course-intro">支持视频、图文、PPT等各种形式，支持作业、笔记等多个学习工具的课程</div>
+                {# <div class="course-intro">支持视频、图文、PPT等各种形式，支持作业、笔记等多个学习工具的课程</div> #}
+				<div class="course-intro">视频课程</div>
               </div>
             </div>
-            <div class="col-md-3">
+            
+			{# <div class="col-md-3"> #}
               {#{% if not liveStatus.isBuy %}#}
                 {#<div class="course-select disabled" data-toggle="tooltip" data-placement="top"#}
                    {#title="还未购买云直播服务" data-type="live">#}
@@ -36,23 +38,23 @@
                 {#<div class="course-select disabled" data-toggle="tooltip" data-placement="top"#}
                      {#title="云直播服务不在有效期内" data-type="live">#}
               {#{% else %}#}
-                <div class="course-select js-courseSetType" data-type="live">
+                {# <div class="course-select js-courseSetType" data-type="live"> #}
               {#{% endif %}#}
-                  <i class="es-icon es-icon-zhibokecheng "></i>
+                {#   <i class="es-icon es-icon-zhibokecheng "></i>
                   <div class="course-type">直播课程</div>
                   <div class="course-intro">以直播为教学形式的，支持多个学习工具的课程</div>
                 </div>
-            </div>
+            </div> #}
 
-            <div class="col-md-3">
+            {# <div class="col-md-3">
               <div class="course-select js-courseSetType" data-type="open">
                 <i class="es-icon es-icon-lubogongkaike"></i>
                 <div class="course-type">录播公开课</div>
                 <div class="course-intro">免费、无门槛观看的视频课程，主要用于营销推广</div>
               </div>
-            </div>
+            </div> #}
 
-            <div class="col-md-3">
+            {# <div class="col-md-3">
               {% if not liveStatus.isBuy %}
                 <div class="course-select disabled" data-toggle="tooltip" data-placement="top"
                      title="还未购买云直播服务" data-type="liveOpen">
@@ -69,23 +71,25 @@
                   <div class="course-type">直播公开课</div>
                   <div class="course-intro">免费、无门槛参与的直播课程，主要用于营销推广</div>
                 </div>
-            </div>
+            </div> #}
+			
             {% include 'org/course-create-org-tree-select.html.twig' %}
+			
             <div class="course-title form-group">
               <div class="col-md-2 controls-label text-lg">
-                <div class="course-piece title">{{ '课程标题'|trans }}</div>
+                {# <div class="course-piece title">{{ '课程标题'|trans }}</div> #}
               </div>
               <div class="col-md-10 controls">
                 <input type="text" id="course_title" name="title" required="required" class="form-control"
-                       data-widget-cid="widget-1" data-explain="">
+                       data-widget-cid="widget-1" data-explain=""  placeholder="课程标题">
                 <div class="help-block" style="display:none;"></div>
               </div>
             </div>
             <div class="text-center">
               {% if not setting('copyright.owned') %}
-                <span class="mrm">
+                {# <span class="mrm">
               <a href="http://www.qiqiuyu.com/course/22" class="color-gray" target="_blank">{{ '如何创建课程？'|trans }}</a>
-            </span>
+            </span> #}
               {% endif %}
               <button id="courseset-create-btn" data-loading-text="{{ '正在创建...'|trans }}"
                      class="btn btn-fat btn-primary" type="submit">{{ '创建'|trans }}</button>
