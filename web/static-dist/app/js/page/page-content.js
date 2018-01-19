@@ -18,4 +18,7 @@ $(document).ready(function(){
     }).mouseout(function (){  
 		$("#mianshi").css('color','#404040');
 	}); 
+	
+
+
 }); 

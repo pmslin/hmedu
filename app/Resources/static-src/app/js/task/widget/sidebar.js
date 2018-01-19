@@ -51,7 +51,7 @@ export default class TaskSidebar extends Emitter {
       return html += `<div data-pane="${plugin.code}" class=" ${plugin.code}-pane js-sidebar-pane" ><div class="${plugin.code}-pane-body js-sidebar-pane-body"></div></div>`;
     }, '');
     this.element.append(html);
-    
+
   }
 
   bindEvent() {
@@ -64,11 +64,11 @@ export default class TaskSidebar extends Emitter {
       if (pluginCode === undefined || url === undefined) {
         return;
       }
-      
+
       if(this.isManualOperation){
           this.operationContent($btn);
       }
-  
+
       if ($btn.data('loaded')) {
         return;
       }
@@ -97,13 +97,13 @@ export default class TaskSidebar extends Emitter {
       this.popupContent();
       $('.dashboard-sidebar').addClass('spread');
     }
-    
+
   }
 
   popupContent(time = 500) {
     let side_right = '0px';
     let width = $('#dashboard-sidebar').width();
-    
+
     let content_right = width +  35 +'px';
 
     this.emit('popup', content_right, time);
