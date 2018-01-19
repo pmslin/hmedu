@@ -166,7 +166,8 @@ admin:
                             name: 私信管理
                             disable: true
         admin_course:
-            name: 课程
+            #原来标题：课程
+            name: 题库
             children:
                 admin_course_show:
                     name: 课程管理
@@ -501,7 +502,8 @@ admin:
                                     mode: modal
                                     group: topBtn
         admin_operation:
-            name: 运营
+            #原来标题：运营
+            name: 资讯
             children:
                 admin_operation_article:
                     name: 资讯管理

@@ -23,7 +23,7 @@
             {% else %}
               {% set questionTemplate = getQuestionTypeTemplate(question.type,'do') %}
               {% if questionTemplate %}
-                {% include questionTemplate %}
+                {% include questionTemplate %} {# 查看答案页面的题目列表 #}
               {% endif %}
             {% endif %}
           {% endfor %}

@@ -12,6 +12,8 @@
 <div id="question-picker-body">
   
   {# 搜索框 {% include 'test-question-manage/picker-search-form.html.twig' %} #}
+  
+  <button type="button" class="btn btn-primary" type="button" class="btn btn-primary pull-right" data-role="batch-select-save" data-toggle="form-submit" data-target="#block-form" data-url="{{ path('test_set_manage_question_picked', {testpaperId:testPaper.id }) }}">确定</button>
 
   <table class="table table-condensed" id="item-picker-table">
     <thead>

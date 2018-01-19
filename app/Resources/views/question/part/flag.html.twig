@@ -10,7 +10,8 @@
   </a>
 {% endif %}
 
-{% if 'favorite' in flags and resultStatus and resultStatus == 'finished' %}
+{# 查看试卷答案页面，收藏按钮--屏蔽 #}
+{# {% if 'favorite' in flags and resultStatus and resultStatus == 'finished' %}
   <a class="link-gray js-favorite {% if question.id in favorites %} hidden {% endif %}" data-url="{{ path('my_question_favorite', {questionId:question.id}) }}" data-target-type="testpaper" data-target-id="{{ paper.id|default(0) }}" data-question-id="{{ question.id }}">
     <span class="glyphicon glyphicon-star-empty"></span>
      {{'收藏'|trans}}
@@ -19,7 +20,7 @@
     <span class="glyphicon glyphicon-star"></span>
     {{'取消收藏'|trans}}
   </a>
-{% endif %}
+{% endif %} #}
 
 {% if 'analysis' in flags %}
   {% if not question.analysis == '' %}

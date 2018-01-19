@@ -9,10 +9,25 @@
   <div class="checkboxs" id="old-checkboxs">
     {% set admin_roles = get_admin_roles() %}
    
-    {% for cat in testCategory if(cat.parentId == 0) %}
+	{# 三级分类用 #}
+    {# {% for cat in testCategory if(cat.parentId == 0) %}
 	 <h4>{{cat.name}} </h4> 
 	 {% for cats in testCategory if(cats.parentId == cat.id) %}
 		<br /> <span>{{cats.name}} : </span>
+		<div style="margin-left:auto;">
+		{% for catss in testCategory if(catss.parentId == cats.id) %}
+			&nbsp;&nbsp;&nbsp;<input type="checkbox" name="testCategoryId[]" value="{{catss.id}}" {% if catss.id in testMemberArr %} checked {% endif %} /><span>{{catss.name}}</span> 
+		{% endfor %}
+		</div>
+	 {% endfor %}
+    {% endfor %} #}
+	
+	
+	{# 二级分类用 #}
+	{% for cat in testCategory if(cat.parentId == 0) %}
+	 <h4>{{cat.name}} </h4> 
+	 {% for cats in testCategory if(cats.parentId == cat.id) %}
+		 <input type="checkbox" name="testCategoryId[]" value="{{cats.id}}" {% if cats.id in testMemberArr %} checked {% endif %} /> <span>{{cats.name}}  </span> <br /><br />
 		<div style="margin-left:auto;">
 		{% for catss in testCategory if(catss.parentId == cats.id) %}
 			&nbsp;&nbsp;&nbsp;<input type="checkbox" name="testCategoryId[]" value="{{catss.id}}" {% if catss.id in testMemberArr %} checked {% endif %} /><span>{{catss.name}}</span> 

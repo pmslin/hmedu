@@ -82,7 +82,9 @@
                 <a class="mr10 link-primary" target="_blank" href="{{ path('course_set_manage_base', {id: courseSet.id}) }}">
                   {{ '管理'|trans }}
                 </a>
-                <a href="javascript:;" type="button" class="link-primary dropdown-toggle ml10" data-toggle="dropdown">
+				
+				{# 更多（计划管理、文件管理） #}
+                {# <a href="javascript:;" type="button" class="link-primary dropdown-toggle ml10" data-toggle="dropdown">
                   更多
                   <i class="es-icon es-icon-arrowdropdown"></i>
                 </a>
@@ -99,7 +101,8 @@
                       {{ '文件管理'|trans }}
                     </a>
                   </li>
-                </ul>
+                </ul> #}
+				
               </div>
             </td>
           </tr>

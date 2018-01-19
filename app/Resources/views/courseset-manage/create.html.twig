@@ -10,9 +10,11 @@
       <div class="panel-heading">
         <h2>{{ '创建课程'|trans }}</h2>
       </div>
-      {% if not app.user.largeAvatar or not app.user.title or not userProfile.about %}
+	  
+	  {# 创建课程前判断是否设置头像头衔等--屏蔽 #}
+      {# {% if not app.user.largeAvatar or not app.user.title or not userProfile.about %} 
         {% include 'settings/user-profile.html.twig' %}
-      {% else %}
+      {% else %} #}
         <form id="courseset-create-form" class="form-horizontal" action="{{ path('course_set_manage_create') }}"
               method="post">
           {{ web_macro.flash_messages() }}
@@ -99,7 +101,8 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('site') }}"></div>
         </div>
       </form>
-      {% endif %}
+      {# {% endif %} #}
+	  
     </div>
   </div>
 {% endblock %}

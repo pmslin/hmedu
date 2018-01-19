@@ -1,6 +1,6 @@
 {% import 'macro.html.twig' as macro %}
 <tr data-role='item'>
-  <td><input value="{{ testpaper.id }}" type="checkbox" data-role="batch-item" ></td>
+  {# <td><input value="{{ testpaper.id }}" type="checkbox" data-role="batch-item" ></td> #}
   <td>
     <a class="link-primary" href="{{ path('test_set_manage_testpaper_preivew', {testpaperId:testpaper.id}) }}" target="_blank">{{ testpaper.name|plain_text(40) }}</a>
   </td>
@@ -31,7 +31,8 @@
       </a>
       <ul class="dropdown-menu pull-right">
         {% if testpaper.status in ['draft', 'closed'] %}
-          <li><a class="open-testpaper" href="javascript:" title="{{'真的要发布%name%吗？ 试卷发布后无论是否关闭都将无法修改。'|trans({'%name%': testpaper.name })}}" data-url="{{ path('manage_testpaper_publish', {testpaperId:testpaper.id}) }}"><span class="es-icon es-icon--check-circle mrm"></span> {{'发布试卷'|trans}}</a></li>
+            {#真的要发布%name%吗？ 试卷发布后无论是否关闭都将无法修改。#}
+          <li><a class="open-testpaper" href="javascript:" title="{{'真的要发布试卷%name%吗？'|trans({'%name%': testpaper.name })}}" data-url="{{ path('manage_testpaper_publish', {testpaperId:testpaper.id}) }}"><span class="es-icon es-icon--check-circle mrm"></span> {{'发布试卷'|trans}}</a></li>
         {% endif %}
         {% if testpaper.status == 'open' %}
           <li><a class="close-testpaper" href="javascript:" title="{% if testpaperActivities[testpaper.id]|default(null) %}该试卷已被任务引用，真的要关闭吗？{% else %}{{'真的要关闭试卷%name%吗？'|trans({'%name%': testpaper.name })}}{% endif %}" data-url="{{ path('manage_testpaper_close', {testpaperId:testpaper.id}) }}"><span class="es-icon es-icon-close01 mrm"></span> {{'关闭试卷'|trans}}</a></li>

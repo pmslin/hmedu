@@ -48,13 +48,13 @@
         </div>
       </div>
 
-      {# <div class="form-group">
+      <div class="form-group"  style="display:none;">
         <label for="article-tagIds"　class="control-label">{{'TAG标签'|trans}}</label>
         <div class="controls">
           <input type="form-control" id="article-tags" name="tags" required="required" class="width-full select2-offscreen" tabindex="-1" value="{{ tagNames|default([])|join(',') }}" data-match-url="{{ path('tag_match') }}">
           <div class="help-block" style="display:none;"></div>
         </div>
-      </div> #}
+      </div>
 
       {% include 'org/org-tree-select.html.twig' with {orgCode: article.orgCode|default(null), nocolmd:true} %}
 
@@ -98,7 +98,7 @@
         </div>
       </div>
 
-      {# <div class="panel panel-default">
+      <div class="panel panel-default"  style="display:none;">
         <div class="panel-heading">{{'来源设置'|trans}}</div>
         <div class="panel-body">
             <div class="form-group">
@@ -115,7 +115,7 @@
               </div>
             </div>
         </div>
-      </div> #}
+      </div>
 
       <div class="panel panel-default">
         <div class="panel-heading">{{'设置缩略图'|trans}}</div>

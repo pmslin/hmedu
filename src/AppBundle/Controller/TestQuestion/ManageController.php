@@ -335,7 +335,7 @@ class ManageController extends BaseController
         return $this->createJsonResponse($result);
     }
 
-    //在用。。。 未完成
+    //在用。。。 未完成  可用
     /***独立题库试卷“题目管理”--“新增试题”
      * @param Request $request
      * @param $testpaperId 试卷id
@@ -358,7 +358,7 @@ class ManageController extends BaseController
         $paginator = new Paginator(
             $request,
             $this->getQuestionService()->searchCount($conditions),
-            7
+            999
         );
 
 
