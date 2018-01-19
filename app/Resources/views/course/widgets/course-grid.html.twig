@@ -39,7 +39,8 @@
       {% if setting('course.show_student_num_enabled', '1') == 1  %}
         <span class="num"><i class="es-icon es-icon-people"></i>{{ courseSet.studentNum }}</span>
       {% endif %}
-      <span class="comment"><i class="es-icon es-icon-textsms"></i>{{ courseSet.ratingNum }}</span>
+	  {# 屏蔽课程列表页面该课程的评论人数 #}
+      {# <span class="comment"><i class="es-icon es-icon-textsms"></i>{{ courseSet.ratingNum }}</span> #}
       {% if courseSet.course.tryLookVideo|default(false) %}
         <span class="comment"><i class="es-icon es-icon-playcircleoutline"></i>{{'试看'|trans}}</span>
       {% endif %}

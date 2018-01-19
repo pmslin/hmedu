@@ -32,7 +32,8 @@
          {% else %}
         {{ course.title }}
        {% endif %}
-       {% block course_header_qrcode %}
+       
+	   {# {% block course_header_qrcode %}
         <span class="es-qrcode top pt5 hidden-xs" data-url="{{ path('course_qrcode', { id: course.id }) }}">
           <i class="es-icon es-icon-qrcode"></i>
           <span class="qrcode-popover">
@@ -40,7 +41,8 @@
             扫二维码继续学习二维码时效为半小时
           </span>
         </span>
-       {% endblock %}
+       {% endblock %} #}
+	   
       </span>
       {% block course_header_subtitle %}{% endblock %}
       <ul class="course-operation hidden-xs hidden-sm clearfix">
@@ -56,8 +58,8 @@
           {% endif %}
         {% endblock %}
 
-        <!--营销页显示-->
-        {% if marketingPage %}
+        <!--营销页显示 课程收藏、分享、课程管理屏蔽-->
+        {# {% if marketingPage %}
         <li class="js-unfavorite-btn" id="unfavorite-btn" data-url="{{ path('course_set_unfavorite', {id: course.courseSetId }) }}"
             {% if not isUserFavorite %}style="display: none" {% endif %}>
           <a class="btn btn-default btn-xs" href="javascript:;" data-toggle="tooltip" data-placement="top" title="已收藏"
@@ -98,7 +100,8 @@
           </li>
         {% endif %}
         {% block course_member_exit %}{% endblock %}
-      </ul>
+      </ul> #}
+	  
     </div>
     {% block course_heard_content %}{% endblock %}
   </div>

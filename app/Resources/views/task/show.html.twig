@@ -23,10 +23,11 @@
   <div class="task-dashboard-page js-task-dashboard-page">
     <div class="dashboard-content" id="dashboard-content">
       <div class="dashboard-header">
-        <a class="back-link" href="{{ path('my_course_show',{id:course.id}) }}">
+        <a class="back-link" href="{{ path('course_show',{id:course.id}) }}">
           <i class="es-icon es-icon-chevronleft"></i>返回课程
         </a>
         任务{{ task.number }}：{{ task.title }}
+		{# <a class="btn btn-primary btn-sm" href="{{path('course_task_show', {courseId: task.courseId, id: nextTask.id})}}">下一任务</a> #}
       </div>
       <div class="dashboard-body">
         <div class="{% if task.type in ['exercise' , 'homework' ,'testpaper'] %} mobile-scroll-wrapper {% endif %} all-wrapper">
@@ -40,7 +41,7 @@
         </div>
       </div>
 
-      <div class="dashboard-footer">
+      <div class="dashboard-footer"  style="display:none;">  {# "学过了"按钮点击 #}
         <div class="btn-group pull-left visible-xs js-mobile-btn" role="group">
           <a class="btn btn-default  {% if not  previousTask|default(null) %} disabled {% endif  %}"
              {% if  previousTask|default(null) %} href="{{ path('course_task_show',{courseId: course.id, id: previousTask.id}) }}" {% endif  %}><strong class="es-icon es-icon-chevronleft text-xlg"></strong></a>
@@ -60,6 +61,7 @@
                 {% endif %}
               {% endif  %}><strong class="es-icon es-icon-chevronright text-xlg"></strong></a>
         </div>
+		
         <div class="state-opration js-state-opration" data-learnmode="{{course.learnMode|default('freeMode')}}">
           <a class="btn btn-gray text-sm {% if task.type == 'video' %} hidden-xs{% endif %} js-learn-prompt {% if taskResult.status != 'finish' %}open{% endif %}"
             href="javascript:;"
@@ -94,7 +96,6 @@
             学过了
           </a>
         {% endif %}
-
       </div>
     </div>
     <div class="dashboard-sidebar hidden-xs" id="dashboard-sidebar">

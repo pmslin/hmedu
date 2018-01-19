@@ -38,10 +38,13 @@
           <i class="es-icon es-icon-people"></i>
           <span class="mhs">{{ courseSet.studentNum|default(0) }}</span>人加入学习
         {% endif %}
-        <div class="score pull-right mb0">
+		
+		{# 评分评价 #}
+        {# <div class="score pull-right mb0">
           {{ web_macro.star(courseSet.rating|default(0)) }}
           <span class="vertical-middle">({{courseSet.ratingNum|default(0)}}人评价)</span>
-        </div>
+        </div> #}
+		
       </div>
     </div>
     <div class="course-detail-info">
@@ -53,9 +56,10 @@
         {% set onDiscount =  false %}
       {% endif %}
 
-      <div class="{% if onDiscount %} mb10  {% else %} mb15 {% endif %}">
+	  {# 原来价格位置 #}
+      {# <div class="{% if onDiscount %} mb10  {% else %} mb15 {% endif %}">
         {% include 'course/header/header-for-price.html.twig' %}
-      </div>
+      </div> #}
 
       {% if onDiscount  %} 
         <div class="mb15 ">
@@ -68,8 +72,12 @@
           <span>
         </div>
       {% endif %}
-      <div class="course-detail-gray {% if not onDiscount %} not-activity {% endif %}">
-        {% if courseSet.type != 'live' %}
+
+	  <br /><br /><br />{# 自己添加的占位换行标签 #}
+	  
+	  <div class="course-detail-gray {% if not onDiscount %} not-activity {% endif %}">
+		{# 屏蔽教学计划、学校有效期等 #}
+        {# {% if courseSet.type != 'live' %}
           <div class="course-detail-content">
             <span class="course-detail-title vertical-middle mb10">教学计划</span>
             <ul class="nav nav-pills nav-pills-sm nav-pills-transparent course-detail-nav">
@@ -125,9 +133,16 @@
               {{ tag.shortName }}
             </span>
           {% endfor %}
-        {% endif %}
+        {% endif %} #}
         
+		{# 调整后的价格位置 #}
+		<div class="{% if onDiscount %} mb10  {% else %} mb15 {% endif %}">
+        {% include 'course/header/header-for-price.html.twig' %}
+		</div>
+	  
       </div>
+	  
+	  
       <div class="course-detail-section-responsive visible-xs visible-sm clearfix">
         <ul class="clearfix">
           <!--营销页显示-->
@@ -167,9 +182,9 @@
           {% if course.expiryMode == 'date' and course.expiryStartDate >= timestamp() %}
             课程将于{{course.expiryStartDate|date('Y年m月d日')}}开始授课，请耐心等待
           {% else %}
-            <a class="btn btn-primary btn-lg" href="{{ path('my_course_show', {id: course.id}) }}">
+            {# <a class="btn btn-primary btn-lg" href="{{ path('my_course_show', {id: course.id}) }}">
               去学习
-            </a>
+            </a> #}
           {% endif %}
         {% else %}
           {% if classroom | default(null) %}

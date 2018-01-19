@@ -2,7 +2,7 @@
 <span class="course-detail-title">价格</span>
 
 {% if course.price == 0 and  courseSet.discountId <= 0 %}
-  <span class="gray-darker mrm vertical-middle inline-block"><b class="pirce-num">免费</b></span>
+  <span class="gray-darker mrm vertical-middle inline-block"><b class="pirce-num" style="color:#2dbb55;">免费</b></span>
 {% else %}
 	{% if coinSetting.coin_enabled|default(false) and coinSetting.price_type == 'Coin' %}
 		<span class="gray-darker mrm"><b class="pirce-num">{{ course.price * coinSetting.cash_rate }} {{ coinSetting.coin_name|default('虚拟币'|trans) }}</b></span>
@@ -17,7 +17,7 @@
 			{% endif %}
 		{% endif %}
 	{% else %}
-		<span class="gray-darker mrm">¥<b class="pirce-num">{{ course.price }}</b></span>
+		<span class="gray-darker mrm">¥ <b class="pirce-num" style="color:#2dbb55;">{{ course.price }}</b></span>
 		{% if course.price < course.originPrice %}
 			<span class="original-price">¥<span class="price">{{ course.originPrice }}</span></span>
 			{% if courseSet.discount != 0 %}
