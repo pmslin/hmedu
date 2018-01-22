@@ -24,6 +24,13 @@ class ManageController extends BaseController
      */
     public function indexAction(Request $request, $id)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
 //        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
         $testPaerInfo=$this->getTestpaperService()->getTestpaper($id);  //试卷信息
@@ -116,6 +123,13 @@ class ManageController extends BaseController
      */
     public function createAction(Request $request, $id, $type)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
         $TestpaperInfo = $this->getTestpaperService()->getTestpaper($id);
 
         if ($request->getMethod() === 'POST') { //提交题目
@@ -196,6 +210,13 @@ class ManageController extends BaseController
      */
     public function updateAction(Request $request, $testId, $questionId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
 //        $courseSet = $this->getCourseSetService()->tryManageCourseSet($courseSetId);
 
         $testPaper = $this->getTestpaperService()->getTestpaper($testId);
@@ -247,6 +268,13 @@ class ManageController extends BaseController
      */
     public function deleteAction(Request $request, $testId, $questionId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
 //        $this->getCourseSetService()->tryManageCourseSet($courseSetId);
 
         $question = $this->getQuestionService()->get($questionId);
@@ -343,6 +371,13 @@ class ManageController extends BaseController
      */
     public function questionPickerAction(Request $request, $testpaperId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+        
 //        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
         $testPaper = $this->getTestpaperService()->getTestpaper($testpaperId);

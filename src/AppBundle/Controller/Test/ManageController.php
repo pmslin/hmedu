@@ -22,6 +22,13 @@ class ManageController extends BaseController
 
     //独立题库试卷列表 在用
     public function testPaperListAction(Request $request){
+
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
 //        $testPaper=$this->getTestpaperService()->getTestpaperByIsTest();
 
         $fields = $request->query->all();
@@ -69,6 +76,11 @@ class ManageController extends BaseController
     //创建独立题库试卷页面  和  创建独立题库试卷功能
     public function createAction(Request $request)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
 
 //        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
@@ -175,6 +187,13 @@ class ManageController extends BaseController
      */
     public function updateAction(Request $request, $testpaperId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
 //        if (empty($testpaper) || $testpaper['courseSetId'] != $courseSetId) {
@@ -209,6 +228,13 @@ class ManageController extends BaseController
      */
     public function questionsAction(Request $request, $testpaperId)
     {
+
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
 
 
@@ -267,6 +293,13 @@ class ManageController extends BaseController
      */
     public function publishAction(Request $request, $testpaperId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
         if (empty($testpaper)) {
             throw new NotFoundException("找不到该试卷 testpaper#{$testpaperId} not found");
@@ -330,6 +363,12 @@ class ManageController extends BaseController
      */
     public function closeAction(Request $request, $testpaperId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
 
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
         if (empty($testpaper)) {
@@ -355,6 +394,13 @@ class ManageController extends BaseController
      */
     public function deleteAction(Request $request, $testpaperId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
 //        $this->getCourseSetService()->tryManageCourseSet($courseSetId);
 
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
@@ -377,6 +423,13 @@ class ManageController extends BaseController
      */
     public function previewAction(Request $request, $testpaperId)
     {
+        //检测权限，如果不是老师或者管理员权限，不允许访问
+        $currentUser = $this->getUser();
+        if (!$currentUser->isTeacher() && !$currentUser->isAdmin()) {
+            throw $this->createAccessDeniedException('没有这个页面');
+        }
+
+
 //        $this->getCourseSetService()->tryManageCourseSet($courseSetId);
 
         $testpaper = $this->getTestpaperService()->getTestpaper($testpaperId);
