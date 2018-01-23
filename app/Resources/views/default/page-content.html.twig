@@ -98,8 +98,8 @@
             <a class="guide_01" href="/course/explore" target="_blank">
                 <div class="left_box"><img src="/bundles/topxiaweb/img/page/xuanke.png">选课中心</div>
             </a>
-            <a class="guide_02" href="http://www.zgjsks.com/html/jszg/kaoshizixun/tiaojian/" target="_blank">
-                <div class="left_box"><img src="/bundles/topxiaweb/img/page/xuexi.png">学习中心</div>
+            <a class="guide_02" href="/article/category/ksjiqiao" target="_blank">
+                <div class="left_box"><img src="/bundles/topxiaweb/img/page/xuexi.png">考试技巧</div>
             </a>
             <a class="guide_03" href="/article/category/jiaocai" target="_blank">
                 <div class="left_box"><img src="/bundles/topxiaweb/img/page/ziliao.png">辅导资料</div>
@@ -128,24 +128,39 @@
 
     <div class="jszp_main_central">
         <h2>好课推荐</h2>
-				<div class="jszp_right_guide">
-						<div id="frame" >
-			<div id="photos" class="play">
-				{% set course = data('LatestCourseSets',{count: 4, type: 'latest', categoryCode: '', notFree: 0}) %}  {# 考试公告 #}
-				{% for  course in course %}
-					{{ lazy_img(filepath(course_set_cover(course, 'large'), 'course.png'), 'img-responsive', course.title) }}
-				{% endfor %}
-					
-				<ul id="dis">
-					{% for  course in course %}
-					<li>{{ course.title }}</li>
-				{% endfor %}
+			<div class="jszp_right_guide">
+				<div id="frame" >
+					<div id="photos" class="play">
+						{% set course = data('LatestCourseSets',{count: 4, type: 'latest', categoryCode: '', notFree: 0}) %}  {# 考试公告 #}
+						{% for  course in course %}
+							{{ lazy_img(filepath(course_set_cover(course, 'large'), 'course.png'), 'img-responsive', course.title) }}
+						{% endfor %}
+							
+						<ul id="dis">
+							{% for  course in course %}
+							<li>{{ course.title }}</li>
+						{% endfor %}
 
-				</ul>
-			</div>
-		</div>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="haoke_div">
+				<a class="cateTop" href="/course/explore/child" target="_blank">幼儿园</a> &nbsp;&nbsp;&nbsp;
+				<a class="" href="/course/explore/child?subCategory=childbj" target="_blank">保教知识与能力</a>&nbsp;&nbsp;
+				<a class="" href="/course/explore/child?subCategory=childsz" target="_blank">综合素质</a>
+				<br /><br />
+				<a class="cateTop" href="/course/explore/primary" target="_blank">小&#8195;学</a> &nbsp;&nbsp;&nbsp;
+				<a class="" href="/course/explore/primary?subCategory=primarynl" target="_blank">教育知识与能力</a>&nbsp;&nbsp;
+				<a class="" href="/course/explore/primary?subCategory=primarysz" target="_blank">综合素质</a>
+				<br /><br />
+				<a class="cateTop" href="/course/explore/middle" target="_blank">中&#8195;学</a> &nbsp;&nbsp;&nbsp;
+				<a class="" href="/course/explore/middle?subCategory=middlenl" target="_blank">教育知识与能力</a>&nbsp;&nbsp;
+				<a class="" href="/course/explore/middle?subCategory=middlesz" target="_blank">综合素质</a>
+				
+				</div>
        
-		</div>
+			</div>
 	</div>
 
     
@@ -310,7 +325,8 @@
 					  <li><a href="{{ path('article_detail', {id:mingshiList.id}) }}" target="_blank"><img
 									src="/bundles/topxiaweb/img/page/mingshi.png"></a> <a class="books_title_info"
 																						  href="{{ path('article_detail', {id:mingshiList.id}) }}"
-																						  target="_blank"><span>2018国家教师资格考试教材</span><br>
+																						  target="_blank">
+																						  {# <span>2018国家教师资格考试教材</span><br> #}
 							{{ mingshiList.title|slice(0,7) }}{% if mingshiList.title|length >7 %}...{% endif %}</a></li>			   
 				{% endfor %}			
             </ul>
