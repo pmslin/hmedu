@@ -47,14 +47,15 @@
 
     {% include 'org/org-tree-select.html.twig' with {colmd:7,modal: 'modal'} %}
 
-  <div class="row form-group">
+	{# 隐藏添加教师权限 #}
+  {# <div class="row form-group">
     <div class="col-md-2 control-label">
       <label for="roles">{{'用户权限'|trans}}</label>
     </div>
     <div class="col-md-7 controls">
       <input type="checkbox" value="ROLE_TEACHER" name="roles[]"> {{'教师'|trans}}  
     </div>
-  </div>
+  </div> #}
 
   <input type="hidden" name="_csrf_token" value="{{ csrf_token('site') }}">
 

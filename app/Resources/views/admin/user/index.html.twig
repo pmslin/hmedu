@@ -39,9 +39,17 @@
     </div>  #}
 
     <div class="form-group">
-      <select id="keywordType" name="keywordType" class="form-control">
+		<select id="keywordType" name="keywordType" class="form-control">
+			<option value="nickname" selected="selected">用户名</option>
+			{# <option value="verifiedMobile">手机号</option> #}
+			<option value="email">邮箱</option>
+			{# <option value="loginIp">登录IP</option> #}
+		</select>
+		
+		{# 系统原来的写法 #}
+      {# <select id="keywordType" name="keywordType" class="form-control">
         {{ select_options(dict('userKeyWordType'), app.request.query.get('keywordType') ? app.request.query.get('keywordType') : 'nickname') }}
-      </select>
+      </select> #}
     </div>
 
     <div class="form-group">
@@ -68,7 +76,7 @@
       {% endif %}
       <th>{{ '用户名'|trans }}</th>
       {% include 'org/parts/table-thead-tr.html.twig' %}
-      <th>{{ '手机号'|trans }}</th>
+      {# <th>{{ '手机号'|trans }}</th> #}
       <th>Email</th>
       <th>{{ '注册时间'|trans }}</th>
       <th>{{ '最近登录'|trans }}</th>

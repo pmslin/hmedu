@@ -33,6 +33,7 @@ class DefaultController extends BaseController
 
         $friendlyLinks = $this->getNavigationService()->getOpenedNavigationsTreeByType('friendlyLink');
 
+        //9条模拟题或真题
         $testInfo = $this->getTestpaperService()->getPageTest();
 //        var_dump($testInfo);
 

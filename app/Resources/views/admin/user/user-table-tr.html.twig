@@ -8,7 +8,8 @@
     {% endif %}
 
     <br>
-    <span class="text-muted text-sm">
+	{# 显示当前用户拥有的用户组名称 #}
+    {# <span class="text-muted text-sm">
       {% for role in user.roles %}
         {% set userRole = data('Role', {code: role}) %}
         {% if userRole|default(false) %}
@@ -18,10 +19,11 @@
         {% endif %}
         {% if not loop.last %} &nbsp {% endif %}
       {% endfor %}
-    </span>
+    </span> #}
   </td>
  {% include 'org/parts/table-body-td.html.twig' with {orgCode: user.orgCode}%}
-  <td>
+	{# 显示手机号码是否绑定 #}
+  {# <td>
     {% if user.verifiedMobile %}
       {{ user.verifiedMobile }}<span class="text-success">({{'已绑定'|trans}})</span>
     {% elseif profile.mobile %}
@@ -29,7 +31,7 @@
     {% else %}
        -- 
     {% endif %}
-  </td>
+  </td> #}
 
   <td>
     {% set emailArr = user.email|split('@') %}
@@ -40,18 +42,20 @@
     {% endif %}
     
     <br>
-    {% if user.emailVerified %}
+	{# 显示邮箱是否验证 #}
+    {# {% if user.emailVerified %}
       <label class="label label-success" title="{{'该Email地址已验证'|trans}}">{{'已验证'|trans}}</label>
-    {% endif %}
+    {% endif %} #}
   </td>
 
   <td>
     <span class="text-sm">{{ user.createdTime|date('Y-n-d H:i:s') }}</span>
     <br>
-    <span class="text-muted text-sm">
+	{# 注册ip地址 #}
+    {# <span class="text-muted text-sm">
     <a class="text-muted text-sm" href="http://www.baidu.com/s?wd={{ user.createdIp }}" target="_blank">{{ user.createdIp }}</a>
     {{convertIP(user.createdIp)}}
-  </span>
+  </span> #}
     <span></span>
   </td>
   <td>
@@ -63,14 +67,16 @@
       {% endif %}
     </span>
     <br>
-    <span class="text-muted text-sm">
+	{# 最近登录ip地址 #}
+    {# <span class="text-muted text-sm">
     <a class="text-muted text-sm" href="http://www.baidu.com/s?wd={{ user.loginIp }}" target="_blank">{{ user.loginIp }}</a>
     {{convertIP(user.loginIp)}}
-  </span>
+  </span> #}
   </td>
   <td>
     <div class="btn-group">
-      <a href="#modal" data-toggle="modal" data-url="{{ path('admin_user_show', {id:user.id}) }}" data-url="" class="btn btn-default btn-sm">查看</a>
+		{# 查看用户详情 #}
+      {# <a href="#modal" data-toggle="modal" data-url="{{ path('admin_user_show', {id:user.id}) }}" data-url="" class="btn btn-default btn-sm">查看</a> #}
       {% include 'admin/role/templates/group-button.html.twig' with {parentCode: 'admin_user_manage', group:'groupButton', user: user} %}
     </div>
   </td>

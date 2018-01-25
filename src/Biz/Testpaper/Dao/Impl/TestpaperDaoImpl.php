@@ -22,7 +22,7 @@ class TestpaperDaoImpl extends GeneralDaoImpl implements TestpaperDao
         return $this->db()->fetchAll($sql);
     }
 
-    //获取展示在首页的试卷列表，9条
+    //获取展示在首页的试卷列表，9条模拟题或真题
     public function getPageTest()
     {
         $sql = "SELECT * FROM {$this->table} WHERE isTest=1 AND TestType IN (1,2) LIMIT 0,9";
