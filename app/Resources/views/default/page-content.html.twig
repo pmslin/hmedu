@@ -210,11 +210,11 @@
         </ul>
     </div>
     <div class="jszp_gonggao_box">
-        {% set baokaotiaojian = data('ArticleCategory',{code: 'baokaotiaojian'}) %}  {# 报考条件 #}
-        <h4><a href="{{ path('article_category', {categoryCode:baokaotiaojian.code}) }}"
-               target="_blank">{{ baokaotiaojian.name|trans }}<a/></h4>
+        {% set material = data('ArticleCategory',{code: 'material'}) %}  {# 备考资料 #}
+        <h4><a href="{{ path('article_category', {categoryCode:material.code}) }}"
+               target="_blank">{{ material.name|trans }}<a/></h4>
         <ul class="jszp_gonggao_li">
-            {% set baokaotiaojianList = data('LatestArticles',{count: 6, type: '', categoryId:9}) %}
+            {% set baokaotiaojianList = data('LatestArticles',{count: 6, type: '', categoryId:26}) %}
             {% for baokaotiaojianList in baokaotiaojianList %}
                 <li><p><a href="{{ path('article_detail', {id:baokaotiaojianList.id}) }}" target="_blank"
                           title="{{ baokaotiaojianList.title }}">{{ baokaotiaojianList.title|slice(0,21) }}{% if baokaotiaojianList.title|length >21 %}...{% endif %}</a>
