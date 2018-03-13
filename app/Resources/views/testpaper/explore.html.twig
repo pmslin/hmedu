@@ -57,13 +57,13 @@
 			  {{ '全部'|trans }}
 			</a>
 		  </li>
-		  <li>
+		  {# <li>
 			<a
 			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '1'}) }}"
 			  class="{% if (TestType == '1') %}active{% endif %}">
 			  {{ '模拟题'|trans }}
 			</a>
-		  </li>
+		  </li> #}
 		  <li>
 			<a
 			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '2'}) }}"
@@ -78,7 +78,7 @@
 			  {{ '章节练习'|trans }}
 			</a>
 		  </li>
-		  <li>
+		  {# <li>
 			<a
 			  href="{{ path('testpaper_explore', {category:category['category'], subCategory:category['subCategory'], selectedthirdLevelCategory:category['thirdLevelCategory'], tag:{tags:tags}, filter: {type: type,price: price,currentLevelId: currentLevelId},TestType: '4'}) }}"
 			  class="{% if (TestType == '4') %}active{% endif %}">
@@ -91,7 +91,7 @@
 			  class="{% if (TestType == '5') %}active{% endif %}">
 			  {{ '课后练习'|trans }}
 			</a>
-		  </li>
+		  </li> #}
 		</ul>
 	</div>
   

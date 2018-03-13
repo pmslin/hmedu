@@ -145,6 +145,7 @@ class TestpaperBuilder implements TestpaperBuilderInterface
             'testCategoryId',
             'TestYear',
             'TestType',
+            'TestSort'
         ));
 
         return $fields;

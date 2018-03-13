@@ -41,38 +41,46 @@
             </select>
             <div class="help-block" style="display:none;"></div>
           </div>
-        </div>
+    </div>
 		
 		<div class="form-group">
           <label class="col-md-2 control-label" for="TestYear">{{ '年份'|trans }}</label>
           <div class="col-md-8 controls">
             <select id="TestYear" name="TestYear" class="form-control width-input width-input-large">
-			  <option value="0"></option>
-              <option value="2018">2018</option>
-			  <option value="2017">2017</option>
-			  <option value="2016">2016</option>
-			  <option value="2015">2015</option>
-			  <option value="2014">2014</option>
-			  <option value="2013">2013</option>
+        			  <option value="0"></option>
+                <option value="2018">2018</option>
+        			  <option value="2017">2017</option>
+        			  <option value="2016">2016</option>
+        			  <option value="2015">2015</option>
+        			  <option value="2014">2014</option>
+        			  <option value="2013">2013</option>
             </select>
             <div class="help-block" style="display:none;"></div>
           </div>
-        </div>
+    </div>
 		
 		<div class="form-group">
           <label class="col-md-2 control-label" for="TestType">{{ '类型'|trans }}</label>
           <div class="col-md-8 controls">
             <select id="TestType" name="TestType" class="form-control width-input width-input-large">
-			  <option value="0"></option>
-              <option value="1">模拟题</option>
-			  <option value="2">历年真题</option>
-			  <option value="3">章节练习</option>
-			  <option value="4">高频考点</option>
-			  <option value="4">课后练习</option>
+        			  <option value="0"></option>
+                {# <option value="1">模拟题</option> #}
+        			  <option value="2">历年真题</option>
+        			  <option value="3">章节练习</option>
+        			  {# <option value="4">高频考点</option>
+        			  <option value="4">课后练习</option> #}
             </select>
             <div class="help-block" style="display:none;"></div>
           </div>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-2 control-label"><label for="name-field" class="control-label-required">{{'排序'|trans}}</label></div>
+      <div class="col-md-2 controls">
+        <input class="form-control" value="{% if testpaper.TestSort | default(null)%}{{testpaper.TestSort }}{% endif %}" name="TestSort" id="name-field" />
+      </div>
+    </div>
+
 		
 		{% include 'test/manage/create-build-info.html.twig'%}
       

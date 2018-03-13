@@ -111,7 +111,8 @@ webpackJsonp(["app/js/testpaper-manage/create/index"], [function (e, t, n) {
                             limitedTime: {min: 0, max: 1e4, digits: !0},
                             mode: {required: !0},
                             range: {required: !0},
-                            questioncount: {required: !0}
+                            questioncount: {required: !0},
+                            TestSort: {min: 0, max: 1e4, digits: !0}
                         },
                         messages: {
                             questioncount: "请选择题目",

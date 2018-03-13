@@ -38,7 +38,7 @@
             </select>
             <div class="help-block" style="display:none;"></div>
           </div>
-        </div>
+    </div>
 		
 		<div class="form-group">
           <label class="col-md-2 control-label" for="TestYear">{{ '年份'|trans }}</label>
@@ -54,22 +54,29 @@
             </select>
             <div class="help-block" style="display:none;"></div>
           </div>
-        </div>
+    </div>
 		
 		<div class="form-group">
           <label class="col-md-2 control-label" for="TestType">{{ '类型'|trans }}</label>
           <div class="col-md-8 controls">
             <select id="TestType" name="TestType" class="form-control width-input width-input-large">
 			  <option value="0"></option>
-              <option value="1" {% if testpaper.TestType == 1 %} selected {% endif %} >模拟题</option>
+        {# <option value="1" {% if testpaper.TestType == 1 %} selected {% endif %} >模拟题</option> #}
 			  <option value="2" {% if testpaper.TestType == 2 %} selected {% endif %} >历年真题</option>
 			  <option value="3" {% if testpaper.TestType == 3 %} selected {% endif %} >章节练习</option>
-			  <option value="4" {% if testpaper.TestType == 4 %} selected {% endif %} >高频考点</option>
-			  <option value="5" {% if testpaper.TestType == 5 %} selected {% endif %} >课后练习</option>
+			  {# <option value="4" {% if testpaper.TestType == 4 %} selected {% endif %} >高频考点</option>
+			  <option value="5" {% if testpaper.TestType == 5 %} selected {% endif %} >课后练习</option> #}
             </select>
             <div class="help-block" style="display:none;"></div>
           </div>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-2 control-label"><label for="name-field" class="control-label-required">{{'排序'|trans}}</label></div>
+      <div class="col-md-2 controls">
+        <input class="form-control" value="{% if testpaper.TestSort | default(null)%}{{testpaper.TestSort }}{% endif %}" name="TestSort" id="name-field" />
+      </div>
+    </div>
 
 		      
       <div class="form-group mbm">

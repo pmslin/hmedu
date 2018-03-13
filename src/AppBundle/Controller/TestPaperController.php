@@ -97,7 +97,8 @@ class TestPaperController extends BaseController
 
         $testpapers = $this->getTestpaperService()->searchTestpapers(
             $conditions,
-            array('createdTime' => 'DESC'),
+//            array('createdTime' => 'DESC'),
+            array('TestSort' => 'ASC'),
             $paginator->getOffsetCount(),
             $paginator->getPerPageCount()
         );

@@ -172,6 +172,7 @@ class TestpaperServiceImpl extends BaseService implements TestpaperService
                 'type',
                 'TestYear',
                 'TestType',
+                'TestSort'
             )
         );
 

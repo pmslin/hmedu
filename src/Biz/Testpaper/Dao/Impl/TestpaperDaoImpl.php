@@ -90,6 +90,7 @@ class TestpaperDaoImpl extends GeneralDaoImpl implements TestpaperDao
     {
         $declares['orderbys'] = array(
             'createdTime',
+            'TestSort',
         );
 
         $declares['conditions'] = array(
