@@ -1,8 +1,8 @@
 $(document).ready(function(){ 
 	$("#bishi").mouseover(function (){  
-            $("#bmsj").html("报名时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4月5日~8日");
+            $("#bmsj").html("报名时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9月15日左右");
 			$("#zkzdy").html("准考证打印 &nbsp;&nbsp;&nbsp; 考前一周");
-			$("#kssj").html("笔试时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2018.3.2");
+			$("#kssj").html("笔试时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2018.11.3");
 			$("#cjcx").html("成绩查询 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 考后一个月");
 			$("#bishi").css('color','#2dbb55');
     }).mouseout(function (){  
@@ -10,9 +10,9 @@ $(document).ready(function(){
 	});  
 	
 	$("#mianshi").mouseover(function (){  
-            $("#bmsj").html("报名时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12月2日~9日");
+            $("#bmsj").html("报名时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2018年1月");
 			$("#zkzdy").html("准考证打印 &nbsp;&nbsp;&nbsp; 考前两周");
-			$("#kssj").html("面试时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2018.5.16");
+			$("#kssj").html("面试时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2018年3月");
 			$("#cjcx").html("成绩查询 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 考后三周");
 		$("#mianshi").css('color','#2dbb55');
     }).mouseout(function (){  

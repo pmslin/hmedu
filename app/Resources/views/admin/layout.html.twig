@@ -24,7 +24,7 @@
     {% block title %}
       {{ currentMenu.name|trans }} - {{ menu|parent_permission.name|trans }} - {{ menu|parent_permission.code|parent_permission.name|trans  }}
     {% endblock %}
-    {% if not setting('copyright.owned') %} | EduSoho{% endif %}
+    {% if not setting('copyright.owned') %} {% endif %}
   </title>
 
   {% if setting('site.favicon') %}
