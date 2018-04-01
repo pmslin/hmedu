@@ -1,6 +1,6 @@
 $(document).ready(function(){ 
 	$("#bishi").mouseover(function (){  
-            $("#bmsj").html("报名时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9月15日左右");
+            $("#bmsj").html("报名时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9月5日左右");
 			$("#zkzdy").html("准考证打印 &nbsp;&nbsp;&nbsp; 考前一周");
 			$("#kssj").html("笔试时间 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2018.11.3");
 			$("#cjcx").html("成绩查询 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 考后一个月");
