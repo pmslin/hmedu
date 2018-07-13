@@ -152,7 +152,7 @@ class ExploreController extends BaseController
                 $courseSet['course'] = $courses[$courseSet['id']];
             }
         });
-
+//var_dump($courseSets);
         return $this->render(
             'course-set/explore.html.twig',
             array(

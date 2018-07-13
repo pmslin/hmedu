@@ -883,9 +883,21 @@ admin_setting_live_course_setting:
     defaults: { _controller: AppBundle:Admin/CourseSetting:liveCourseSetting }
     permissions: [admin_setting_live_course]
 
+#后台--系统--课程设置--题库  配置
 admin_setting_questions_setting:
     path: /setting/questions-setting
     defaults: { _controller: AppBundle:Admin/CourseSetting:questionsSetting }
+
+#首页中部banner配置
+admin_setting_homepage_center_banner_setting:
+    path: /setting/homepage-center-banner-setting
+    defaults: { _controller: AppBundle:Admin/OtherSetting:homepageCenterBannerSetting }
+    permissions: [admin_setting_other]
+
+#首页笔试面试的考试时间  配置
+admin_setting_test_date_setting:
+    path: /setting/test-date-setting
+    defaults: { _controller: AppBundle:Admin/OtherSetting:testDateSetting }
 
 admin_setting_consult_setting:
     path:  /setting/consult-setting

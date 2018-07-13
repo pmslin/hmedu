@@ -54,6 +54,7 @@ class SystemDefaultSettingController extends BaseController
     {
         if ($request->getMethod() == 'POST') {
             $options = $request->request->all();
+//                        var_dump($options);exit();
             $data = $options['images'];
 
             $fileIds = ArrayToolkit::column($data, 'id');

@@ -503,7 +503,7 @@ admin:
                                     group: topBtn
         admin_operation:
             #原来标题：运营
-            name: 资讯
+            name: 运营
             children:
                 admin_operation_article:
                     name: 资讯管理
@@ -527,6 +527,16 @@ admin:
                                     router_name: admin_article_category_create
                                     mode: modal
                                     group: topBtn
+                admin_setting_homepage_center_banner_setting:
+                    name: 其他设置
+                    children:
+                        admin_setting_other:
+                            name: 首页中部banner
+                            disable: true
+                            router_name: admin_setting_homepage_center_banner_setting
+                        admin_setting_test_date_setting:
+                            name: 考试时间
+                            disable: true 
                 admin_operation_group:
                     name: 小组管理
                     children:

@@ -68,6 +68,7 @@ function _fix_gpc_magic_files(&$item, $key)
     }
 }
 
+
 function isOldApiCall()
 {
     return (!(isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] == 'application/vnd.edusoho.v2+json'))

@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9511f60c-0996-44e5-9715-72f10f907b82" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HMcms/Application/Common/Conf/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="14" column="2" lean-forward="false" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelfTestController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Controller/SelfTestController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="430" column="27" lean-forward="false" selection-start-line="430" selection-start-column="27" selection-end-line="430" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckTokenController.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/CheckTokenController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+              <folding>
+                <marker date="1530694156153" expanded="true" signature="17371:17680" ph="..." />
+                <marker date="1530694156153" expanded="true" signature="17925:18296" ph="..." />
+                <marker date="1530694156153" expanded="true" signature="18182:18269" ph="..." />
+                <marker date="1530694156153" expanded="true" signature="18614:18788" ph="..." />
+                <marker date="1530694156153" expanded="true" signature="18996:19311" ph="..." />
+                <marker date="1530694156153" expanded="true" signature="19247:19272" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PosterController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../hmwx/Application/Admin/Controller/PosterController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="792">
+              <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../hmwx/Application/Common/Conf/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="idcardByBirthday.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HMcms/Public/js/plugins/js/idcardByBirthday.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkImg.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HMcms/Public/js/plugins/js/checkImg.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestPlaceController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Controller/TestPlaceController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="48" column="41" lean-forward="false" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ToUserName</find>
+      <find>40001</find>
+      <find>public</find>
+      <find>access_token</find>
+      <find>check</find>
+      <find>签</find>
+      <find>$token</find>
+      <find>checkSignature</find>
+      <find>echostr</find>
+      <find>MsgType</find>
+      <find>responseMsg</find>
+      <find>课本</find>
+      <find>chzn-select</find>
+      <find>upload</find>
+      <find>imagefttext</find>
+      <find>wxtk</find>
+      <find>LCAqKq2sha7Os56jHsnWDUXKKwIjAlSHajOZx4xhBTn</find>
+      <find>checkAuth</find>
+      <find>USER_INFO_URL</find>
+      <find>getUserInfo</find>
+      <find>kong</find>
+      <find>no access</find>
+      <find>验证</find>
+      <find>token</find>
+      <find>S(</find>
+      <find>S('</find>
+      <find>valid</find>
+      <find>预报党员</find>
+      <find>CUSTOM_SEND_URL</find>
+      <find>photoIdPicCheck</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/TestPaperController.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/View/Login/index.html" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Common/Conf/config.php" />
+        <option value="$PROJECT_DIR$/../hmwx/ThinkPHP/Conf/convention.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/WeChar/WeCharAccountController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/OrderController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/LoginController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Controller/BaseControllerc.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Home/Controller/WallController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Controller/BaseController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Think/Upload.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Model/LoveWallConfigModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Model/LoveWallModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Model/LoveWallModel.class.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/page-content.html.twig" />
+        <option value="$PROJECT_DIR$/web/static-dist/app/js/page/page-content.js" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/IndexController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Model/UserModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Model/UserModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/ModifyController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/UserController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Model/RoommateConfigModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Model/LoveWallConfigModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/View/Roommate/style.html" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Model/WechatAccountModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Model/WechatAccountModel.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/View/LoveWall/style.html" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/RoommateController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Controller/LoveWallController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/LoveWallController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Controller/BaseController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Vendor/wechat-sdk/qywechat.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/View/Poster/addPoster.html" />
+        <option value="$PROJECT_DIR$/../HMcms/Application/Admin/Controller/TeacherController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Controller/imgsController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Controller/ImgsController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Controller/ImgController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/WeChatAccountController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Vendor/wechat-sdk/wechat.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Controller/TestController.clss.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Controller/IndexController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Controller/RoommateController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Show/Controller/WallController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Common/function.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Common/function.php" />
+        <option value="$PROJECT_DIR$/../HMcms/Application/Common/Conf/config.php" />
+        <option value="$PROJECT_DIR$/../HMcms/Public/js/plugins/js/checkImg.js" />
+        <option value="$PROJECT_DIR$/../HMcms/Application/Admin/Controller/SelfTestController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Admin/Controller/PosterController.class.php" />
+        <option value="$PROJECT_DIR$/../hmwx/Application/Wx/Controller/CheckTokenController.class.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="c51eb476-6e6e-4016-8a08-315130bb3bd6" name="localhost" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="PhpXdebugProxy" ide_key="PHPSTORM" host="localhost" port="9000" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="HMcms" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="HMcms" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="HMcms" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="HMcms" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Conf" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="HMcms" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="HMcms" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ThinkPHP" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="HMcms" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ThinkPHP" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Conf" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Common" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Common" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Conf" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Wx" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="hmedu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hmedu" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="hmwx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Wx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wechat-php-sdk-master" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="SearchEverywhereHistoryKey" value="checkt&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmwx/Application/Wx/Controller/CheckTokenController.class.php&#10;postSelfTestAreaAn&#9;null&#9;null&#10;checkImg&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/HMcms/Public/js/plugins/js/checkImg.js&#10;idcardByBirthday&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/HMcms/Public/js/plugins/js/idcardByBirthday.js&#10;teac&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/HMcms/Application/Admin/Controller/TeacherController.class.php&#10;room&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmwx/Application/Show/Controller/RoommateController.class.php&#10;teacher&#9;null&#9;null&#10;addp&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmwx/Application/Admin/View/Poster/addPoster.html&#10;Wechatauth&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/wechat-php-sdk-master/old_version/wechatauth.class.php&#10;page-co&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmedu/app/Resources/views/default/page-content.html.twig&#10;style.ht&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmwx/Application/Admin/View/LoveWall/style.html&#10;login&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmwx/Public/js/plugins/js/login.js&#10;wechatacc&#9;null&#9;null&#10;login.js&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmwx/Public/js/plugins/js/login.js&#10;usermodel&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmwx/Application/Admin/Model/UserModel.class.php&#10;DefaultController&#9;null&#9;null&#10;SystemDefaultSetting&#9;null&#9;null&#10;menus&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmedu/src/AppBundle/Resources/config/menus_admin.yml&#10;question-set&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmedu/app/Resources/views/admin/system/questions-setting.html.twig&#10;CourseSettingController&#9;null&#9;null&#10;TestpaperService&#9;null&#9;null&#10;getTestpaperService&#9;null&#9;null&#10;testpaperb&#9;null&#9;null&#10;Testpaper&#9;FILE&#9;file://D:/xampp/htdocs/hmpro/hmedu/src/AppBundle/Controller/Activity/TestpaperController.php" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="PHP Web Page.hmwx">
+    <configuration name="hmcms" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="localhost" start_url="http://hmcms.com" />
+    <configuration name="hmedu" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="localhost" start_url="http://hmedu.com" />
+    <configuration name="hmwx" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="localhost" start_url="http://hmwx.com" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="PHP Web Page.hmedu" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Web Page.hmcms" />
+      <item index="2" class="java.lang.String" itemvalue="PHP Web Page.hmwx" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9511f60c-0996-44e5-9715-72f10f907b82" name="Default" comment="" />
+      <created>1519570452197</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1519570452197</updated>
+      <workItem from="1519570457076" duration="2562000" />
+      <workItem from="1520156189519" duration="1810000" />
+      <workItem from="1520158382361" duration="2267000" />
+      <workItem from="1520160678647" duration="4262000" />
+      <workItem from="1520761502860" duration="9783000" />
+      <workItem from="1520860209830" duration="452000" />
+      <workItem from="1520863619375" duration="1513000" />
+      <workItem from="1520867254645" duration="209000" />
+      <workItem from="1520943073166" duration="702000" />
+      <workItem from="1520949335430" duration="1500000" />
+      <workItem from="1521030470061" duration="2454000" />
+      <workItem from="1521122075190" duration="598000" />
+      <workItem from="1521205087288" duration="44616000" />
+      <workItem from="1521638673109" duration="2021000" />
+      <workItem from="1521723608022" duration="3234000" />
+      <workItem from="1521805855410" duration="8943000" />
+      <workItem from="1521955273552" duration="11159000" />
+      <workItem from="1522157574895" duration="4259000" />
+      <workItem from="1522237668620" duration="4509000" />
+      <workItem from="1522328882184" duration="9351000" />
+      <workItem from="1522413232032" duration="8139000" />
+      <workItem from="1522559922762" duration="2710000" />
+      <workItem from="1522674412762" duration="1908000" />
+      <workItem from="1524061370951" duration="2283000" />
+      <workItem from="1524324207745" duration="1162000" />
+      <workItem from="1524326805377" duration="138000" />
+      <workItem from="1526480176043" duration="827000" />
+      <workItem from="1526792937410" duration="10528000" />
+      <workItem from="1526902195153" duration="3612000" />
+      <workItem from="1526989045700" duration="5503000" />
+      <workItem from="1527079860634" duration="5706000" />
+      <workItem from="1527166448587" duration="4608000" />
+      <workItem from="1527250633797" duration="18187000" />
+      <workItem from="1527513814787" duration="4294000" />
+      <workItem from="1527599578474" duration="3678000" />
+      <workItem from="1527681533888" duration="6290000" />
+      <workItem from="1527765924670" duration="8633000" />
+      <workItem from="1527864643003" duration="6643000" />
+      <workItem from="1528639396933" duration="4145000" />
+      <workItem from="1528716757853" duration="3267000" />
+      <workItem from="1528800650390" duration="599000" />
+      <workItem from="1528981889388" duration="1819000" />
+      <workItem from="1529116323268" duration="6625000" />
+      <workItem from="1529493535035" duration="2276000" />
+      <workItem from="1529929873263" duration="3588000" />
+      <workItem from="1530500540338" duration="1389000" />
+      <workItem from="1530510306698" duration="24900000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="259661000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1860817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1732224" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39864865" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1860817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1732224" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39864865" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/SystemDefaultSettingController.php</url>
+          <line>57</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/CourseSettingController.php</url>
+          <line>73</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/OtherSettingController.php</url>
+          <line>15</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/../hmwx/Application/Admin/Controller/LoveWallController.class.php</url>
+          <line>107</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Vendor/wechat-sdk/wechat.class.php</url>
+          <line>1210</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/ImgsController.class.php</url>
+          <line>22</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Vendor/wechat-sdk/wechat.class.php</url>
+          <line>280</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Vendor/wechat-sdk/wechat.class.php</url>
+          <line>256</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="41" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/old_version/Thinkphp/Wechatpay.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="458" column="5" lean-forward="false" selection-start-line="458" selection-start-column="5" selection-end-line="458" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/old_version/Thinkphp/Wechatauth.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1266">
+          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/old_version/wechatauth.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/old_version/test/test2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/old_version/test/test3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1806">
+          <caret line="86" column="34" lean-forward="false" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/wiki/为开发框架进行适配.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="90">
+            <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="9" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/test/qydemo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/test/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Vendor/wechat-sdk/qywechat.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="885" column="0" lean-forward="false" selection-start-line="885" selection-start-column="0" selection-end-line="885" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/redis/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="79" column="20" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/wechat.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="43" column="6" lean-forward="false" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/test/merchanttest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wechat-php-sdk-master/Thinkphp/TPWechat.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/libxml/libxml.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="211" column="9" lean-forward="false" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/SimpleXML/SimpleXML.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="397" column="9" lean-forward="false" selection-start-line="397" selection-start-column="9" selection-end-line="397" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Public/plugins/layui/lay/dest/layui.all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="1" column="371" lean-forward="false" selection-start-line="1" selection-start-column="371" selection-end-line="1" selection-end-column="371" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Public/plugins/layui/layui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="371" lean-forward="false" selection-start-line="1" selection-start-column="371" selection-end-line="1" selection-end-column="371" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/View/Hr/hrStatusDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="740" column="87" lean-forward="false" selection-start-line="740" selection-start-column="76" selection-end-line="740" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Admin/View/Poster/addPoster.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="89" column="66" lean-forward="false" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Admin/Controller/LoveWallController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TeacherController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/ThinkPHP/ThinkPHP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="43" column="15" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="746" column="21" lean-forward="false" selection-start-line="746" selection-start-column="9" selection-end-line="746" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Think/App.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="175" column="0" lean-forward="false" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/gd/gd.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="1145" column="9" lean-forward="false" selection-start-line="1145" selection-start-column="9" selection-end-line="1145" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Admin/Controller/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Controller/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Show/Controller/WeChatAccountController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Admin/Controller/WeChatAccountController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="64" lean-forward="false" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/ImgsController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/TestController.clss.php" />
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Controller/InserUnderController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Controller/TeacherController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="67" column="64" lean-forward="false" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Show/Controller/WallController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Show/Controller/RoommateController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/ImgController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/ThinkPHP/Library/Vendor/wechat-sdk/wechat.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53193">
+          <caret line="2533" column="37" lean-forward="false" selection-start-line="2533" selection-start-column="20" selection-end-line="2533" selection-end-column="37" />
+          <folding>
+            <marker date="1528122479299" expanded="true" signature="33183:33324" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/IndexController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Admin/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1239">
+          <caret line="59" column="59" lean-forward="false" selection-start-line="59" selection-start-column="59" selection-end-line="59" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/ThinkPHP/Conf/convention.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="60" column="52" lean-forward="true" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="2" lean-forward="false" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Public/js/plugins/js/idcardByBirthday.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Public/js/plugins/js/checkImg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Controller/TestPlaceController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="48" column="41" lean-forward="false" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HMcms/Application/Admin/Controller/SelfTestController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="430" column="27" lean-forward="false" selection-start-line="430" selection-start-column="27" selection-end-line="430" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Admin/Controller/PosterController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hmwx/Application/Wx/Controller/CheckTokenController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+          <folding>
+            <marker date="1530694156153" expanded="true" signature="17371:17680" ph="..." />
+            <marker date="1530694156153" expanded="true" signature="17925:18296" ph="..." />
+            <marker date="1530694156153" expanded="true" signature="18182:18269" ph="..." />
+            <marker date="1530694156153" expanded="true" signature="18614:18788" ph="..." />
+            <marker date="1530694156153" expanded="true" signature="18996:19311" ph="..." />
+            <marker date="1530694156153" expanded="true" signature="19247:19272" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

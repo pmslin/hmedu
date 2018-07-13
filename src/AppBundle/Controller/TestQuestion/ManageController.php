@@ -377,7 +377,7 @@ class ManageController extends BaseController
             throw $this->createAccessDeniedException('没有这个页面');
         }
 
-        
+
 //        $courseSet = $this->getCourseSetService()->tryManageCourseSet($id);
 
         $testPaper = $this->getTestpaperService()->getTestpaper($testpaperId);

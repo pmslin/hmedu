@@ -1,0 +1,37 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% set menu = 'admin_setting_other' %}
+
+{% block main %}
+
+{{ web_macro.flash_messages() }}
+
+<form class="form-horizontal" method="post" id="course-form" novalidate>
+
+<fieldset>
+    <div class="form-group">
+      <div class="col-md-3 control-label">
+        <label>{{'上传图片(尺寸：1200*77)'|trans}}</label>
+      </div>
+      <div class="controls col-md-8 radios">
+      </div>
+	  
+	  <div class="col-md-3 control-label">
+        <label>{{'banner链接'|trans}}</label>
+      </div>
+      <div class="controls col-md-8 radios">
+        <input  type="text" id="url" name="url" class="form-control" value="{{ bannerSetting.url|default('https://') }}">
+      </div>
+    </div>
+</fieldset>
+
+  <div class="form-group">
+    <div class="controls col-md-offset-3 col-md-8">
+      <button type="submit" class="btn btn-primary">{{'提交'|trans}}</button>
+    </div>
+  </div>
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token('site') }}">
+
+</form>
+
+{% endblock %}

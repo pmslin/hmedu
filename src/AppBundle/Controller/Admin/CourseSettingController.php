@@ -141,6 +141,8 @@ class CourseSettingController extends BaseController
         ));
     }
 
+
+    //后台--系统--课程设置--题库  配置
     public function questionsSettingAction(Request $request)
     {
         $questionsSetting = $this->getSettingService()->get('questions', array());  //获取questions配置项的数据  setting表
@@ -161,6 +163,7 @@ class CourseSettingController extends BaseController
 
         return $this->render('admin/system/questions-setting.html.twig');
     }
+
 
     protected function getCourseDefaultSet()
     {

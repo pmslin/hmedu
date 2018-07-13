@@ -207,6 +207,8 @@ class TestpaperController extends BaseController
 
         $builder = $this->getTestpaperService()->getTestpaperBuilder($testpaper['type']);
         $questions = $builder->showTestItems($testpaper['id'], $testpaperResult['id']);
+//        echo $testpaperResult['id'];exit();
+//        $this->show_print($questions);exit();
 
         //试题数据
         $accuracy = $this->getTestpaperService()->makeAccuracy($testpaperResult['id']);
